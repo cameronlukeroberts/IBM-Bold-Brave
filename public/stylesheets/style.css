@@ -52,3 +52,15 @@ background-color: #0C0C38;
   box-shadow: none;
 }
 /********************* FINE NAVBAR **************************/
+
+/********************* INIZIO MODULES **********************/
+.color-modules
+{
+  background-color: #12124E;	 
+}
+
+.incomplete-progress-bar-modules
+{
+  background-color: #DDDDDD;
+}
+/********************* FINE MODULES ************************/
