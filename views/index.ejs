@@ -77,92 +77,50 @@
 
       <!-- Moduli -->
       <div class="col-sm-4">
-<<<<<<< HEAD
-        <div class="row">
-   	     <div class="col-sm-2">
-   	     </div>
 
-   	     <div class="col-sm-8 well color-modules">
-
-   	      <h3> <font color="#ffffff"> Current level: 4 </font> </h3>
-
-             <!-- modules -->
-   	      <div class="list-group">
-   	       <%for(var i=0; i<5; i++) { %>
-   		    <ul class="list-group">
-   		     <a href="#">
-   		      <li class="list-group-item list-group-item-info"> <div align="center"> modulo <%= i %> </div> </li>
-   		     </a>
-   		    </ul>
-   		   <% } %>
-             </div>
-   	     </div>
-
-   	     <div class="col-sm-2">
-   	     </div>
-   	   </div>
-=======
-	   
 	   <div class="row">
 	     <div class="col-sm-2">
 	     </div>
-	  
+
 	     <div class="col-sm-8 well well-modules">
-	   
+
 	      <h3> <div align="center"> Current level: 4 </div> </h3>
-	  
+
           <!-- modules -->
 	      <div class="list-group">
 	       <%for(var i=1; i<=5; i++) { %>
 		    <ul class="list-group">
 		     <a href="#" class="list-group-modules">
-		      <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li> 
+		      <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
 		     </a>
 		    </ul>
 		   <% } %>
           </div>
 	     </div>
-	     
+
 	     <div class="col-sm-2">
 	     </div>
-	   </div>	 
-		 
+	   </div>
+
 	   <div class="row">
-	    <% 
-		  var mod_bar_percentage = 87; 
+	    <%
+		  var mod_bar_percentage = 87;
 		  var points_to_next = 38;
 		%>
 		<div class="col-sm-1"> </div>
-		    
-		<div class="col-sm-10"> 
-		 <div align="center"> Points until next level: <%= points_to_next %> </div> 
-		  <div class="progress incomplete-progress-bar-modules"> 
+
+		<div class="col-sm-10">
+		 <div align="center"> Points until next level: <%= points_to_next %> </div>
+		  <div class="progress incomplete-progress-bar-modules">
 		   <div class="progress-bar color-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
             <%= mod_bar_percentage %>%
            </div>
-		  </div>  
+		  </div>
 	    </div>
-		   
-		<div class="col-sm-1"> 
+
+		<div class="col-sm-1">
 		</div>
 	   </div> 
->>>>>>> d7b14a88a7455ec8f734b94085479df158158f3f
-
-   	   <div class="row">
-   	    <%
-   		  var mod_bar_percentage = 87;
-   		  var points_to_next = 38;
-   		%>
-   		<div class="col-sm-1"> </div>
-
-   		<div class="col-sm-10">
-   		 <div align="center"> Points until next level: <%= points_to_next %> </div>
-   		  <div class="progress incomplete-progress-bar-modules">
-   		   <div class="progress-bar color-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
-               <%= mod_bar_percentage %>%
-              </div>
-   		  </div>
-   	    </div>
 
    		<div class="col-sm-1">
    		</div>
