@@ -114,13 +114,26 @@ background-color: #0C0C38;
 /********************* INIZIO MODULES **********************/
 .color-modules
 {
-  background-color: #12124E;	 
+  background-color: #12124E;
+}
+
+.well-modules
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;  
+  border-radius: 6px;
 }
 
 .incomplete-progress-bar-modules
 {
   background-color: #DDDDDD;
 }
+
+.list-group-modules
+{
+  underline: none;	
+}
+
 /********************* FINE MODULES ************************/
 
 /*******DASHBOARD LEVELS**********/

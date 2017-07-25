@@ -81,16 +81,16 @@
 	     <div class="col-sm-2">
 	     </div>
 	  
-	     <div class="col-sm-8 well color-modules">
+	     <div class="col-sm-8 well well-modules">
 	   
-	      <h3> <font color="#ffffff"> Current level: 4 </font> </h3>
+	      <h3> <div align="center"> Current level: 4 </div> </h3>
 	  
           <!-- modules -->
 	      <div class="list-group">
-	       <%for(var i=0; i<5; i++) { %>
+	       <%for(var i=1; i<=5; i++) { %>
 		    <ul class="list-group">
-		     <a href="#">
-		      <li class="list-group-item list-group-item-info"> <div align="center"> modulo <%= i %> </div> </li> 
+		     <a href="#" class="list-group-modules">
+		      <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li> 
 		     </a>
 		    </ul>
 		   <% } %>
