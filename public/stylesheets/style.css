@@ -52,3 +52,15 @@ background-color: #0C0C38;
   box-shadow: none;
 }
 /********************* FINE NAVBAR **************************/
+
+/*******sector paolo**********/
+.list-group-padding{
+  padding-top: 30px;
+}
+
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+/*******end sector paolo**********/
