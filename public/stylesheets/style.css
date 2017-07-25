@@ -65,18 +65,6 @@ background-color: #0C0C38;
   box-shadow: none;
 }
 
-/*******sector paolo**********/
-.list-group-padding{
-  padding-top: 30px;
-}
-
-.equal {
-  display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap;
-}
-/*******end sector paolo**********/
-
 /*****************INLINE PROFILE ******************/
 .inline-profile{
   overflow: hidden;
@@ -122,3 +110,22 @@ background-color: #0C0C38;
 /******************** END INLINE PROFILE *****************/
 
 /********************* END NAVBAR **************************/
+
+/*******DASHBOARD LEVELS**********/
+.list-group-padding{
+  padding-top: 30px;
+}
+
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  margin-left: 15px;
+}
+
+.rocket-container{
+  border-radius: 6px 6px 6px 6px;
+  background-image: url("/imgs/background-star.jpg");
+  background-size:100%;
+}
+/*******END DASHBOARD LEVELS**********/
