@@ -42,7 +42,7 @@
       </div>
     </nav>
     <!-- End of navbar -->
-    <div class="row">
+    <div class="">
 
       <div class="col-sm-4">
         <h2 class="text-center">Levels</h2>
@@ -78,7 +78,24 @@
       </div>
       <div class="col-sm-4">
       </div>
+      <!-- Leaderboard and test -->
       <div class="col-sm-4">
+        <div class="row">
+          <h2>Leaderboard</h2>
+          <ul class="leaderboard list-group">
+            <% for(var i=0;i<10;i++) {%>
+              <li class="list-group-item leaderboard-entry">
+                <a href="#profile" class="">
+                    <div class="leaderboard-image profile-image-container img-circle">
+                      <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
+                    </div>
+                    <div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
+                    <div class="leaderboard-inline-points">1337 Pt.</div>
+                </a>
+              </li>
+            <%}%>
+          </ul>
+        </div>
       </div>
     </div>
   </body>
