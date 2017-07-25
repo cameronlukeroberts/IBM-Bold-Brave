@@ -70,14 +70,58 @@
             <ul class="list-group list-group-padding">
              <li class="list-group-item list-group-item-success">Level 1<span class="badge">100%</span></li>
             </ul>
-
           </div>
-
         </div>
 
       </div>
+
+      <!-- Moduli -->
       <div class="col-sm-4">
-      </div>
+        <div class="row">
+   	     <div class="col-sm-2">
+   	     </div>
+
+   	     <div class="col-sm-8 well color-modules">
+
+   	      <h3> <font color="#ffffff"> Current level: 4 </font> </h3>
+
+             <!-- modules -->
+   	      <div class="list-group">
+   	       <%for(var i=0; i<5; i++) { %>
+   		    <ul class="list-group">
+   		     <a href="#">
+   		      <li class="list-group-item list-group-item-info"> <div align="center"> modulo <%= i %> </div> </li>
+   		     </a>
+   		    </ul>
+   		   <% } %>
+             </div>
+   	     </div>
+
+   	     <div class="col-sm-2">
+   	     </div>
+   	   </div>
+
+   	   <div class="row">
+   	    <%
+   		  var mod_bar_percentage = 87;
+   		  var points_to_next = 38;
+   		%>
+   		<div class="col-sm-1"> </div>
+
+   		<div class="col-sm-10">
+   		 <div align="center"> Points until next level: <%= points_to_next %> </div>
+   		  <div class="progress incomplete-progress-bar-modules">
+   		   <div class="progress-bar color-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
+               <%= mod_bar_percentage %>%
+              </div>
+   		  </div>
+   	    </div>
+
+   		<div class="col-sm-1">
+   		</div>
+   	   </div>
+
+   	  </div> <!-- chiude colonna centrale -->
       <!-- Leaderboard and test -->
       <div class="col-sm-4">
         <div class="row">
