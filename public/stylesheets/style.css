@@ -1,3 +1,11 @@
+
+/*** COLORS
+  Main blue: #12124E
+  Dark blue: #0C0C38
+  Light grey: #cccccc
+**********/
+
+
 body {
   padding-top: 70px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -11,6 +19,12 @@ a {
 .navbar-default {
   background-color: #12124E;
   border-color: #000000;
+}
+
+.navbar-nav > li{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  bottom: 0px;
 }
 
 .navbar-default .navbar-nav > li > a:hover{
@@ -34,7 +48,6 @@ background-color: #0C0C38;
 
 .navbar-brand{
   color: #cccccc !important;
-  padding-left: 50%;
 }
 
 .navbar-default .navbar-toggle,
@@ -51,7 +64,52 @@ background-color: #0C0C38;
   border: none;
   box-shadow: none;
 }
-/********************* FINE NAVBAR **************************/
+
+/*****************INLINE PROFILE ******************/
+.inline-profile{
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  width: auto;
+  padding: 5px 5px 5px 20px !important;
+  margin: 0px;
+}
+
+.profile-image-container{
+  position: inline-block;
+  height: 100%;
+  width: 40px;
+  overflow: hidden;
+  padding: 0px;
+  float: left;
+}
+
+.profile-image-container > img{
+  margin: 0px;
+  max-height: 100%;
+  width: auto;
+  overflow: hidden;
+}
+
+.inline-profile-info{
+  float: left;
+  padding-left: 20px;
+  padding-right: 50px;
+}
+
+.inline-name{
+  color: white;
+  font-weight: bold;
+}
+
+.inline-points{
+  color: #cccccc;
+  font-style: italic;
+}
+
+/******************** END INLINE PROFILE *****************/
+
+/********************* END NAVBAR **************************/
 
 /********************* INIZIO MODULES **********************/
 .color-modules
@@ -64,3 +122,22 @@ background-color: #0C0C38;
   background-color: #DDDDDD;
 }
 /********************* FINE MODULES ************************/
+
+/*******DASHBOARD LEVELS**********/
+.list-group-padding{
+  padding-top: 30px;
+}
+
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  margin-left: 15px;
+}
+
+.rocket-container{
+  border-radius: 6px 6px 6px 6px;
+  background-image: url("/imgs/background-star.jpg");
+  background-size:100%;
+}
+/*******END DASHBOARD LEVELS**********/
