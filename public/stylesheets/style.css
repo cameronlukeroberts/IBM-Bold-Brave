@@ -165,7 +165,6 @@ background-color: #0C0C38;
 
   position: relative;
   top: 0;
-  left: 0;
 }
 
 .rocket{
@@ -176,7 +175,10 @@ background-color: #0C0C38;
   background-repeat: no-repeat;
 
   position: absolute;
-  top: 40%;
+  top: 80%;
+  left: 50%;
+
+  margin-left: -45px; /* Half the width */
 }
 /*******END DASHBOARD LEVELS**********/
 
