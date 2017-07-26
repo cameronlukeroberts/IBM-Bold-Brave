@@ -43,7 +43,7 @@ function changeMiddleColumn(nmod)
   for(var i=0; i<modulesMat[nmod].length; i++)
   {
     newHtml += "<ul class='list-group'>";
-    newHtml += "<a href='#' style='text-decoration: none;'>";
+    newHtml += "<a href='/activity.ejs' style='text-decoration: none;'>";
     //<li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
 
     newHtml += "<li class='list-group-item ";
