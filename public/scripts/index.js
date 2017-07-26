@@ -5,7 +5,9 @@ window.onload = function() {
 function myMoveRocket() {
   var elem = document.getElementById("rocket");
   var per = 80;
-  var per_final = 20;
+
+  var per_final = 100-(level/num_levels)*100-(1/num_levels)*100+2;
+
   var interval = 2;
   var frame_per_interval = 0.01;
   var id = setInterval(frameRocket, interval);
