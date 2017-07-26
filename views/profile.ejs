@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
-
+    <link rel="stylesheet" href="/stylesheets/profile.css">
   </head>
   <body>
     <!-- Fixed navbar -->
@@ -43,7 +43,7 @@
 			<div class="col-sm-8">
 					 <svg id="svg1" width="768" height="400"></svg>
 						<script src="https://d3js.org/d3.v3.min.js"></script>
-            <script src="https://d3js.org/d3.v4.min.js"></script>
+ 						<script src="https://d3js.org/d3.v4.min.js"></script>
 						<script>
 
 						var svg = d3.select("#svg1"),
@@ -111,9 +111,17 @@
 						  text-align: center;
 						}
 					</style>
-					<script src="https://d3js.org/d3.v3.min.js"></script>
+          <script id="colori">
+              export default function(s) {
+                return s.match(/.{6}/g).map(function(x) {
+                  return "#" + x;
+                });
+              }
+              </script>
+          <script id="scala cromatica">
+                import colors from "#colors";
+                export default colors("3182bd6baed69ecae1c6dbefe6550dfd8d3cfdae6bfdd0a231a35474c476a1d99bc7e9c0756bb19e9ac8bcbddcdadaeb636363969696bdbdbdd9d9d9");</script>
 					<script>
-
 					// Define the data as a two-dimensional array of numbers. If you had other
 					// data to associate with each number, replace each number with an object, e.g.,
 					// `{key: "value"}`.
@@ -130,6 +138,7 @@
 					// in a named field from the data object instead, such as `d.name`. Colors
 					// are assigned lazily, so if you want deterministic behavior, define a domain
 					// for the color scale.
+
 					var m = 10,
 						r = 100,
 						z = d3.scale.category20c();
