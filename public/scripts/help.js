@@ -1,0 +1,14 @@
+$(document).ready(function(){
+  $('.question-container').click(function(){
+    if(!$(this).hasClass('active')){
+      $('.active').find('.response').slideUp();
+      $(this).find('.response').slideDown();
+      $('.question-container').removeClass('active');
+      $(this).addClass('active');
+    }
+    else{
+      $('.active').find('.response').slideUp();
+      $('.question-container').removeClass('active');
+    }
+  });
+});

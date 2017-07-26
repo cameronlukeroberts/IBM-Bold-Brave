@@ -3,6 +3,7 @@
   Main blue: #12124E
   Dark blue: #0C0C38
   Light grey: #cccccc
+  Dark grey: #333333
 **********/
 
 
@@ -122,6 +123,23 @@ background-color: #0C0C38;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.well-levels
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.well-leaderboard
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
 }
 
 .incomplete-progress-bar-modules
@@ -151,6 +169,7 @@ background-color: #0C0C38;
   position: relative;
   top: 0;
   left: 0;
+  overflow: hidden;
 }
 
 .moon{
@@ -160,8 +179,11 @@ background-color: #0C0C38;
   width: 80px;
   margin-top: 5px;
 
-  position: relative;
+  position: absolute;
   top: 0;
+  left: 50%;
+
+  margin-left: -40px; /* Half the width */
 }
 
 .rocket{
@@ -177,6 +199,21 @@ background-color: #0C0C38;
 
   margin-left: -45px; /* Half the width */
 }
+
+.earth{
+  background-image: url("/imgs/earth.png");
+  background-size:100%;
+  height: 90px;
+  width: 90px;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
+  margin-left: -45px; /* Half the width */
+  margin-top: -45px;
+}
 /*******END DASHBOARD LEVELS**********/
 
 .line-bottom{
@@ -184,17 +221,35 @@ background-color: #0C0C38;
 }
 
 /************** LEADERBOARD **************/
+.leaderboard-container{
+  overflow:hidden;
+  margin: 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
 .leaderboard{
   position: inline-block;
   height: 10vw;
   overflow-y: scroll;
-  margin-right: 10px;
+  margin-right: -17px;
   border: 1px solid #cccccc;
+  border-radius: 6px 6px 6px 6px;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .leaderboard-entry{
   height: 50px;
   list-style-type: none;
   padding-bottom: 5px;
+}
+
+.leaderboard-position{
+  float:left;
+  padding-left: 20px;
+  color: black;
 }
 
 .leaderboard-inline-name{

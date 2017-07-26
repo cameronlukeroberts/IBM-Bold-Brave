@@ -6,9 +6,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Dashboard' });
 });
 
-/* GET home page. */
+/* GET profile page. */
 router.get('/profile', function(req, res, next) {
   res.render('profile', { title: 'Profile' });
+});
+
+/* GET help page. */
+router.get('/help', function(req, res, next) {
+  res.render('help', { title: 'Help' });
 });
 
 module.exports = router;
