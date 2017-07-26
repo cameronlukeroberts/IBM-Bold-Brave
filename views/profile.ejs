@@ -33,7 +33,7 @@
 						<div class="title">
 							Name Surname
 						</div>
-						<div class="desc">Position</div>
+						<div class="desc">Position: 23</div>
 						<div class="desc">Points: 100</div>
 					</div>
 
@@ -121,19 +121,19 @@
 
 						  g.append("g")
 							  .attr("transform", "translate(0," + height + ")")
-							  .call(d3.axisBottom(x))
-							.select(".domain")
-							  .remove();
+							  .call(d3.axisBottom(x))  
+							.attr("stroke-width", 3)
 
 						  g.append("g")
 							  .call(d3.axisLeft(y))
+							.attr("stroke-width", 3)
 							.append("text")
 							  .attr("fill", "#000")
 							  .attr("transform", "rotate(-90)")
-							  .attr("y", 6)
-							  .attr("dy", "0.71em")
+							  .attr("y", 3)
+							  .attr("dy", "1.71em")
 							  .attr("text-anchor", "end")
-							  .text("Bravety");
+							  .text("BRAVETY");
 
 						  g.append("path")
 							  .datum(data)
@@ -141,7 +141,7 @@
 							  .attr("stroke", "steelblue")
 							  .attr("stroke-linejoin", "round")
 							  .attr("stroke-linecap", "round")
-							  .attr("stroke-width", 1.5)
+							  .attr("stroke-width", 6.5)
 							  .attr("d", line);
 						});
 
