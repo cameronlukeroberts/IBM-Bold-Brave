@@ -284,6 +284,7 @@ background-color: #0C0C38;
 /*************** BRAVE TEST ****************/
 .well-bravometer{
   margin: auto 0px auto 0px;
+  text-align: center;
 }
 
 .test-btn, .test-btn:hover, .test_btn:active{
@@ -291,15 +292,24 @@ background-color: #0C0C38;
   position: relative;
   width: 100%;
   padding: 10px;
-  color: #12124E;
+  color: #12124E !important;
   border: 2px solid #12124E;
   border-radius: 6px;
   text-align: center;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.test-btn:hover{
+  background-color: #cccccc;
 }
 
 .bravometer{
-  height: 270px;
+  width: 300px;
+  position: relative;
+
+  left: 50%;
+  margin-left: -150px;
 }
 /*************** END BRAVE TEST **************/
