@@ -121,6 +121,23 @@ background-color: #0C0C38;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.well-levels
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.well-leaderboard
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
 }
 
 .incomplete-progress-bar-modules
