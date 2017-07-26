@@ -16,4 +16,9 @@ router.get('/help', function(req, res, next) {
   res.render('help', { title: 'Help' });
 });
 
+/* GET test page. */
+router.get('/test', function(req, res, next) {
+  res.render('test', { title: 'Brave&Bold Test' });
+});
+
 module.exports = router;
