@@ -154,7 +154,17 @@ background-color: #0C0C38;
 
 .modules-arrow
 {
-  font-size: 2.5em;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.btn-arrow{
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
 }
 
 /********************* FINE MODULES ************************/
