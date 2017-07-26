@@ -3,6 +3,7 @@
   Main blue: #12124E
   Dark blue: #0C0C38
   Light grey: #cccccc
+  Dark grey: #333333
 **********/
 
 
@@ -111,9 +112,10 @@ background-color: #0C0C38;
 /********************* END NAVBAR **************************/
 
 /********************* INIZIO MODULES **********************/
-.color-modules
+.progress-bar-modules
 {
-  background-color: #12124E;
+  background-color: #cdf4f4;
+  color: #1661e2;
 }
 
 .well-modules
@@ -121,6 +123,23 @@ background-color: #0C0C38;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.well-levels
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
+}
+
+.well-leaderboard
+{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px #888888;
 }
 
 .incomplete-progress-bar-modules
@@ -128,16 +147,12 @@ background-color: #0C0C38;
   background-color: #DDDDDD;
 }
 
-.list-group-modules
-{
-  underline: none;
-}
-
 /********************* FINE MODULES ************************/
 
 /*******DASHBOARD LEVELS**********/
 .list-group-padding{
   padding-top: 30px;
+  cursor: pointer;
 }
 
 .equal {
@@ -187,17 +202,35 @@ background-color: #0C0C38;
 }
 
 /************** LEADERBOARD **************/
+.leaderboard-container{
+  overflow:hidden;
+  margin: 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
 .leaderboard{
   position: inline-block;
   height: 10vw;
   overflow-y: scroll;
-  margin-right: 10px;
+  margin-right: -17px;
   border: 1px solid #cccccc;
+  border-radius: 6px 6px 6px 6px;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .leaderboard-entry{
   height: 50px;
   list-style-type: none;
   padding-bottom: 5px;
+}
+
+.leaderboard-position{
+  float:left;
+  padding-left: 20px;
+  color: black;
 }
 
 .leaderboard-inline-name{
