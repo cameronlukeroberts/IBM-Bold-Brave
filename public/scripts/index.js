@@ -6,9 +6,6 @@ function myMoveRocket() {
   var elem = document.getElementById("rocket");
   var per = 80;
 
-  var level = 0;
-  var num_levels = 5;
-
   var per_final = 100-(level/num_levels)*100-(1/num_levels)*100+2;
 
   var interval = 2;
