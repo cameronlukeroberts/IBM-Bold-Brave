@@ -205,6 +205,7 @@ background-color: #0C0C38;
 .leaderboard-container{
   overflow:hidden;
   margin: 10px;
+  border-radius: 6px 6px 6px 6px;
 }
 
 .leaderboard{
@@ -213,6 +214,7 @@ background-color: #0C0C38;
   overflow-y: scroll;
   margin-right: -17px;
   border: 1px solid #cccccc;
+  border-radius: 6px 6px 6px 6px;
 }
 
 ::-webkit-scrollbar {
