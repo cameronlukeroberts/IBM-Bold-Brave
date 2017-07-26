@@ -104,13 +104,15 @@
             <div>
               <div class="row">
                 <div class="col-xs-2">
-                  <button type="button" class="btn btn-block btn-arrow"><span class="glyphicon glyphicon-menu-left modules-arrow"></span></button>
+                  <button type="button" onclick="decreaseLevel()" class="btn btn-block btn-arrow"><span class="glyphicon glyphicon-menu-left modules-arrow"></span></button>
+
                 </div>
                 <div class="col-xs-8">
                   <span class="modules-title" id="modulesTitle"></span>
                 </div>
                 <div class="col-xs-2">
-                  <button type="button" class="btn btn-block btn-arrow"><span class="glyphicon glyphicon-menu-right modules-arrow"></span></button>
+                  <button type="button" onclick="increaseLevel()" class="btn btn-block btn-arrow"><span class="glyphicon glyphicon-menu-right modules-arrow"></span></button>
+
                 </div>
               </div>
             </div>
@@ -175,8 +177,8 @@
           </div>
         </div>
           <div class="well well-leaderboard well-bravometer row">
-            <div id="bravometer" class="col-sm-12 bravometer"></div>
-            <a href="#test" class="test-btn col-sm-12">Take the test!</a>
+            <div id="bravometer" class="bravometer"></div>
+            <a href="/test" class="test-btn col-xs-12">Take the test!</a>
           </div>
       </div>
       </div>

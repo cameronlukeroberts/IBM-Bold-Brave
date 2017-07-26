@@ -36,14 +36,29 @@ class Module
   }
 }
 
+var actual_level_list;
+
+function decreaseLevel()
+{
+  actual_level_list = (actual_level_list + level)%(level+1);
+  changeMiddleColumn(actual_level_list);
+}
+
+function increaseLevel()
+{
+  actual_level_list = (actual_level_list + 1)%(level+1);
+  changeMiddleColumn(actual_level_list);
+}
+
 function changeMiddleColumn(nmod)
 {
+  actual_level_list = nmod;
   var newHtml = "";
 
   for(var i=0; i<modulesMat[nmod].length; i++)
   {
     newHtml += "<ul class='list-group'>";
-    newHtml += "<a href='/activity.ejs' style='text-decoration: none;'>";
+    newHtml += "<a href='/activity' style='text-decoration: none;'>";
     //<li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
 
     newHtml += "<li class='list-group-item ";
