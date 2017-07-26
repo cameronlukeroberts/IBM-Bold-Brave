@@ -147,6 +147,16 @@ background-color: #0C0C38;
   background-color: #DDDDDD;
 }
 
+.modules-title
+{
+  font-size: 2em;
+}
+
+.modules-arrow
+{
+  font-size: 2.5em;
+}
+
 /********************* FINE MODULES ************************/
 
 /*******DASHBOARD LEVELS**********/
@@ -270,3 +280,26 @@ background-color: #0C0C38;
   margin-top: -5px;
 }
 /************ END LEADERBOARD ***************/
+
+/*************** BRAVE TEST ****************/
+.well-bravometer{
+  margin: auto 0px auto 0px;
+}
+
+.test-btn, .test-btn:hover, .test_btn:active{
+  background-color: transparent;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  color: #12124E;
+  border: 2px solid #12124E;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.bravometer{
+  height: 270px;
+}
+/*************** END BRAVE TEST **************/

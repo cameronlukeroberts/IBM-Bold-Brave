@@ -17,7 +17,7 @@
     <!-- prendere dati da db sotto -->
     <%
      var levelsArr = new Array(5);
-     var userPoints = 25;
+     var userPoints = 23;
      for(var i=0; i<5; i++)
       levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
     %>
@@ -101,16 +101,23 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8 well well-modules">
-            <h3> <div align="center" id="modulesTitle"> Current level: 4 </div> </h3>
+
+            <div class="row">
+              <div class="text-center">
+                <div class="col-sm-2">
+                  <span class="glyphicon glyphicon-menu-left modules-arrow"></span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="modules-title" id="modulesTitle"></span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="glyphicon glyphicon-menu-right modules-arrow"></span>
+                </div>
+              </div>
+            </div>
             <!-- modules -->
             <div class="list-group" id="modulesList">
-              <%for(var i=1; i<=5; i++) { %>
-                <ul class="list-group">
-                  <a href="#" style="text-decoration: none;">
-                    <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
-                  </a>
-                </ul>
-              <% } %>
+                <script> changeMiddleColumn(level); </script>
             </div>
           </div>
 
@@ -163,10 +170,10 @@
             </div>
           </div>
         </div>
-        <div class="well well-leaderboard">
-          <div id="bravometer" class="200x160px"></div>
-          <button type="button" class="btn btn-outline-primary">Take the test!</button>
-        </div>
+          <div class="well well-leaderboard well-bravometer row">
+            <div id="bravometer" class="col-sm-12 bravometer"></div>
+            <a href="#test" class="test-btn col-sm-12">Take the test!</a>
+          </div>
       </div>
       </div>
     </div>
