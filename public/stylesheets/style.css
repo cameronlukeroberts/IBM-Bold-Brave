@@ -111,9 +111,10 @@ background-color: #0C0C38;
 /********************* END NAVBAR **************************/
 
 /********************* INIZIO MODULES **********************/
-.color-modules
+.progress-bar-modules
 {
-  background-color: #12124E;
+  background-color: #cdf4f4;
+  color: #1661e2;
 }
 
 .well-modules
@@ -128,16 +129,12 @@ background-color: #0C0C38;
   background-color: #DDDDDD;
 }
 
-.list-group-modules
-{
-  underline: none;
-}
-
 /********************* FINE MODULES ************************/
 
 /*******DASHBOARD LEVELS**********/
 .list-group-padding{
   padding-top: 30px;
+  cursor: pointer;
 }
 
 .equal {
