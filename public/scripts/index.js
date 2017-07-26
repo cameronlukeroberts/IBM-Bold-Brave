@@ -1,5 +1,5 @@
 window.onload = function() {
-    setTimeout(myMoveRocket, 1000);
+  setTimeout(myMoveRocket, 1000);
 }
 
 function myMoveRocket() {
