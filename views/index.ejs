@@ -24,13 +24,22 @@
 
     <script>
       //inizializzare qui variabili condivise tra client e server
-      var modulesMat = new Array(5);
-      for(var i=0; i<5; i++)
+      var level;
+      var num_levels = <%= levelsArr.length %>;
+
+      var modulesMat = new Array(num_levels);
+      for(var i=0; i<num_levels; i++)
        modulesMat[i] = new Array(i+1);
 
-      for(var i=0; i<5; i++) //inserire dati db
+      for(var i=0; i<num_levels; i++) //inserire dati db
        for(var j=0; j<i+1; j++)
         modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
+
+      <%
+        var level;
+        for(level=0; level<levelsArr.length && levelsArr[level].points <= userPoints; level++);
+      %>
+       level = <%= level-1 %>;
     </script>
 
   </head>
