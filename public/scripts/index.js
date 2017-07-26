@@ -22,6 +22,7 @@ function myMoveRocket() {
       elem.style.top = per + '%';
     }
   }
+}
 
 class Module
 {

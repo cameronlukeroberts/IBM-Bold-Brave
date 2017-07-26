@@ -204,7 +204,7 @@ background-color: #0C0C38;
 /************** LEADERBOARD **************/
 .leaderboard-container{
   overflow:hidden;
-  margin-right: 10px;
+  margin: 10px;
 }
 
 .leaderboard{
