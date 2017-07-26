@@ -9,11 +9,16 @@
 
 body {
   padding-top: 70px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.text-center{
+  margin: 0px 10px 15px 10px;
 }
 
 /********** NAVBAR *******************/
@@ -302,7 +307,7 @@ background-color: #0C0C38;
 }
 
 .test-btn:hover{
-  background-color: #cccccc;
+  background-color: #F3F3F6;
 }
 
 .bravometer{
