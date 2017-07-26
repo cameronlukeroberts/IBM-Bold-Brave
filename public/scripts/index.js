@@ -36,8 +36,23 @@ class Module
   }
 }
 
+var actual_level_list;
+
+function decreaseLevel()
+{
+  actual_level_list = (actual_level_list + level)%(level+1);
+  changeMiddleColumn(actual_level_list);
+}
+
+function increaseLevel()
+{
+  actual_level_list = (actual_level_list + 1)%(level+1);
+  changeMiddleColumn(actual_level_list);
+}
+
 function changeMiddleColumn(nmod)
 {
+  actual_level_list = nmod;
   var newHtml = "";
 
   for(var i=0; i<modulesMat[nmod].length; i++)
