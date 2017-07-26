@@ -42,14 +42,17 @@
       </div>
     </nav>
     <!-- End of navbar -->
-    <div class="row">
+    <div class="">
 
       <div class="col-sm-4">
         <h2 class="text-center">Levels</h2>
         <div class="row equal">
           <!-- rocket -->
-
           <div class="col-xs-5 rocket-container">
+            <center>
+              <div class="moon"></div>
+              <div class="rocket"></div>
+            </center>
           </div>
 
           <!-- Level -->
@@ -74,56 +77,77 @@
         </div>
 
       </div>
-      
+
+      <!-- Moduli -->
       <div class="col-sm-4">
-	   
+
 	   <div class="row">
 	     <div class="col-sm-2">
 	     </div>
-	  
+
 	     <div class="col-sm-8 well well-modules">
-	   
+
 	      <h3> <div align="center"> Current level: 4 </div> </h3>
-	  
+
           <!-- modules -->
 	      <div class="list-group">
 	       <%for(var i=1; i<=5; i++) { %>
 		    <ul class="list-group">
 		     <a href="#" class="list-group-modules">
-		      <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li> 
+		      <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
 		     </a>
 		    </ul>
 		   <% } %>
           </div>
 	     </div>
-	     
+
 	     <div class="col-sm-2">
 	     </div>
-	   </div>	 
-		 
+	   </div>
+
 	   <div class="row">
-	    <% 
-		  var mod_bar_percentage = 87; 
+	    <%
+		  var mod_bar_percentage = 87;
 		  var points_to_next = 38;
 		%>
 		<div class="col-sm-1"> </div>
-		    
-		<div class="col-sm-10"> 
-		 <div align="center"> Points until next level: <%= points_to_next %> </div> 
-		  <div class="progress incomplete-progress-bar-modules"> 
+
+		<div class="col-sm-10">
+		 <div align="center"> Points until next level: <%= points_to_next %> </div>
+		  <div class="progress incomplete-progress-bar-modules">
 		   <div class="progress-bar color-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
             <%= mod_bar_percentage %>%
            </div>
-		  </div>  
+		  </div>
 	    </div>
-		   
-		<div class="col-sm-1"> 
+
+		<div class="col-sm-1">
 		</div>
 	   </div> 
 
-	  </div> <!-- chiude colonna centrale --> 
-	  
-	  <div class="col-sm-4">
+   		<div class="col-sm-1">
+   		</div>
+   	   </div>
+
+   	  </div> <!-- chiude colonna centrale -->
+      <!-- Leaderboard and test -->
+      <div class="col-sm-4">
+        <div class="row">
+          <h2>Leaderboard</h2>
+          <ul class="leaderboard list-group">
+            <% for(var i=0;i<10;i++) {%>
+              <li class="list-group-item leaderboard-entry">
+                <a href="#profile" class="">
+                    <div class="leaderboard-image profile-image-container img-circle">
+                      <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
+                    </div>
+                    <div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
+                    <div class="leaderboard-inline-points">1337 Pt.</div>
+                </a>
+              </li>
+            <%}%>
+          </ul>
+        </div>
       </div>
     </div>
   </body>

@@ -76,11 +76,10 @@ background-color: #0C0C38;
 }
 
 .profile-image-container{
-  position: inline-block;
-  height: 100%;
+  height: 40px;
   width: 40px;
-  overflow: hidden;
   padding: 0px;
+  overflow: hidden;
   float: left;
 }
 
@@ -120,7 +119,7 @@ background-color: #0C0C38;
 .well-modules
 {
   background-color: #ffffff;
-  border: 1px solid #cccccc;  
+  border: 1px solid #cccccc;
   border-radius: 6px;
 }
 
@@ -131,7 +130,7 @@ background-color: #0C0C38;
 
 .list-group-modules
 {
-  underline: none;	
+  underline: none;
 }
 
 /********************* FINE MODULES ************************/
@@ -152,8 +151,71 @@ background-color: #0C0C38;
   border-radius: 6px 6px 6px 6px;
   background-image: url("/imgs/background-star.jpg");
   background-size:100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.moon{
+  background-image: url("/imgs/moon.png");
+  background-size:100%;
+  height: 80px;
+  width: 80px;
+  margin-top: 5px;
+
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.rocket{
+  background-image: url("/imgs/rocket.png");
+  background-size:100%;
+  height: 100px;
+  width: 90px;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  top: 40%;
 }
 /*******END DASHBOARD LEVELS**********/
+
+.line-bottom{
+  border-bottom: 1px solid #cccccc;
+}
+
+/************** LEADERBOARD **************/
+.leaderboard{
+  position: inline-block;
+  height: 10vw;
+  overflow-y: scroll;
+  margin-right: 10px;
+  border: 1px solid #cccccc;
+}
+.leaderboard-entry{
+  height: 50px;
+  list-style-type: none;
+  padding-bottom: 5px;
+}
+
+.leaderboard-inline-name{
+  padding-left: 20px;
+  float:left;
+  color: black;
+  font-weight: bold;
+}
+
+.leaderboard-inline-points{
+  padding-left: 20px;
+  float: right;
+  color: black;
+  font-style: italic;
+}
+
+.leaderboard-image{
+  margin-top: -5px;
+}
+/************ END LEADERBOARD ***************/
 
 /********************* PROFILO **************************/
 
@@ -402,4 +464,3 @@ background-color: #0C0C38;
 
 .btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
 /********************* FINE PROFILO **************************/
-
