@@ -19,7 +19,7 @@
     <!-- prendere dati da db sotto -->
     <%
      var levelsArr = new Array(5);
-     var userPoints = 25;
+     var userPoints = 13;
      for(var i=0; i<5; i++)
       levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
     %>
@@ -103,16 +103,10 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8 well well-modules">
-            <h3> <div align="center" id="modulesTitle"> Current level: 4 </div> </h3>
+            <h3> <div align="center" id="modulesTitle"></div> </h3>
             <!-- modules -->
             <div class="list-group" id="modulesList">
-              <%for(var i=1; i<=5; i++) { %>
-                <ul class="list-group">
-                  <a href="#" style="text-decoration: none;">
-                    <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
-                  </a>
-                </ul>
-              <% } %>
+              <script> changeMiddleColumn(level); </script>
             </div>
           </div>
 
