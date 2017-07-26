@@ -10,8 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
-
-
     <script type="text/javascript" src="scripts/index.js"></script>
     <script src="scripts/raphael-2.1.4.min.js"></script>
     <script src="scripts/justgage.js"></script>
@@ -19,7 +17,7 @@
     <!-- prendere dati da db sotto -->
     <%
      var levelsArr = new Array(5);
-     var userPoints = 13;
+     var userPoints = 23;
      for(var i=0; i<5; i++)
       levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
     %>
@@ -103,10 +101,23 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8 well well-modules">
-            <h3> <div align="center" id="modulesTitle"></div> </h3>
+
+            <div class="row">
+              <div class="text-center">
+                <div class="col-sm-2">
+                  <span class="glyphicon glyphicon-menu-left modules-arrow"></span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="modules-title" id="modulesTitle"></span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="glyphicon glyphicon-menu-right modules-arrow"></span>
+                </div>
+              </div>
+            </div>
             <!-- modules -->
             <div class="list-group" id="modulesList">
-              <script> changeMiddleColumn(level); </script>
+                <script> changeMiddleColumn(level); </script>
             </div>
           </div>
 
@@ -159,9 +170,14 @@
             </div>
           </div>
         </div>
-      <div id="bravometer" class="200x160px">
+        <div class="well well-leaderboard">
+          <div id="bravometer" class="200x160px"></div>
+          <button type="button" class="btn btn-outline-primary">Take the test!</button>
+        </div>
       </div>
       </div>
     </div>
+
+    <script type="text/javascript" src="scripts/bravometer.js"></script>
   </body>
 </html>
