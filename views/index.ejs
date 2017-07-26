@@ -19,7 +19,7 @@
     <!-- prendere dati da db sotto -->
     <%
      var levelsArr = new Array(5);
-     var userPoints = 56;
+     var userPoints = 25;
      for(var i=0; i<5; i++)
       levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
     %>
@@ -40,8 +40,9 @@
       <%
         var level;
         for(level=0; level<levelsArr.length && levelsArr[level].points <= userPoints; level++);
+        level--;
       %>
-       level = <%= level-1 %>;
+       level = <%= level %>;
     </script>
 
   </head>
@@ -120,10 +121,10 @@
 
         <div class="row">
           <%
-            var mod_bar_percentage = 87;
-            var points_to_next = 38;
+            var mod_bar_percentage = level+1 < levelsArr.length ? Math.floor(userPoints / levelsArr[level+1].points * 100) : 100;
+            var points_to_next = level+1 < levelsArr.length ? levelsArr[level+1].points - userPoints : 0;
           %>
-
+        
           <div class="col-sm-1"> </div>
 
           <div class="col-sm-10">
