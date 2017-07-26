@@ -280,3 +280,8 @@ background-color: #0C0C38;
   margin-top: -5px;
 }
 /************ END LEADERBOARD ***************/
+
+.bravometer{
+  width: 360px;
+  height: 270px;
+}
