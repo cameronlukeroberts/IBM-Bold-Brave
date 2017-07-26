@@ -71,7 +71,7 @@ JustGage = function(config) {
 
     // titleFontColor : string
     // color of gauge title
-    titleFontColor: kvLookup('titleFontColor', config, dataset, "#999999"),
+    titleFontColor: kvLookup('titleFontColor', config, dataset, "black"),
 
     // titleFontFamily : string
     // color of gauge title
@@ -144,7 +144,9 @@ JustGage = function(config) {
 
     // levelColors : string[]
     // colors of indicator, from lower to upper, in RGB format
-    levelColors: kvLookup('levelColors', config, dataset, ["#a9d70b", "#f9c802", "#ff0000"], 'array', ','),
+
+    //levelColors: kvLookup('levelColors', config, dataset, ["#a9d70b", "#f9c802", "#ff0000"], 'array', ','),
+	levelColors: kvLookup('levelColors', config, dataset, ["#ff0000", "#f9c802", "#a9d70b"], 'array', ','),
 
     // startAnimationTime : int
     // length of initial animation
