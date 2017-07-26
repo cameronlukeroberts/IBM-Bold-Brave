@@ -147,6 +147,16 @@ background-color: #0C0C38;
   background-color: #DDDDDD;
 }
 
+.modules-title
+{
+  font-size: 2em;
+}
+
+.modules-arrow
+{
+  font-size: 2.5em;
+}
+
 /********************* FINE MODULES ************************/
 
 /*******DASHBOARD LEVELS**********/

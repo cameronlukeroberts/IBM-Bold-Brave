@@ -101,12 +101,24 @@
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8 well well-modules">
-            <h3> <div align="center" id="modulesTitle"> Current level: 4 </div> </h3>
+            <div class="row">
+              <div class="text-center">
+                <div class="col-sm-2">
+                  <span class="glyphicon glyphicon-menu-left modules-arrow"></span>
+                </div>
+                <div class="col-sm-8">
+                  <span class="modules-title" id="modulesTitle">Current level: 4</span>
+                </div>
+                <div class="col-sm-2">
+                  <span class="glyphicon glyphicon-menu-right modules-arrow"></span>
+                </div>
+              </div>
+            </div>
             <!-- modules -->
             <div class="list-group" id="modulesList">
               <%for(var i=1; i<=5; i++) { %>
                 <ul class="list-group">
-                  <a href="#" style="text-decoration: none;">
+                  <a href="/activity.ejs" style="text-decoration: none;">
                     <li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
                   </a>
                 </ul>
