@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      Home - Dashboard
+      <%=title%>
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -102,24 +102,27 @@
    		</div>
    	   </div>
 
-   	  </div> <!-- chiude colonna centrale -->
+   	  </div>
+      <!-- chiude colonna centrale -->
       <!-- Leaderboard and test -->
       <div class="col-sm-4">
         <div class="row">
           <h2>Leaderboard</h2>
-          <ul class="leaderboard list-group">
-            <% for(var i=0;i<10;i++) {%>
-              <li class="list-group-item leaderboard-entry">
-                <a href="#profile" class="">
-                    <div class="leaderboard-image profile-image-container img-circle">
-                      <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
-                    </div>
-                    <div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
-                    <div class="leaderboard-inline-points">1337 Pt.</div>
-                </a>
-              </li>
-            <%}%>
-          </ul>
+          <div class="leaderboard-container">
+            <ul class="leaderboard list-group">
+              <% for(var i=0;i<10;i++) {%>
+                <li class="list-group-item leaderboard-entry">
+                  <a href="#profile" class="">
+                      <div class="leaderboard-image profile-image-container img-circle">
+                        <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
+                      </div>
+                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
+                      <div class="leaderboard-inline-points">1337 Pt.</div>
+                  </a>
+                </li>
+              <%}%>
+            </ul>
+        </div>
         </div>
       </div>
     </div>

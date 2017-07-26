@@ -3,6 +3,7 @@
   Main blue: #12124E
   Dark blue: #0C0C38
   Light grey: #cccccc
+  Dark grey: #333333
 **********/
 
 
@@ -187,17 +188,33 @@ background-color: #0C0C38;
 }
 
 /************** LEADERBOARD **************/
+.leaderboard-container{
+  overflow:hidden;
+  margin-right: 10px;
+}
+
 .leaderboard{
   position: inline-block;
   height: 10vw;
   overflow-y: scroll;
-  margin-right: 10px;
+  margin-right: -17px;
   border: 1px solid #cccccc;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .leaderboard-entry{
   height: 50px;
   list-style-type: none;
   padding-bottom: 5px;
+}
+
+.leaderboard-position{
+  float:left;
+  padding-left: 20px;
+  color: black;
 }
 
 .leaderboard-inline-name{
