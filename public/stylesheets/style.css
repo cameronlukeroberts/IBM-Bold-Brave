@@ -21,6 +21,10 @@ a {
   margin: 0px 10px 15px 10px;
 }
 
+.collapsed{
+  display: none;
+}
+
 /********** NAVBAR *******************/
 .navbar-default {
   background-color: #12124E;
