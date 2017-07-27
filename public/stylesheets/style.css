@@ -332,7 +332,9 @@ h2{
 
 /************** LEADERBOARD **************/
 .leaderboard-container{
-  overflow: hidden;
+  margin-right: 17px !important;
+  padding-right: 0px !important;
+  overflow: hidden !important;
 }
 
 .leaderboard{
@@ -341,7 +343,8 @@ h2{
   overflow-y: scroll;
   margin-right: -17px;
   border: 1px solid #cccccc;
-  border-radius: 6px 6px 6px 6px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
 }
 
 ::-webkit-scrollbar {
