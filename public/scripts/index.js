@@ -38,14 +38,14 @@ class Module
 
 var actual_level_list;
 var levelsArr = new Array(5);
-var userPoints = 25;
+var userPoints;
 var level, num_levels;
 var modulesMat;
 
 function init()
 {
-  for(var i=0; i<5; i++)
-   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
+  for(var i=0; i<5; i++) //prendere dati db
+   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:0};
 
   num_levels = levelsArr.length;
 
@@ -53,12 +53,26 @@ function init()
   for(var i=0; i<num_levels; i++)
     modulesMat[i] = new Array(i+1);
 
+  userPoints=0;
   for(var i=0; i<num_levels; i++) //inserire dati db
     for(var j=0; j<i+1; j++)
-      modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
+    {
+      modulesMat[i][j] = new Module("modulo"+i+""+j, Math.floor(i*j), i==j);
+      if(modulesMat[i][j].completed)
+        userPoints+=modulesMat[i][j].points;
+    }
 
   for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
   level--;
+
+  for(var i=0; i<num_levels; i++) //compute levels' percentages
+  {
+    var nc = 0;
+    for(var j=0; j<modulesMat[i].length; j++)
+     if(modulesMat[i][j].completed)
+      nc++;
+    levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
+  }
 }
 
 function makeLevelColumn()
@@ -131,7 +145,8 @@ function changeMiddleColumn(nmod)
     else
      newHtml += "list-group-item-info'>";
 
-    newHtml += "<div align='center'>"+modulesMat[nmod][i].name+"</div>";
+    newHtml += "<span>"+modulesMat[nmod][i].name+"</span>";
+    newHtml += "<span style='float:right'><i>"+modulesMat[nmod][i].points+" Pt.</i></span>";
 
     newHtml += "</li>";
     newHtml += "</a>";
