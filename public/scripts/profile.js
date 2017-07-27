@@ -10,8 +10,8 @@ $(document).ready(function(){
   var cont=chart.parent();
   var w=$(cont).width();
   var h=$(cont).height();
-  $(chart).width(w)-$(cont).css('padding-left')-$(cont).css('padding-right');
-  $(chart).height(h)-$(cont).css('padding-top')-$(cont).css('padding-bottom');
+  $(chart).width(w);
+  $(chart).height(h);
   makeGraph(w, h);
   $(window).on('resize', function(){
     var w=$(cont).width();

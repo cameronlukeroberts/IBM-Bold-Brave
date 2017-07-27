@@ -332,7 +332,9 @@ h2{
 
 /************** LEADERBOARD **************/
 .leaderboard-container{
-  overflow: hidden;
+  margin-right: 17px !important;
+  padding-right: 0px !important;
+  overflow: hidden !important;
 }
 
 .leaderboard{
@@ -341,7 +343,8 @@ h2{
   overflow-y: scroll;
   margin-right: -17px;
   border: 1px solid #cccccc;
-  border-radius: 6px 6px 6px 6px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
 }
 
 ::-webkit-scrollbar {
@@ -428,3 +431,17 @@ h2{
   padding-right: 0;
 }
 /*******END TEST********/
+
+.collapse-trigger{
+  cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
