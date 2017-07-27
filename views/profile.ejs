@@ -19,9 +19,10 @@
     <%- include('navbar', {title: title}) %>
     <!-- End of navbar -->
 
-	<!-- PROFILE -->
+
     <div class="container">
 		<div class="row">
+      <!-- PROFILE -->
 			<div class="col-sm-4" id="DIV1">
 				<div class="card hovercard">
 					<div class="cardheader"></div>
@@ -37,19 +38,25 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-8 well well-leaderboard">
-			     <svg id="svg1" width="728" height="360"></svg>
-			     <script src="/scripts/LineChart.js"></script>
+
+    	 <!-- END PROFILE -->
+      <div class="col-sm-8 panel panel-default">
+        <div class="panel-heading text-center">
+          <h2>Bravery</h2>
+        </div>
+  			<div class="panel-body">
+          <svg id="svg1" width="728" height="360"></svg>
+          <script src="/scripts/LineChart.js"></script>
+  			</div>
+      </div>
+		</div>
+    <div class="row well well-leaderboard">
+			<div class="col-sm-12" id="DIV2" style="text-align: center;">
+				<script src="/scripts/PieChart.js">
+				</script>
 			</div>
 		</div>
-	    <div class="row well well-leaderboard">
-				<div class="col-sm-12" id="DIV2" style="text-align: center;">
-					<script src="/scripts/PieChart.js">
-					</script>
-				</div>
-		</div>
 	</div>
-	 <!-- END PROFILE -->
    <%- include('footer') %>
   </body>
 </html>
