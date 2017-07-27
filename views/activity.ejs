@@ -11,28 +11,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/scripts/collapsable.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/help.css">
+    <link rel="stylesheet" href="/stylesheets/activities.css">
   </head>
   <body>
     <!-- Fixed navbar -->
     <%- include('navbar', {title: title}) %>
     <!-- End of navbar -->
     <div class="container">
-      <div class="row">
-        <h1>
-            LEVEL <%=parseInt(level)+1%>-MODULE <%=parseInt(module)+1%>
-        </h1>
-      </div>
   		<div class="row">
         <div class="col-sm-5">
-          <iframe src="http://www.youtube.com/embed/_Xcmh1LQB9I"
-              width="448" height="252" frameborder="0" allowfullscreen style="margin-top:20px;">
-          </iframe>
-
-          <div class="well" style="margin-top:20px">
-            <p >
-                  DESCRIPTION:  a a a a a aaaaaaa a a a a a a a a a a  a a aaaaaaaaaaaaaaaa aaaa aaaaa
-            </p>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                  LEVEL <%=parseInt(level)+1%> - MODULE <%=parseInt(module)+1%>
+            </div>
+            <div class="panel-body">
+              <iframe class="activity-video" src="http://www.youtube.com/embed/_Xcmh1LQB9I"
+                  width="100%" frameborder="0" allowfullscreen>
+              </iframe>
+              <p class="description">
+                      DESCRIPTION:  a a a a a aaaaaaa a a a a a a a a a a  a a aaaaaaaaaaaaaaaa aaaa aaaaa
+              </p>
+            </div>
           </div>
         </div>
   			<div class="col-sm-7">
@@ -40,7 +39,7 @@
             <div class="panel-heading collapse-trigger">
               ACTIVITY 1
             </div>
-            <div class="panel-body collapsed collapsable">
+            <div class="panel-body box-collapsed collapsable">
                ABBASSO IL LATINO
                <form>
                   <div>
@@ -57,7 +56,7 @@
             <div class="panel-heading collapse-trigger">
               ACTIVITY 2
             </div>
-            <div class="panel-body collapsed collapsable">
+            <div class="panel-body box-collapsed collapsable">
               IL LATINO FA SCHIFO
               <div>
                 <input type="checkbox" value="newsletter">
