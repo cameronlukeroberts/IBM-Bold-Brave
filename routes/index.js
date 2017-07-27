@@ -22,8 +22,8 @@ router.get('/test', function(req, res, next) {
 });
 
 /* GET activity page. */
-router.get('/activity', function(req, res, next) {
-  res.render('activity', { title: 'Activity' });
+router.get('/activity/:lev/:mod', function(req, res, next) {
+  res.render('activity', { title: 'Activities', level:req.params.lev, module:req.params.mod});
 });
 
 module.exports = router;

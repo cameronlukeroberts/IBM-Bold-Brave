@@ -6,42 +6,15 @@
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script type="text/javascript" src="scripts/index.js"></script>
     <script src="scripts/raphael-2.1.4.min.js"></script>
     <script src="scripts/justgage.js"></script>
 
-    <!-- prendere dati da db sotto -->
-    <%
-     var levelsArr = new Array(5);
-     var userPoints = 23;
-     for(var i=0; i<5; i++)
-      levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
-    %>
-
-    <script>
-      //inizializzare qui variabili condivise tra client e server
-      var level;
-      var num_levels = <%= levelsArr.length %>;
-
-      var modulesMat = new Array(num_levels);
-      for(var i=0; i<num_levels; i++)
-       modulesMat[i] = new Array(i+1);
-
-      for(var i=0; i<num_levels; i++) //inserire dati db
-       for(var j=0; j<i+1; j++)
-        modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
-
-      <%
-        var level;
-        for(level=0; level<levelsArr.length && levelsArr[level].points <= userPoints; level++);
-        level--;
-      %>
-       level = <%= level %>;
-    </script>
+    <script> init(); </script>
 
   </head>
   <body>
@@ -63,34 +36,7 @@
               </center>
             </div>
             <!-- Level -->
-            <div class="col-xs-7">
-              <% for(var i=levelsArr.length-1;i>=0;i--){ %>
-                <ul class="list-group list-group-padding">
-
-                  <li class="list-group-item
-                    <% if(levelsArr[i].points > userPoints){ %>
-                      disabled
-                    <% }else if(levelsArr[i].perComp==0){ %>
-                      list-group-item-danger
-                    <% }else if(levelsArr[i].perComp==100){ %>
-                      list-group-item-success
-                    <% }else{ %>
-                      list-group-item-warning
-                    <% } %>"
-                    <% if(levelsArr[i].points <= userPoints){ %>
-                      onclick="changeMiddleColumn(<%= i %>)"
-                    <% } %> >
-                    <%= levelsArr[i].name %>
-                    <span class="badge">
-                      <% if(levelsArr[i].points > userPoints){ %>
-                        <span class="glyphicon glyphicon-lock"></span>
-                      <% }else{ %>
-                      <%= levelsArr[i].perComp %>%
-                      <% } %>
-                    </span>
-                  </li>
-                </ul>
-              <% } %>
+            <div class="col-xs-7" id="levelColumn">
             </div>
           </div>
         </div>
@@ -118,8 +64,8 @@
                 </div>
 
             </div>
+
             <div class="list-group panel-body" id="modulesList">
-                <script> changeMiddleColumn(level); </script>
             </div>
           </div>
 
@@ -127,10 +73,7 @@
         </div>
 
         <div class="row">
-          <%
-            var mod_bar_percentage = level+1 < levelsArr.length ? Math.floor(userPoints / levelsArr[level+1].points * 100) : 100;
-            var points_to_next = level+1 < levelsArr.length ? levelsArr[level+1].points - userPoints : 0;
-          %>
+
 
           <div class="col-sm-1">
           </div>
@@ -139,11 +82,11 @@
               <h2>Progress</h2>
             </div>
             <div class="panel-body text-center">
-              <div class="progress-text"> Points until next level: <%= points_to_next %> </div>
+              <div class="progress-text"  id="progressBarText"></div>
               <div class="progress incomplete-progress-bar-modules text-center">
-                <div class="progress-bar progress-bar-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
+                <div class="progress-bar progress-bar-modules" role="progressbar" id="progressBarWidth">
                 </div>
-                <span class="percentage"><%= mod_bar_percentage %>%</span>
+                <span class="percentage"  id="progressBarPerc"></span>
               </div>
             </div>
           </div>
@@ -154,6 +97,8 @@
 
         <div class="col-sm-1"></div>
       </div>
+
+      <script> makeLevelColumn(); changeMiddleColumn(level); initProgressBar(); </script>
       <!-- chiude colonna centrale -->
 
       <!-- Leaderboard and test -->
@@ -170,12 +115,13 @@
                       <div class="leaderboard-image profile-image-container img-circle">
                         <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
                       </div>
-                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
+                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name">Big&nbsp;Lenny</div>
                       <div class="leaderboard-inline-points">1337 Pt.</div>
                   </a>
                 </li>
               <%}%>
             </ul>
+
           </div>
         </div>
         <div class="panel panel-default">
@@ -192,5 +138,6 @@
     </div>
 
     <script type="text/javascript" src="scripts/bravometer.js"></script>
+    <%- include('footer') %>
   </body>
 </html>

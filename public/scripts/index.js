@@ -37,6 +37,85 @@ class Module
 }
 
 var actual_level_list;
+var levelsArr = new Array(5);
+var userPoints;
+var level, num_levels;
+var modulesMat;
+
+function init()
+{
+  for(var i=0; i<5; i++) //prendere dati db
+   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:0};
+
+  num_levels = levelsArr.length;
+
+  modulesMat = new Array(num_levels);
+  for(var i=0; i<num_levels; i++)
+    modulesMat[i] = new Array(i+1);
+
+  userPoints=0;
+  for(var i=0; i<num_levels; i++) //inserire dati db
+    for(var j=0; j<i+1; j++)
+    {
+      modulesMat[i][j] = new Module("modulo"+i+""+j, Math.floor(i*j), i==j);
+      if(modulesMat[i][j].completed)
+        userPoints+=modulesMat[i][j].points;
+    }
+
+  for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
+  level--;
+
+  for(var i=0; i<num_levels; i++) //compute levels' percentages
+  {
+    var nc = 0;
+    for(var j=0; j<modulesMat[i].length; j++)
+     if(modulesMat[i][j].completed)
+      nc++;
+    levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
+  }
+}
+
+function makeLevelColumn()
+{
+   var newHtml = "";
+   for(var i=levelsArr.length-1;i>=0;i--)
+   {
+     newHtml += "<ul class='list-group list-group-padding'>";
+     newHtml += "<li class='list-group-item ";
+
+     if(levelsArr[i].points > userPoints)
+      newHtml+="disabled'";
+     else if(levelsArr[i].perComp==0)
+      newHtml+="list-group-item-danger'";
+     else if(levelsArr[i].perComp==100)
+      newHtml+="list-group-item-success'"
+     else
+      newHtml+="list-group-item-warning'";
+
+      if(levelsArr[i].points <= userPoints)
+       newHtml+="onclick='changeMiddleColumn("+i+")'";
+      newHtml+=">"+levelsArr[i].name;
+
+      newHtml+="<span class='badge'>";
+      if(levelsArr[i].points > userPoints)
+       newHtml+="<span class='glyphicon glyphicon-lock'></span>";
+      else
+       newHtml+=levelsArr[i].perComp+"%";
+
+      newHtml+="</span> </li> </ul>";
+    }
+
+    document.getElementById("levelColumn").innerHTML = newHtml;
+}
+
+function initProgressBar()
+{
+  var mod_bar_percentage = level+1 < levelsArr.length ? Math.floor(userPoints / levelsArr[level+1].points * 100) : 100;
+  var points_to_next = level+1 < levelsArr.length ? levelsArr[level+1].points - userPoints : 0;
+  document.getElementById("progressBarText").innerHTML = "Points until next level: "+points_to_next;
+  document.getElementById("progressBarPerc").innerHTML = mod_bar_percentage+"%";
+  document.getElementById("progressBarPerc").style.width = mod_bar_percentage+"%";
+}
 
 function decreaseLevel()
 {
@@ -58,8 +137,7 @@ function changeMiddleColumn(nmod)
   for(var i=0; i<modulesMat[nmod].length; i++)
   {
     newHtml += "<ul class='list-group'>";
-    newHtml += "<a href='/activity' style='text-decoration: none;'>";
-    //<li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
+    newHtml += "<a href='/activity/"+nmod+"/"+i+"' style='text-decoration: none;'>";
 
     newHtml += "<li class='list-group-item ";
     if(modulesMat[nmod][i].completed)
@@ -67,7 +145,8 @@ function changeMiddleColumn(nmod)
     else
      newHtml += "list-group-item-info'>";
 
-    newHtml += "<div align='center'>"+modulesMat[nmod][i].name+"</div>";
+    newHtml += "<span>"+modulesMat[nmod][i].name+"</span>";
+    newHtml += "<span style='float:right'><i>"+modulesMat[nmod][i].points+" Pt.</i></span>";
 
     newHtml += "</li>";
     newHtml += "</a>";

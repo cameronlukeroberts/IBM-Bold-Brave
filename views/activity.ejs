@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/scripts/activity.js"></script>
+    <script src="/scripts/collapsable.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/help.css">
   </head>
@@ -20,7 +20,7 @@
     <div class="container">
       <div class="row">
         <h1>
-            LEVEL 1-MODULE 2
+            LEVEL <%=parseInt(level)+1%>-MODULE <%=parseInt(module)+1%>
         </h1>
       </div>
   		<div class="row">
@@ -30,46 +30,47 @@
           </iframe>
 
           <div class="well" style="margin-top:20px">
-             <p >
+            <p >
                   DESCRIPTION:  a a a a a aaaaaaa a a a a a a a a a a  a a aaaaaaaaaaaaaaaa aaaa aaaaa
-              </p>
+            </p>
           </div>
         </div>
   			<div class="col-sm-7">
-            <div class="question-container well well-modules">
-              <div class="question">
-                ACTIVITY 1
+          <div class="question-container well well-modules collapse-container">
+            <div class="question collapse-trigger">
+              ACTIVITY 1
+            </div>
+            <div class="response collapsable">
+               ABBASSO IL LATINO
+               <form>
+                  <div>
+                    <input type="checkbox" value="newsletter">
+                    <label for="subscribeNews">Activity completed</label>
+                  </div>
+                  <div>
+                    <button type="submit">Confirm</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+          <div class="question-container well well-modules collapse-container">
+            <div class="question collapse-trigger">
+              ACTIVITY 2
+            </div>
+            <div class="response collapsable">
+              IL LATINO FA SCHIFO
+              <div>
+                <input type="checkbox" value="newsletter">
+                <label for="subscribeNews">Activity completed</label>
               </div>
-              <div class="response">
-                 ABBASSO IL LATINO
-                 <form>
-                    <div>
-                      <input type="checkbox" value="newsletter">
-                      <label for="subscribeNews">Activity completed</label>
-                    </div>
-                    <div>
-                      <button type="submit">Confirm</button>
-                    </div>
-                  </form>
+              <div>
+                <button type="submit">Confirm</button>
               </div>
             </div>
-            <div class="question-container well well-modules">
-              <div class="question">
-                ACTIVITY 2
-              </div>
-              <div class="response">
-                IL LATINO FA SCHIFO
-                <div>
-                  <input type="checkbox" value="newsletter">
-                  <label for="subscribeNews">Activity completed</label>
-                </div>
-                <div>
-                  <button type="submit">Confirm</button>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <%- include('footer') %>
   </body>
 </html>
