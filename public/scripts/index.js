@@ -37,32 +37,70 @@ class Module
 }
 
 var actual_level_list;
-
 var levelsArr = new Array(5);
-var userPoints = 23;
+var userPoints = 25;
+var level, num_levels;
+var modulesMat;
 
 function init()
 {
   for(var i=0; i<5; i++)
    levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
 
-  var level;
-  var num_levels = <%= levelsArr.length %>;
+  num_levels = levelsArr.length;
 
-  var modulesMat = new Array(num_levels);
-  <% for(var i=0; i<levelsArr.length; i++) %>
-  modulesMat[i] = new Array(<%= modulesMat[i].length %>);
+  modulesMat = new Array(num_levels);
+  for(var i=0; i<num_levels; i++)
+    modulesMat[i] = new Array(i+1);
 
   for(var i=0; i<num_levels; i++) //inserire dati db
     for(var j=0; j<i+1; j++)
       modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
 
-   <%
-     var level;
-     for(level=0; level<levelsArr.length && levelsArr[level].points <= userPoints; level++);
-     level--;
-   %>
-    level = <%= level %>;
+  for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
+  level--;
+}
+
+function makeLevelColumn()
+{
+   var newHtml = "";
+   for(var i=levelsArr.length-1;i>=0;i--)
+   {
+     newHtml += "<ul class='list-group list-group-padding'>";
+     newHtml += "<li class='list-group-item ";
+
+     if(levelsArr[i].points > userPoints)
+      newHtml+="disabled'";
+     else if(levelsArr[i].perComp==0)
+      newHtml+="list-group-item-danger'";
+     else if(levelsArr[i].perComp==100)
+      newHtml+="list-group-item-success'"
+     else
+      newHtml+="list-group-item-warning'";
+
+      if(levelsArr[i].points <= userPoints)
+       newHtml+="onclick='changeMiddleColumn("+i+")'";
+      newHtml+=">"+levelsArr[i].name;
+
+      newHtml+="<span class='badge'>";
+      if(levelsArr[i].points > userPoints)
+       newHtml+="<span class='glyphicon glyphicon-lock'></span>";
+      else
+       newHtml+=levelsArr[i].perComp+"%";
+
+      newHtml+="</span> </li> </ul>";
+    }
+
+    document.getElementById("levelColumn").innerHTML = newHtml;
+}
+
+function initProgressBar()
+{
+  var mod_bar_percentage = level+1 < levelsArr.length ? Math.floor(userPoints / levelsArr[level+1].points * 100) : 100;
+  var points_to_next = level+1 < levelsArr.length ? levelsArr[level+1].points - userPoints : 0;
+  document.getElementById("progressBarText").innerHTML = "Points until next level: "+points_to_next;
+  document.getElementById("progressBarPerc").innerHTML = mod_bar_percentage+"%";
+  document.getElementById("progressBarPerc").style.width = mod_bar_percentage+"%";
 }
 
 function decreaseLevel()
