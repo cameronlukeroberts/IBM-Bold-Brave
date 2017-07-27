@@ -38,7 +38,7 @@ class Module
 
 var actual_level_list;
 var levelsArr = new Array(5);
-var userPoints = 25;
+var userPoints;
 var level, num_levels;
 var modulesMat;
 
@@ -53,9 +53,14 @@ function init()
   for(var i=0; i<num_levels; i++)
     modulesMat[i] = new Array(i+1);
 
+  userPoints=0;
   for(var i=0; i<num_levels; i++) //inserire dati db
     for(var j=0; j<i+1; j++)
-      modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
+    {
+      modulesMat[i][j] = new Module("modulo"+i+""+j, Math.floor(i*j), i==j);
+      if(modulesMat[i][j].completed)
+        userPoints+=modulesMat[i][j].points;
+    }
 
   for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
   level--;
