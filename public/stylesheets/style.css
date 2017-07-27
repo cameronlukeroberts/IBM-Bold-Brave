@@ -426,10 +426,46 @@ h2{
   transform: translate(-50%, -50%);
 }
 
+.centralize{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.arrow-left{
+  background-image: url("/imgs/arrow_left.png");
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.arrow-right{
+  background-image: url("/imgs/arrow_right.png");
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
 .btn-no-padding{
   padding-left: 0;
   padding-right: 0;
 }
+
+.equal-test {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
 /*******END TEST********/
 
 .collapse-trigger{
