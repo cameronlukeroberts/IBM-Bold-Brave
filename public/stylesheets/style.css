@@ -267,6 +267,7 @@ h2{
 
 .panel-default > .panel-body{
   border-color: #12124E;
+  margin: 0px;
 }
 
 .rocket-container{
