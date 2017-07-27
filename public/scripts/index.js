@@ -117,6 +117,6 @@ function makeLeaderboard()
   {
      var leaderboardData = {name: "Big Lenny "+i, points: (11-i)*100};
      document.getElementById("leaderboardName"+i).innerHTML = leaderboardData.name;
-     document.getElementById("leaderboardPoints"+i).innerHTML = leaderboardData.points;
+     document.getElementById("leaderboardPoints"+i).innerHTML = leaderboardData.points+" Pt.";
   }
 }
