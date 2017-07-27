@@ -1,4 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<script type="text/javascript" src="/scripts/dataContainer.js"></script>
+<script type="text/javascript" src="/scripts/navbar.js"></script>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -18,8 +20,8 @@
               <img class="" src="https://media.giphy.com/media/WsgIIjhiLN38s/giphy.gif" class="rounded" />
             </div>
             <div class="inline-profile-info">
-              <div class="inline-name">Bob&nbsp;Smith</div>
-              <div class="inline-points">1337 Pt.</div>
+              <div class="inline-name" id="navbar-name"></div>
+              <div class="inline-points" id="navbar-points"></div>
             </div>
         </a></li>
         <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -29,3 +31,8 @@
     </div>
   </div>
 </nav>
+
+<script> //inits data needed by the page
+  init();
+  initNavbar();
+</script>
