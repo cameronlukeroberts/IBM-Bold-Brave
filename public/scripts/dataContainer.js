@@ -6,7 +6,7 @@ var modulesMat;
 
 function init()
 {
-  userName = "Big Lanny";
+  userName = "Big Lenny";
 
   levelsArr = new Array(5);
   for(var i=0; i<levelsArr.length; i++) //prendere dati db
