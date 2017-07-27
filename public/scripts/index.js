@@ -140,7 +140,8 @@ function changeMiddleColumn(nmod)
     else
      newHtml += "list-group-item-info'>";
 
-    newHtml += "<div align='center'>"+modulesMat[nmod][i].name+"</div>";
+    newHtml += "<span>"+modulesMat[nmod][i].name+"</span>";
+    newHtml += "<span style='float:right'><i>"+modulesMat[nmod][i].points+" Pt.</i></span>";
 
     newHtml += "</li>";
     newHtml += "</a>";
