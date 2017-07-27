@@ -1,13 +1,11 @@
 // Define the data as a two-dimensional array of numbers. If you had other
 // data to associate with each number, replace each number with an object, e.g.,
 // `{key: "value"}`.
-var data = [
-  [90, 10], //completate, da completare
-  [70, 30], //completate, da completare
-  [100, 0], //completate, da completare
-  [10, 90], //completate, da completare
-  [0, 100] //completate, da completare
-];
+
+var data = new Array(levelsArr.length);
+for(var i=0; i<levelsArr.length; i++)
+  data[i] = [levelsArr[i].perComp, 100 - levelsArr[i].perComp]; //%fatta, %da fare
+
 // Define the margin, radius, and color scale. The color scale will be
 // assigned by index, but if you define your data using objects, you could pass
 // in a named field from the data object instead, such as `d.name`. Colors
