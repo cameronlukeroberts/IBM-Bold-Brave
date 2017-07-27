@@ -38,6 +38,33 @@ class Module
 
 var actual_level_list;
 
+var levelsArr = new Array(5);
+var userPoints = 23;
+
+function init()
+{
+  for(var i=0; i<5; i++)
+   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
+
+  var level;
+  var num_levels = <%= levelsArr.length %>;
+
+  var modulesMat = new Array(num_levels);
+  <% for(var i=0; i<levelsArr.length; i++) %>
+  modulesMat[i] = new Array(<%= modulesMat[i].length %>);
+
+  for(var i=0; i<num_levels; i++) //inserire dati db
+    for(var j=0; j<i+1; j++)
+      modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
+
+   <%
+     var level;
+     for(level=0; level<levelsArr.length && levelsArr[level].points <= userPoints; level++);
+     level--;
+   %>
+    level = <%= level %>;
+}
+
 function decreaseLevel()
 {
   actual_level_list = (actual_level_list + level)%(level+1);
@@ -59,7 +86,6 @@ function changeMiddleColumn(nmod)
   {
     newHtml += "<ul class='list-group'>";
     newHtml += "<a href='/activity' style='text-decoration: none;'>";
-    //<li class="list-group-item <% if(i == 1){ %> list-group-item-success <% }else{ %> list-group-item-info <%} %>"> <div align="center"> modulo <%= i %> </div> </li>
 
     newHtml += "<li class='list-group-item ";
     if(modulesMat[nmod][i].completed)

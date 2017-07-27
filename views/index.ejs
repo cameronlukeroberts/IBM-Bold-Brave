@@ -14,34 +14,7 @@
     <script src="scripts/raphael-2.1.4.min.js"></script>
     <script src="scripts/justgage.js"></script>
 
-    <!-- prendere dati da db sotto -->
-    <%
-     var levelsArr = new Array(5);
-     var userPoints = 23;
-     for(var i=0; i<5; i++)
-      levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
-    %>
-
-    <script>
-      //inizializzare qui variabili condivise tra client e server
-      var level;
-      var num_levels = <%= levelsArr.length %>;
-
-      var modulesMat = new Array(num_levels);
-      for(var i=0; i<num_levels; i++)
-       modulesMat[i] = new Array(i+1);
-
-      for(var i=0; i<num_levels; i++) //inserire dati db
-       for(var j=0; j<i+1; j++)
-        modulesMat[i][j] = new Module("modulo"+i+""+j, i*j, i==j);
-
-      <%
-        var level;
-        for(level=0; level<levelsArr.length && levelsArr[level].points <= userPoints; level++);
-        level--;
-      %>
-       level = <%= level %>;
-    </script>
+    <script> init(); </script>
 
   </head>
   <body>
