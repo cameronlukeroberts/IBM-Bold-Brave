@@ -193,6 +193,7 @@
     overflow: hidden;
     text-align: center;
     background-color: rgba(214, 224, 226, 0.2);
+    text-align: center;
 }
 
 .card.hovercard .cardheader {
@@ -203,19 +204,23 @@
 
 .card.hovercard .avatar {
     position: relative;
-    top: -100px;
     margin-bottom: -100px;
+    overflow: hidden;
 }
 
-.card.hovercard .avatar img {
-    width: 200px;
-    height: 200px;
-    max-width: 200px;
-    max-height: 200px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    border: 5px solid rgba(255,255,255,0.5);
+.big-profile{
+  margin-top: -100px !important;
+  margin-left: 100px;
+  width: 200px;
+  height: 200px;
+  float: none;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+      border: 5px solid rgba(255, 255,255,0.5) !important;
+}
+
+.card.hovercard .big-profile img {
 }
 
 .card.hovercard .info {
