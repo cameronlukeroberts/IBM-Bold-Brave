@@ -35,7 +35,7 @@ function draw(data) {
     .attr("y", 3)
     .attr("dy", "1.71em")
     .attr("text-anchor", "end")
-    .text("BRAVETY");
+    .text("BRAVERY");
   g.append("path")
     .datum(data)
     .attr("fill", "none")
