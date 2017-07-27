@@ -44,8 +44,8 @@ var modulesMat;
 
 function init()
 {
-  for(var i=0; i<5; i++)
-   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:Math.floor(100/(i+1))};
+  for(var i=0; i<5; i++) //prendere dati db
+   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:0};
 
   num_levels = levelsArr.length;
 
@@ -64,6 +64,15 @@ function init()
 
   for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
   level--;
+
+  for(var i=0; i<num_levels; i++) //compute levels' percentages
+  {
+    var nc = 0;
+    for(var j=0; j<modulesMat[i].length; j++)
+     if(modulesMat[i][j].completed)
+      nc++;
+    levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
+  }
 }
 
 function makeLevelColumn()
