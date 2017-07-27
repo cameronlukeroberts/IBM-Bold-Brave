@@ -4,8 +4,6 @@ $(document).ready(function(){
     var coll_container=$(this).parents('.collapse-container');
     var cont=$(coll_container).find('.collapsable');
 
-    console.log(cont.length);
-
     if(!$(cont).hasClass('active')){
       $('.active').slideUp();
       $(cont).slideDown();
