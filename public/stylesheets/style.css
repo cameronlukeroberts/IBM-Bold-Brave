@@ -100,11 +100,11 @@ background-color: #0C0C38;
 }
 
 .rounded-landscape{
-  height: 100%;
+  max-height: 100%;
 }
 
 .rounded-portrait{
-  width: 100%;
+  max-width: 100%;
 }
 
 .inline-profile-info{
@@ -258,6 +258,7 @@ background-color: #0C0C38;
   background-color: #12124E;
   border-color: #12124E;
   color: #ffffff;
+  text-align: center;
 }
 
 h2{
@@ -268,6 +269,7 @@ h2{
 .panel-default > .panel-body{
   border-color: #12124E;
   margin: 0px;
+  padding: 10px;
 }
 
 .rocket-container{
@@ -330,14 +332,12 @@ h2{
 
 /************** LEADERBOARD **************/
 .leaderboard-container{
-  overflow:hidden;
-  margin: 10px;
-  border-radius: 6px 6px 6px 6px;
+  overflow: hidden;
 }
 
 .leaderboard{
-  position: inline-block;
-  height: 10vw;
+  position: relative;
+  max-height: 200px;
   overflow-y: scroll;
   margin-right: -17px;
   border: 1px solid #cccccc;

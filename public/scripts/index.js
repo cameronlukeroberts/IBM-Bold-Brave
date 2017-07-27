@@ -31,7 +31,7 @@ var actual_level_list;
 function makeLevelColumn()
 {
    var newHtml = "";
-   
+
    for(var i=levelsArr.length-1;i>=0;i--)
    {
      newHtml += "<ul class='list-group list-group-padding'>";
@@ -109,4 +109,14 @@ function changeMiddleColumn(nmod)
 
   document.getElementById("modulesTitle").innerHTML = "Level "+(nmod+1);
   document.getElementById("modulesList").innerHTML = newHtml;
+}
+
+function makeLeaderboard()
+{
+  for(var i=0; i<10; i++) //DA PRENDERE DAL DB
+  {
+     var leaderboardData = {name: "Big Lenny "+i, points: (11-i)*100};
+     document.getElementById("leaderboardName"+i).innerHTML = leaderboardData.name;
+     document.getElementById("leaderboardPoints"+i).innerHTML = leaderboardData.points;
+  }
 }
