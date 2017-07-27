@@ -114,7 +114,7 @@ function initProgressBar()
   var points_to_next = level+1 < levelsArr.length ? levelsArr[level+1].points - userPoints : 0;
   document.getElementById("progressBarText").innerHTML = "Points until next level: "+points_to_next;
   document.getElementById("progressBarPerc").innerHTML = mod_bar_percentage+"%";
-  document.getElementById("progressBarPerc").style.width = mod_bar_percentage+"%";
+  document.getElementById("progressBarWidth").style.width = mod_bar_percentage+"%";
 }
 
 function decreaseLevel()
