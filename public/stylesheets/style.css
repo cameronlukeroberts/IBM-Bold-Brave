@@ -117,11 +117,6 @@ background-color: #0C0C38;
 /********************* END NAVBAR **************************/
 
 /********************* INIZIO MODULES **********************/
-.progress-bar-modules
-{
-  background-color: #cdf4f4;
-  color: #1661e2;
-}
 
 .well-modules
 {
@@ -152,17 +147,48 @@ background-color: #0C0C38;
   background-color: #DDDDDD;
 }
 
-.modules-title
-{
-  font-size: 2em;
-}
-
-.modules-arrow
+.modules-arrow-up
 {
   padding: 0;
   margin: 0;
-  vertical-align: middle;
-  text-align: center;
+  background-image: url("/imgs/arrow_up.png");
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+
+  position: absolute;
+  left: 50%;
+  margin-left: -15px;
+
+  cursor: pointer;
+}
+.modules-arrow-down
+{
+  padding: 0;
+  margin: 0;
+  background-image: url("/imgs/arrow_down.png");
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+
+  position: absolute;
+  left: 50%;
+  margin-left: -15px;
+
+  cursor: pointer;
+
+}
+.col-xs-2-no-padding{
+  padding-left: 0;
+  padding-right: 0;
+}
+.modules-title {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .btn-arrow{
@@ -170,6 +196,25 @@ background-color: #0C0C38;
   padding: 0;
   margin: 0;
   vertical-align: middle;
+}
+.progress-text{
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+.progress{
+  position: relative;
+  background-color: #505050;
+}
+.percentage{
+  position: relative;
+  font-weight: bold;
+  color: white;
+}
+.progress-bar-modules{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #12124E;
 }
 
 /********************* FINE MODULES ************************/
@@ -184,7 +229,33 @@ background-color: #0C0C38;
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
-  margin-left: 15px;
+  margin-left: 10px;
+}
+
+.panel{
+  margin: 0;
+  padding: 0;
+  border-color: #12124E;
+  box-shadow: 1px 1px 2px #888888;
+  margin-bottom: 20px;
+}
+
+.panel-default > .panel-heading{
+  margin: 0;
+  padding-top: 3;
+  padding-bottom: 3;
+  background-color: #12124E;
+  border-color: #12124E;
+  color: #ffffff;
+}
+
+h2{
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.panel-default > .panel-body{
+  border-color: #12124E;
 }
 
 .rocket-container{

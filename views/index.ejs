@@ -51,9 +51,9 @@
     <div class="">
 
       <div class="col-sm-4">
-        <div class="well well-levels">
-          <h2 class="text-center">Levels</h2>
-          <div class="row equal">
+        <div class="panel panel-default">
+          <div class="panel-heading panel-heading-color text-center"><h2>Levels</h2></div>
+          <div class="row panel-body equal">
             <!-- rocket -->
             <div class="col-xs-5 rocket-container">
               <center>
@@ -99,35 +99,31 @@
       <!-- Moduli -->
       <div class="col-sm-4">
         <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8 well well-modules">
-            <div>
-              <div class="row">
-                <div class="col-xs-2">
-                  <button type="button" onclick="decreaseLevel()" class="btn btn-block btn-arrow"><span class="glyphicon glyphicon-menu-left modules-arrow"></span></button>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10 panel panel-default">
+            <div class="panel-heading">
 
+                <div class="row text-center">
+                  <h2>
+                    <div class="col-xs-2 col-xs-2-no-padding">
+                      <div type="button" onclick="decreaseLevel()" class="modules-arrow-down"></div>
+                    </div>
+                    <div class="col-xs-8">
+                      <span class="modules-title" id="modulesTitle"></span>
+                    </div>
+                    <div class="col-xs-2 col-xs-2-no-padding">
+                      <div type="button" onclick="increaseLevel()" class="modules-arrow-up"></div>
+                    </div>
+                  </h2>
                 </div>
-                <div class="col-xs-8">
-                  <span class="modules-title" id="modulesTitle"></span>
-                </div>
-                <div class="col-xs-2">
-                  <button type="button" onclick="increaseLevel()" class="btn btn-block btn-arrow"><span class="glyphicon glyphicon-menu-right modules-arrow"></span></button>
 
-                </div>
-              </div>
             </div>
-            <!--
-            <button type="button" class="btn"><span class="glyphicon glyphicon-menu-left modules-arrow"></span></button>
-            <button type="button" class="btn"><span class="modules-title" id="modulesTitle"></span></button>
-            <button type="button" class="btn"><span class="glyphicon glyphicon-menu-right modules-arrow"></span></button>
-            -->
-            <!-- modules -->
-            <div class="list-group" id="modulesList">
+            <div class="list-group panel-body" id="modulesList">
                 <script> changeMiddleColumn(level); </script>
             </div>
           </div>
 
-          <div class="col-sm-2"></div>
+          <div class="col-sm-1"></div>
         </div>
 
         <div class="row">
@@ -136,18 +132,24 @@
             var points_to_next = level+1 < levelsArr.length ? levelsArr[level+1].points - userPoints : 0;
           %>
 
-          <div class="col-sm-1"> </div>
-
-          <div class="col-sm-10">
-            <div align="center"> Points until next level: <%= points_to_next %> </div>
-            <div class="progress incomplete-progress-bar-modules">
-              <div class="progress-bar progress-bar-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
-                <%= mod_bar_percentage %>%
+          <div class="col-sm-1">
+          </div>
+          <div class="col-sm-10 panel panel-default">
+            <div class="panel-heading text-center">
+              <h2>Progress</h2>
+            </div>
+            <div class="panel-body text-center">
+              <div class="progress-text"> Points until next level: <%= points_to_next %> </div>
+              <div class="progress incomplete-progress-bar-modules text-center">
+                <div class="progress-bar progress-bar-modules" role="progressbar" style="width:<%= mod_bar_percentage %>%">
+                </div>
+                <span class="percentage"><%= mod_bar_percentage %>%</span>
               </div>
             </div>
           </div>
 
-          <div class="col-sm-1"></div>
+          <div class="col-sm-1">
+          </div>
         </div>
 
         <div class="col-sm-1"></div>
@@ -156,30 +158,35 @@
 
       <!-- Leaderboard and test -->
       <div class="col-sm-4">
-        <div class="well well-leaderboard">
-          <div class="row">
-            <h2 class="text-center">Leaderboard</h2>
-            <div class="leaderboard-container">
-              <ul class="leaderboard list-group">
-                <% for(var i=0;i<10;i++) {%>
-                  <li class="list-group-item leaderboard-entry">
-                    <a href="#profile" class="">
-                        <div class="leaderboard-image profile-image-container img-circle">
-                          <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
-                        </div>
-                        <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
-                        <div class="leaderboard-inline-points">1337 Pt.</div>
-                    </a>
-                  </li>
-                <%}%>
-              </ul>
-            </div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h2>Leaderboard</h2>
+          </div>
+          <div class="panel-body leaderboard-container">
+            <ul class="leaderboard list-group">
+              <% for(var i=0;i<10;i++) {%>
+                <li class="list-group-item leaderboard-entry">
+                  <a href="#profile" class="">
+                      <div class="leaderboard-image profile-image-container img-circle">
+                        <img class="" src="http://www.losangelesstaffingagencies.com/wp-content/uploads/2016/04/confident_Employee.jpg" class="rounded" />
+                      </div>
+                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name">Bob&nbsp;Smith</div>
+                      <div class="leaderboard-inline-points">1337 Pt.</div>
+                  </a>
+                </li>
+              <%}%>
+            </ul>
           </div>
         </div>
-          <div class="well well-leaderboard well-bravometer row">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h2>Bravometer</h2>
+          </div>
+          <div class="row panel-body">
             <div id="bravometer" class="bravometer"></div>
             <a href="/test" class="test-btn col-xs-12">Take the test!</a>
           </div>
+        </div>
       </div>
       </div>
     </div>

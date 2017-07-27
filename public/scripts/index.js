@@ -74,6 +74,6 @@ function changeMiddleColumn(nmod)
     newHtml += "</ul>";
   }
 
-  document.getElementById("modulesTitle").innerHTML = "Current level: "+(nmod+1);
+  document.getElementById("modulesTitle").innerHTML = "Level "+(nmod+1);
   document.getElementById("modulesList").innerHTML = newHtml;
 }
