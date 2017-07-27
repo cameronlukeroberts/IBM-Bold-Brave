@@ -3,5 +3,5 @@ var g=new JustGage({
   value: 87,
   min: 0,
   max: 100,
-  title: "Bravometer"
+  title: "Your score"
 });
