@@ -95,12 +95,6 @@
 
         <div class="col-sm-1"></div>
       </div>
-
-      <script>
-        makeLevelColumn();
-        changeMiddleColumn(level);
-        initProgressBar();
-      </script>
       <!-- chiude colonna centrale -->
 
       <!-- Leaderboard and test -->
@@ -117,8 +111,8 @@
                       <div class="leaderboard-image profile-image-container rounded-container img-circle">
                         <img class="" src="http://broscience.co/wp-content/uploads/2015/03/big-lenny-7.jpg" class="rounded" />
                       </div>
-                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name">Big&nbsp;Lenny</div>
-                      <div class="leaderboard-inline-points">1337 Pt.</div>
+                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name" id="leaderboardName<%=i%>"></div>
+                      <div class="leaderboard-inline-points" id="leaderboardPoints<%=i%>"></div>
                   </a>
                 </li>
               <%}%>
@@ -143,3 +137,10 @@
     <%- include('footer') %>
   </body>
 </html>
+
+<script>
+  makeLevelColumn();
+  changeMiddleColumn(level);
+  initProgressBar();
+  makeLeaderboard();
+</script>
