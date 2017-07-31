@@ -92,7 +92,7 @@
     "users":
       [
         {
-          "name": "Big", "surname": "Lenny", "completed":
+          "name": "Big", "surname": "Lenny", "points": 100, "completed":
             [
               {
                 "lvl_id": 0, "mod_id": 0, "act_id": 0
@@ -115,7 +115,7 @@
             ]
         },
         {
-          "name": "Big", "surname": "Jimmy", "completed":
+          "name": "Big", "surname": "Jimmy", "points": 80, "completed":
             [
               {
                 "lvl_id": 0, "mod_id": 0, "act_id": 0

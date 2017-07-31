@@ -6,9 +6,24 @@ var modulesMat;
 
 function init()
 {
-  userName = "Big Lenny";
+  var usr="lenny";
+  var result;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+    }
+  };
+  xhttp.open("GET", "/api/user/"+usr, false);
+  xhttp.send();
 
-  levelsArr = new Array(5);
+  result = result[0];
+
+  console.log(result);
+
+  userName = result.name;
+
+  levelsArr = new Array(result.level_count);
   for(var i=0; i<levelsArr.length; i++) //prendere dati db
    levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:0};
 
@@ -18,13 +33,11 @@ function init()
   for(var i=0; i<num_levels; i++)
     modulesMat[i] = new Array(i+1);
 
-  userPoints=0;
+  userPoints=result.points;
   for(var i=0; i<num_levels; i++) //inserire dati db
     for(var j=0; j<i+1; j++)
     {
       modulesMat[i][j] = {name:"modulo"+i+""+j, points:Math.floor(i*j), completed:i==j};
-      if(modulesMat[i][j].completed)
-        userPoints+=modulesMat[i][j].points;
     }
 
   for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
@@ -36,6 +49,6 @@ function init()
     for(var j=0; j<modulesMat[i].length; j++)
      if(modulesMat[i][j].completed)
       nc++;
-    levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
+    levelsArr[i].perComp = result.statistics[i];
   }
 }
