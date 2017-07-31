@@ -8,17 +8,15 @@ function initActivities(lv, mod)
       result = JSON.parse(this.responseText);
     }
   };
-  xhttp.open("GET", "/api/levels/"+lvl+"/"+mod, false);
+  xhttp.open("GET", "/api/levels/"+lv+"/"+mod, false);
   xhttp.send();
 
   var newHtml = "";
   var activities = result;
+  console.log(result);
+  
   for(var i=0; i<activities.length; i++)
-<<<<<<< HEAD
    activities[i] = {name: result[i].name, descr: result[i].desc, points: result[i].points, completed: 0};
-=======
-   activities[i] = {name:'activity'+i, descr:'description'+i, completed:(i%2==0), points: i*10+1};
->>>>>>> 28f1ef045040e8f8f2c5e727449ecb9c44f289a5
   for(var i=0; i<activities.length; i++)
   {
     newHtml += "<div class='panel panel-default collapse-container'>";
@@ -36,7 +34,8 @@ function initActivities(lv, mod)
   document.getElementById("activities-module-title").innerHTML = modulesMat[lv][mod].name;
   document.getElementById("activities-module-description").innerHTML = "descrizione "+lv+" "+mod;
 
-  document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I"
+  document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I";
+
 }
 
 //old activities html:
