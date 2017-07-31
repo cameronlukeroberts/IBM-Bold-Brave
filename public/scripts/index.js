@@ -30,6 +30,8 @@ var actual_level_list;
 
 function makeLevelColumn()
 {
+
+    console.log("WUT");
    var newHtml = "";
 
    for(var i=levelsArr.length-1;i>=0;i--)
