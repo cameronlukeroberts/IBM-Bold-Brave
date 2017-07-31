@@ -1,15 +1,15 @@
 var activityMat, currentQuestion;
 var number_question = 10;
 
-function randShuffle(data)
+function randShuffle(data, l, r) //random shuffle di data [l, r)
 {
   var len = 10;
-  while(len < data.length) len *= 10;
+  while(len < r - l + 1) len *= 10;
   var ite = 10;
   for(var i=0; i<ite; i++)
   {
-    var a = Math.floor(Math.random() * len)%data.length;
-    var b = Math.floor(Math.random() * len)%data.length;
+    var a = Math.floor(Math.random() * len)%(r-l) + l;
+    var b = Math.floor(Math.random() * len)%(r-l) + l;
     var c = data[a];
     data[a] = data[b];
     data[b] = c;
