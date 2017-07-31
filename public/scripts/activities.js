@@ -1,9 +1,20 @@
 function initActivities(lv, mod)
 {
+
+  var result;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+    }
+  };
+  xhttp.open("GET", "/api/levels/"+lvl+"/"+mod, false);
+  xhttp.send();
+
   var newHtml = "";
-  var activities = new Array(5);
+  var activities = result;
   for(var i=0; i<activities.length; i++)
-   activities[i] = {name:'activity'+i, descr:'description'+i, completed:(i%2==0)};
+   activities[i] = {name: result[i].name, descr: result[i].desc, points: result[i].points, completed: 0};
   for(var i=0; i<activities.length; i++)
   {
     newHtml += "<div class='panel panel-default collapse-container'>";
