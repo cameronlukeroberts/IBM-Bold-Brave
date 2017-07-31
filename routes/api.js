@@ -10,6 +10,7 @@ router.get('/user/:usr', function(req, res, next) {
     console.log(resp);
     res.json(resp);
   }).catch(function(err){
+    console.log("AAAAA");
     res.send(err);
   });
 });

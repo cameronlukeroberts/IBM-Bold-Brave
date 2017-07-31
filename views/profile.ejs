@@ -12,6 +12,7 @@
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="/scripts/LineChart.js"></script>
+    <script src="/scripts/PieChart.js"></script>
     <script src="/scripts/profile.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/profile.css">
@@ -53,20 +54,15 @@
         Level statistics
       </div>
 			<div class="panel-body" id="DIV2" style="text-align: center;">
-        <div class="row" >
-          <div class="col-sm-1" ></div>
-          <div class="col-lg-2"  id="graf1" style="text-align: center;"><div class="div-btn-style"><span>Moonshot Maverick</span></div></div>
-          <div class="col-lg-2"  id="graf2" style="text-align: center;"><div class="div-btn-style">Moonshot Mover</div></div>
-          <div class="col-lg-2"  id="graf3" style="text-align: center;"><div class="div-btn-style">Moonshot Master</div></div>
-          <div class="col-lg-2"  id="graf4" style="text-align: center;"><div class="div-btn-style">Moonshot Maestro</div></div>
-          <div class="col-lg-2"  id="graf5" style="text-align: center;"><div class="div-btn-style">Moonshot Mentor</div></div>
-          <div class="col-sm-1" ></div>
+        <div id="grafContainer">
         </div>
-				<script src="/scripts/PieChart.js"></script>
+        </div>
+        <script>
+          initProfile();
+          initPieChart();
+        </script>
 		</div>
 	</div>
    <%- include('footer') %>
   </body>
 </html>
-
-<script> initProfile() </script>
