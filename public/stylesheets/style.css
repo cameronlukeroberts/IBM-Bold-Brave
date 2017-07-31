@@ -407,6 +407,20 @@ h2{
   background-color: #F3F3F6;
 }
 
+.div-btn-style{
+  background-color: transparent;
+  padding: 10px;
+  color: #12124E !important;
+  border: 2px solid #12124E;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none !important;
+  margin-top: 10px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .bravometer{
   width: 300px;
   position: relative;
