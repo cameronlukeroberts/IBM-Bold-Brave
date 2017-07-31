@@ -16,7 +16,7 @@ var m = 10,
 
 var counter=["graf1","graf2","graf3","graf4","graf5"];
 
-for(var i=0;i<5;i++){
+for(var i=0;i<levelsArr.length;i++){
   data[0] = [levelsArr[i].perComp, 100 - levelsArr[i].perComp];
   // Insert an svg element (with margin) for each row in our dataset. A child g
   // element translates the origin to the pie center.
