@@ -21,6 +21,7 @@ function init()
   xhttp.send();
 
   result = result[0];
+  console.log(result);
 
   userName = result.name;
 
@@ -76,5 +77,5 @@ function init()
 
   bravometerData = new Array(result.res_bravetest.length);
   for(var i=0; i<bravometerData.length; i++)
-   bravometerData[i] = {date: result.res_bravetest[i].date, close: result.res_bravetest[i].score};
+   bravometerData[i] = {date: result.res_bravetest[i].date, score: result.res_bravetest[i].score};
 }
