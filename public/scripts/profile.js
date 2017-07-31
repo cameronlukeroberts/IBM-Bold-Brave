@@ -4,6 +4,8 @@ function initProfile()
   document.getElementById("profilePoints").innerHTML = "Points: "+userPoints;
   document.getElementById("profilePosition").innerHTML = "Position: "+userPoints/2;
 
+  document.getElementById("profilePic").src = profileImg;
+
   var newHtml="";
 
   var num_rows = (levelsArr.length/5) +1;

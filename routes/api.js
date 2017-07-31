@@ -59,4 +59,15 @@ router.get('/levels/:lev/:mod', function(req, res, next){
   });
 });
 
+// Leaderboard
+router.get('/leaderboard', function(req, res, next){
+  api.get_leaderboard().then(function(resp){
+    console.log(resp);
+    res.json(resp);
+  }).catch(function(err){
+    console.log("AAAAA");
+    res.send(err);
+  });
+});
+
 module.exports = router;

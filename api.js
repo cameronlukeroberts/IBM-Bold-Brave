@@ -74,10 +74,33 @@ function get_activity(level, mod){
   });
 }
 
+function get_leaderboard(){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          "_id":{"$gt":0}
+        },
+        "fields":["points", "name", "img"]
+      }, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      result=result.docs;
+      result.sort(function(a, b){
+        return b.points-a.points;
+      });
+      result.slice(0, 10);
+      resolve(result);
+    });
+  });
+}
+
 module.exports={
   get_user,
   get_levels,
   get_faq,
   get_btq,
-  get_activity
+  get_activity,
+  get_leaderboard
 }
