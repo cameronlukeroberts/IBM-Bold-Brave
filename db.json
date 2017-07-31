@@ -1,0 +1,166 @@
+{
+  "lvls" :
+    [
+      {
+        "lvl_id": 0, "name": "lvl0", "modules" :
+          [
+            {
+              "mod_id": 0, "name": "mod0", "point": 10, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            },
+            {
+              "mod_id": 1, "name": "mod1", "point": 20, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            },
+            {
+              "mod_id": 2, "name": "mod2", "point": 15, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            }
+          ]
+      },
+      {
+        "lvl_id": 1, "name": "lvl1", "points_needed": 100, "modules" :
+          [
+            {
+              "mod_id": 0, "name": "mod0", "point": 10, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            },
+            {
+              "mod_id": 1, "name": "mod1", "point": 20, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            },
+            {
+              "mod_id": 2, "name": "mod2", "point": 15, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            }
+          ]
+      },
+      {
+        "lvl_id": 2, "name": "lvl2", "points_needed": 200, "modules" :
+          [
+            {
+              "mod_id": 0, "name": "mod0", "point": 10, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            },
+            {
+              "mod_id": 1, "name": "mod1", "point": 20, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            },
+            {
+              "mod_id": 2, "name": "mod2", "point": 15, "activities" :
+                [
+                  {"act_id": 0, "name": "act0", "desc": "This is the description"},
+                  {"act_id": 1, "name": "act1", "desc": "This is the description"},
+                  {"act_id": 2, "name": "act2", "desc": "This is the description"}
+                ]
+            }
+          ]
+      }
+    ],
+    "users":
+      [
+        {
+          "name": "Big", "surname": "Lenny", "points": 100, "completed":
+            [
+              {
+                "lvl_id": 0, "mod_id": 0, "act_id": 0
+              },
+              {
+                "lvl_id": 0, "mod_id": 0, "act_id": 1
+              },
+              {
+                "lvl_id": 0, "mod_id": 0, "act_id": 2
+              }
+            ],
+            "res_bravetest":
+            [
+              {
+                "date": "12-31-2017", "score": 80
+              },
+              {
+                "date": "01-01-2018", "score": 100
+              }
+            ]
+        },
+        {
+          "name": "Big", "surname": "Jimmy", "points": 80, "completed":
+            [
+              {
+                "lvl_id": 0, "mod_id": 0, "act_id": 0
+              },
+              {
+                "lvl_id": 0, "mod_id": 0, "act_id": 1
+              },
+              {
+                "lvl_id": 0, "mod_id": 0, "act_id": 2
+              }
+            ],
+            "res_bravetest":
+            [
+              {
+                "date": "12-31-2017", "score": 80
+              },
+              {
+                "date": "01-01-2018", "score": 100
+              }
+            ]
+        }
+      ],
+    "bravetest_questions":
+      [
+        {
+          "bt_id": 0, "positive": 1, "question": "This is the question 0"
+        },
+        {
+          "bt_id": 1, "positive": 0, "question": "This is the question 1"
+        },
+        {
+          "bt_id": 2, "positive": 1, "question": "This is the question 2"
+        }
+      ],
+    "help_qa":
+      [
+        {
+          "qa_id": 0, "question": "This is the QandA question 0", "answer": "This is the QandA answer 0"
+        },
+        {
+          "qa_id": 1, "question": "This is the QandA question 1", "answer": "This is the QandA answer 1"
+        },
+        {
+          "qa_id": 2, "question": "This is the QandA question 2", "answer": "This is the QandA answer 2"
+        }
+      ]
+
+}
