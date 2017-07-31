@@ -30,8 +30,6 @@ var actual_level_list;
 
 function makeLevelColumn()
 {
-
-    console.log("WUT");
    var newHtml = "";
 
    for(var i=levelsArr.length-1;i>=0;i--)
@@ -94,15 +92,14 @@ function changeMiddleColumn(nmod)
   {
     newHtml += "<ul class='list-group'>";
     newHtml += "<a href='/activity/"+nmod+"/"+i+"' style='text-decoration: none;'>";
-
     newHtml += "<li class='list-group-item ";
-    if(modulesMat[nmod][i].completed)
+    if(modulesMat[nmod][i].points == modulesMat[nmod][i].points_done)
      newHtml += "list-group-item-success'>";
     else
      newHtml += "list-group-item-info'>";
 
     newHtml += "<span>"+modulesMat[nmod][i].name+"</span>";
-    newHtml += "<span style='float:right'><i>"+modulesMat[nmod][i].points+" Pt.</i></span>";
+    newHtml += "<span style='float:right'><i>"+modulesMat[nmod][i].points_done+"/"+modulesMat[nmod][i].points+" Pt.</i></span>";
 
     newHtml += "</li>";
     newHtml += "</a>";
