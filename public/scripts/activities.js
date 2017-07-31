@@ -1,9 +1,22 @@
 function initActivities(lv, mod)
 {
+
+  var result;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+    }
+  };
+  xhttp.open("GET", "/api/levels/"+lv+"/"+mod, false);
+  xhttp.send();
+
   var newHtml = "";
-  var activities = new Array(5);
+  var activities = result;
+  console.log(result);
+  
   for(var i=0; i<activities.length; i++)
-   activities[i] = {name:'activity'+i, descr:'description'+i, completed:(i%2==0), points: i*10+1};
+   activities[i] = {name: result[i].name, descr: result[i].desc, points: result[i].points, completed: 0};
   for(var i=0; i<activities.length; i++)
   {
     newHtml += "<div class='panel panel-default collapse-container'>";
@@ -21,7 +34,8 @@ function initActivities(lv, mod)
   document.getElementById("activities-module-title").innerHTML = modulesMat[lv][mod].name;
   document.getElementById("activities-module-description").innerHTML = "descrizione "+lv+" "+mod;
 
-  document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I"
+  document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I";
+
 }
 
 //old activities html:
