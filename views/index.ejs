@@ -101,18 +101,7 @@
             <h2>Leaderboard</h2>
           </div>
           <div class="panel-body leaderboard-container">
-            <ul class="leaderboard list-group">
-              <% for(var i=0;i<10;i++) {%>
-                <li class="list-group-item leaderboard-entry">
-                  <a href="#profile" class="">
-                      <div class="leaderboard-image profile-image-container rounded-container img-circle">
-                        <img class="" src="http://broscience.co/wp-content/uploads/2015/03/big-lenny-7.jpg" class="rounded" />
-                      </div>
-                      <div class="leaderboard-position"><%=i+1%>.</div><div class="leaderboard-inline-name" id="leaderboardName<%=i%>"></div>
-                      <div class="leaderboard-inline-points" id="leaderboardPoints<%=i%>"></div>
-                  </a>
-                </li>
-              <%}%>
+            <ul class="leaderboard list-group" id="leaderboard">
             </ul>
 
           </div>

@@ -112,10 +112,30 @@ function changeMiddleColumn(nmod)
 
 function makeLeaderboard()
 {
-  for(var i=0; i<10; i++) //DA PRENDERE DAL DB
+  var result;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+    }
+  };
+  xhttp.open("GET", "/api/leaderboard", false);
+  xhttp.send();
+
+  var newHtml="";
+  for(var i=0; i<result.length; i++) //DA PRENDERE DAL DB
   {
-     var leaderboardData = {name: "Big Lenny "+i, points: (11-i)*100};
-     document.getElementById("leaderboardName"+i).innerHTML = leaderboardData.name;
-     document.getElementById("leaderboardPoints"+i).innerHTML = leaderboardData.points+" Pt.";
+    newHtml += '<li class="list-group-item leaderboard-entry">';
+    newHtml += '<li class="list-group-item leaderboard-entry">';
+    newHtml += '<a href="#profile" class="">';
+    newHtml += '<div class="leaderboard-image profile-image-container rounded-container img-circle">'
+    newHtml += '<img class="" src="'+result[i].img+'" class="rounded" />'
+    newHtml += '</div>';
+    newHtml += '<div class="leaderboard-position">'+(i+1)+'</div><div class="leaderboard-inline-name">'+result[i].name+'</div>';
+    newHtml += '<div class="leaderboard-inline-points>'+result[i].points+'</div>';
+    newHtml += '</a>';
+    newHtml += '</li>';
   }
+  console.log(newHtml);
+  document.getElementById("leaderboard").innerHTML = newHtml;
 }
