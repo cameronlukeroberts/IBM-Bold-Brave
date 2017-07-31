@@ -48,5 +48,26 @@ router.get('/btq', function(req, res, next){
   });
 });
 
+// Activities in modules
+router.get('/levels/:lev/:mod', function(req, res, next){
+  api.get_activity(req.params.lev, req.params.mod).then(function(resp){
+    console.log(resp);
+    res.json(resp);
+  }).catch(function(err){
+    console.log("AAAAA");
+    res.send(err);
+  });
+});
+
+// Leaderboard
+router.get('/leaderboard', function(req, res, next){
+  api.get_leaderboard().then(function(resp){
+    console.log(resp);
+    res.json(resp);
+  }).catch(function(err){
+    console.log("AAAAA");
+    res.send(err);
+  });
+});
 
 module.exports = router;

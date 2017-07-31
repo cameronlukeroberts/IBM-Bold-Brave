@@ -3,6 +3,7 @@ var userPoints;
 var userName;
 var level, num_levels;
 var modulesMat;
+var profileImg;
 
 var bravometerData;
 
@@ -23,6 +24,7 @@ function init()
   console.log(result);
 
   userName = result.name;
+  profileImg = result.img;
 
   var resultLvl;
   var xhttpLvl = new XMLHttpRequest();
