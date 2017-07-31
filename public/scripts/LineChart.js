@@ -13,10 +13,6 @@ function makeGraph(w, h){
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
-  var bravometerData = new Array(10);
-  for(var i=0; i<bravometerData.length; i++)
-   bravometerData[i] = {date: parseTime((10+i)+"-Apr-07"), close: i*i - i};
-
   draw(bravometerData);
 
   function draw(data) {

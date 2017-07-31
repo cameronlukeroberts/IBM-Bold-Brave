@@ -4,6 +4,9 @@ var userName;
 var level, num_levels;
 var modulesMat;
 
+var bravometerData;
+
+
 function init()
 {
   var usr="biglenny";
@@ -19,25 +22,44 @@ function init()
 
   result = result[0];
 
-  console.log(result);
-
   userName = result.name;
 
-  levelsArr = new Array(result.level_count);
+  var resultLvl;
+  var xhttpLvl = new XMLHttpRequest();
+  xhttpLvl.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      resultLvl = JSON.parse(this.responseText);
+    }
+  };
+  xhttpLvl.open("GET", "/api/levels", false);
+  xhttpLvl.send();
+
+  levelsArr = new Array(resultLvl.length);
   for(var i=0; i<levelsArr.length; i++) //prendere dati db
-   levelsArr[i] = {name:"level "+(i+1), points:i*10, perComp:0};
+   levelsArr[i] = {name:resultLvl[i].name, points:resultLvl[i].points_needed, perComp:0};
 
   num_levels = levelsArr.length;
 
   modulesMat = new Array(num_levels);
   for(var i=0; i<num_levels; i++)
-    modulesMat[i] = new Array(i+1);
+    modulesMat[i] = new Array(resultLvl[i].modules.length);
+
+  var frqMatrix = new Array(num_levels);
+  for(var i=0; i<num_levels; i++)
+  {
+    frqMatrix[i] = new Array(resultLvl[i].modules.length);
+    for(var j=0; j<frqMatrix[i].length; j++)
+     frqMatrix[i][j] = 0;
+  }
+
+  for(var i=0; i<result.completed.length; i++)
+    frqMatrix[result.completed[i].lvl_id][result.completed[i].mod_id]++;
 
   userPoints=result.points;
-  for(var i=0; i<num_levels; i++) //inserire dati db
-    for(var j=0; j<i+1; j++)
+  for(var i=0; i<num_levels; i++) //prendere dati dbresultLvl[i].modules[j].
+    for(var j=0; j<modulesMat[i].length; j++)
     {
-      modulesMat[i][j] = {name:"modulo"+i+""+j, points:Math.floor(i*j), completed:i==j};
+      modulesMat[i][j] = {name:resultLvl[i].modules[j].name, points:resultLvl[i].modules[j].point, completed: frqMatrix[i][j] == resultLvl[i].modules[j].activities.length };
     }
 
   for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
@@ -51,4 +73,8 @@ function init()
       nc++;
     levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
   }
+
+  bravometerData = new Array(result.res_bravetest.length);
+  for(var i=0; i<bravometerData.length; i++)
+   bravometerData[i] = {date: result.res_bravetest[i].date, close: result.res_bravetest[i].score};
 }
