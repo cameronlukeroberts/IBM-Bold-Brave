@@ -6,7 +6,7 @@ var modulesMat;
 
 function init()
 {
-  var usr="lenny";
+  var usr="biglenny";
   var result;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
