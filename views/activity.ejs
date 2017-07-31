@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/scripts/dataContainer.js"></script>
     <script src="/scripts/collapsable.js"></script>
+    <script src="/scripts/activities.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/activities.css">
   </head>
@@ -34,42 +36,14 @@
             </div>
           </div>
         </div>
-  			<div class="col-sm-7">
-          <div class="panel panel-default collapse-container">
-            <div class="panel-heading collapse-trigger">
-              ACTIVITY 1
-            </div>
-            <div class="panel-body box-collapsed collapsable">
-               ABBASSO IL LATINO
-               <form>
-                  <div>
-                    <input type="checkbox" value="newsletter">
-                    <label for="subscribeNews">Activity completed</label>
-                  </div>
-                  <div>
-                    <button type="submit">Confirm</button>
-                  </div>
-                </form>
-            </div>
-          </div>
-          <div class="panel panel-default collapse-container">
-            <div class="panel-heading collapse-trigger">
-              ACTIVITY 2
-            </div>
-            <div class="panel-body box-collapsed collapsable">
-              IL LATINO FA SCHIFO
-              <div>
-                <input type="checkbox" value="newsletter">
-                <label for="subscribeNews">Activity completed</label>
-              </div>
-              <div>
-                <button type="submit">Confirm</button>
-              </div>
-            </div>
-          </div>
+  			<div class="col-sm-7" id="activitiesContainer">
         </div>
       </div>
     </div>
     <%- include('footer') %>
   </body>
 </html>
+
+<script>
+  initActivities(/*<%=parseInt(level)%>*/3, /*<%=parseInt(module)%>*/0);
+</script>
