@@ -23,15 +23,12 @@
   		<div class="row">
         <div class="col-sm-5">
           <div class="panel panel-default">
-            <div class="panel-heading">
-                  LEVEL <%=parseInt(level)+1%> - MODULE <%=parseInt(module)+1%>
+            <div class="panel-heading" id="activities-module-title">
             </div>
             <div class="panel-body">
-              <iframe class="activity-video" src="http://www.youtube.com/embed/_Xcmh1LQB9I"
-                  width="100%" frameborder="0" allowfullscreen>
+              <iframe class="activity-video" width="100%" frameborder="0" allowfullscreen id="activities-module-video">
               </iframe>
-              <p class="description">
-                      DESCRIPTION:  a a a a a aaaaaaa a a a a a a a a a a  a a aaaaaaaaaaaaaaaa aaaa aaaaa
+              <p class="description" id="activities-module-description">
               </p>
             </div>
           </div>
@@ -45,5 +42,5 @@
 </html>
 
 <script>
-  initActivities(/*<%=parseInt(level)%>*/3, /*<%=parseInt(module)%>*/0);
+  initActivities(<%=parseInt(level)%>, <%=parseInt(module)%>);
 </script>

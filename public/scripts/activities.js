@@ -16,6 +16,11 @@ function initActivities(lv, mod)
     newHtml += "</div> </div>";
   }
   document.getElementById("activitiesContainer").innerHTML = newHtml;
+
+  document.getElementById("activities-module-title").innerHTML = modulesMat[lv][mod].name;
+  document.getElementById("activities-module-description").innerHTML = "descrizione "+lv+" "+mod;
+
+  document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I"
 }
 
 //old activities html:
