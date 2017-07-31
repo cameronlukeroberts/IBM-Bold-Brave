@@ -6,7 +6,6 @@ var modulesMat;
 
 var bravometerData;
 
-
 function init()
 {
   var usr="biglenny";
@@ -21,6 +20,7 @@ function init()
   xhttp.send();
 
   result = result[0];
+  console.log(result);
 
   userName = result.name;
 
@@ -44,37 +44,32 @@ function init()
   for(var i=0; i<num_levels; i++)
     modulesMat[i] = new Array(resultLvl[i].modules.length);
 
-  var frqMatrix = new Array(num_levels);
-  for(var i=0; i<num_levels; i++)
-  {
-    frqMatrix[i] = new Array(resultLvl[i].modules.length);
-    for(var j=0; j<frqMatrix[i].length; j++)
-     frqMatrix[i][j] = 0;
-  }
-
-  for(var i=0; i<result.completed.length; i++)
-    frqMatrix[result.completed[i].lvl_id][result.completed[i].mod_id]++;
-
   userPoints=result.points;
   for(var i=0; i<num_levels; i++) //prendere dati dbresultLvl[i].modules[j].
     for(var j=0; j<modulesMat[i].length; j++)
     {
-      modulesMat[i][j] = {name:resultLvl[i].modules[j].name, points:resultLvl[i].modules[j].point, completed: frqMatrix[i][j] == resultLvl[i].modules[j].activities.length };
+      modulesMat[i][j] = {name:resultLvl[i].modules[j].name, points:resultLvl[i].modules[j].point, points_done:0};
     }
+
+  for(var i=0; i<result.completed.length; i++)
+    modulesMat[result.completed[i].lvl_id][result.completed[i].mod_id].points_done += resultLvl[result.completed[i].lvl_id].modules[result.completed[i].mod_id].activities[result.completed[i].act_id].points;
 
   for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
   level--;
 
   for(var i=0; i<num_levels; i++) //compute levels' percentages
   {
-    var nc = 0;
+    var tot = 0, done = 0;
     for(var j=0; j<modulesMat[i].length; j++)
-     if(modulesMat[i][j].completed)
-      nc++;
-    levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
+    {
+      tot += modulesMat[i][j].points;
+      done += modulesMat[i][j].points_done;
+    }
+
+    levelsArr[i].perComp = Math.floor(done / tot * 100);
   }
 
   bravometerData = new Array(result.res_bravetest.length);
   for(var i=0; i<bravometerData.length; i++)
-   bravometerData[i] = {date: result.res_bravetest[i].date, close: result.res_bravetest[i].score};
+   bravometerData[i] = {date: result.res_bravetest[i].date, score: result.res_bravetest[i].score};
 }

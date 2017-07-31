@@ -14,11 +14,16 @@ function initActivities(lv, mod)
   var newHtml = "";
   var activities = result;
   for(var i=0; i<activities.length; i++)
+<<<<<<< HEAD
    activities[i] = {name: result[i].name, descr: result[i].desc, points: result[i].points, completed: 0};
+=======
+   activities[i] = {name:'activity'+i, descr:'description'+i, completed:(i%2==0), points: i*10+1};
+>>>>>>> 28f1ef045040e8f8f2c5e727449ecb9c44f289a5
   for(var i=0; i<activities.length; i++)
   {
     newHtml += "<div class='panel panel-default collapse-container'>";
-    newHtml += "<div class='panel-heading collapse-trigger'>"+activities[i].name+"</div>";
+    newHtml += "<div class='panel-heading collapse-trigger'>"+activities[i].name;
+    newHtml += "<span style='float: right'><i>"+activities[i].points+"Pt.</i></span></div>";
     newHtml += "<div class='panel-body box-collapsed collapsable'>"+activities[i].descr;
     newHtml += "<div> <input type='checkbox'";
     if(activities[i].completed) newHtml += "checked";

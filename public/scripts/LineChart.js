@@ -11,13 +11,18 @@ function makeGraph(w, h){
     .rangeRound([height, 0]);
   var line = d3.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
+    .y(function(d) { return y(d.score); });
 
-  draw(bravometerData);
+  var final_data=new Array(bravometerData.length);
+  for(var i=0;i<final_data.length;i++)
+    final_data[i]={date: bravometerData[i].date, score: bravometerData[i].score};
+  for(var i=0;i<final_data.length;i++)
+    final_data[i].date=parseTime(final_data[i].date);
+  draw(final_data);
 
   function draw(data) {
     x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain(d3.extent(data, function(d) { return d.close; }));
+    y.domain(d3.extent(data, function(d) { return d.score; }));
     g.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
