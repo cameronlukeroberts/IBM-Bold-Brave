@@ -14,7 +14,9 @@ var m = 10,
   r = 80,
   z = d3.scale.category20c();
 
-var counter=["graf1","graf2","graf3","graf4","graf5"];
+var counter=Array(levelsArr.length);
+for(var i=0;i<counter.length;i++)
+  counter[i]="graf"+(i+1);
 
 for(var i=0;i<levelsArr.length;i++){
   data[0] = [levelsArr[i].perComp, 100 - levelsArr[i].perComp];
