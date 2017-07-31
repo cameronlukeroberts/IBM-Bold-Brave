@@ -35,7 +35,20 @@ function get_levels(){
   });
 }
 
+function get_faq(){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_faq');
+    db.find({selector:{_id:{"$gt":0}}}, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      resolve(result.docs);
+    });
+  });
+}
+
 module.exports={
   get_user,
-  get_levels
+  get_levels,
+  get_faq
 }

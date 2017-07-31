@@ -1,8 +1,17 @@
 function initHelp(){
+  var result;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+    }
+  };
+  xhttp.open("GET", "/api/faq", false);
+  xhttp.send();
 
-  var helpArray=new Array(5);
+  var helpArray=new Array(result.length);
   for(var i=0;i<helpArray.length;i++)
-    helpArray[i]={question:"Question"+i,answer:"Answer"+i}
+    helpArray[i]={question:result[i].question,answer:result[i].answer}
 
   var newHtml="";
   for(var i=0;i<helpArray.length;i++){
