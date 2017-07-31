@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var api = require('../api');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Dashboard' });
@@ -8,7 +10,15 @@ router.get('/', function(req, res, next) {
 
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {
-  res.render('profile', { title: 'Profile' });
+  api.get_user(req.params.usr).then(function(resp){
+    console.log(resp);
+    console.log("-----------");
+    var name=resp[0].name;
+    console.log(name);
+    res.render('profile', { title: 'Profile' });
+  }).catch(function(err){
+    res.send(err);
+  });
 });
 
 /* GET help page. */
