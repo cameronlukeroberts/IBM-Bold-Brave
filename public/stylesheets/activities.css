@@ -12,3 +12,10 @@
   height: 250px;
   width: 100%;
 }
+
+.activity-locked-message
+{
+  color: #12124E;
+  text-align: center;
+  font-size: 3em;
+}
