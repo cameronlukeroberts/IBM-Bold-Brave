@@ -1,11 +1,26 @@
 var activityMat, currentQuestion;
 var number_question = 10;
 
+function randShuffle(data)
+{
+  var len = 10;
+  while(len < data.length) len *= 10;
+  var ite = 10;
+  for(var i=0; i<ite; i++)
+  {
+    var a = Math.floor(Math.random() * len)%data.length;
+    var b = Math.floor(Math.random() * len)%data.length;
+    var c = data[a];
+    data[a] = data[b];
+    data[b] = c;
+  }
+}
+
 function initTest()
 {
   activityMat = Array(number_question);
   for(var i=0;i<number_question;i++)
-    activityMat[i] = {description:"Descrizione della domanda numero "+(i+1), points: 0,positive:i%2==0};
+    activityMat[i] = {description:"Descrizione della domanda numero "+(i+1), points: 0, positive:i%2==0};
   currentQuestion = 0;
   changeTest(0);
 }
