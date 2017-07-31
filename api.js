@@ -47,8 +47,21 @@ function get_faq(){
   });
 }
 
+function get_btq(){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_questions');
+    db.find({selector:{_id:{"$gt":0}}}, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      resolve(result.docs);
+    });
+  });
+}
+
 module.exports={
   get_user,
   get_levels,
-  get_faq
+  get_faq,
+  get_btq
 }

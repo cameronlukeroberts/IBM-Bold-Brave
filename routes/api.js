@@ -37,4 +37,16 @@ router.get('/faq', function(req, res, next){
   });
 });
 
+//bravetst questions
+router.get('/btq', function(req, res, next){
+  api.get_btq().then(function(resp){
+    console.log(resp);
+    res.json(resp);
+  }).catch(function(err){
+    console.log("AAAAA");
+    res.send(err);
+  });
+});
+
+
 module.exports = router;
