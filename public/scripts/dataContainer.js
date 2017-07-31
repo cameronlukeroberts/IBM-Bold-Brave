@@ -49,6 +49,6 @@ function init()
     for(var j=0; j<modulesMat[i].length; j++)
      if(modulesMat[i][j].completed)
       nc++;
-    levelsArr[i].perComp = result.statistics[i];
+    levelsArr[i].perComp = Math.floor(nc / modulesMat[i].length * 100);
   }
 }
