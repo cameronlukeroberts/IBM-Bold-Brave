@@ -21,7 +21,6 @@
     <%- include('navbar', {title: title}) %>
     <!-- End of navbar -->
 
-
     <div class="container">
 		<div class="row">
       <!-- PROFILE -->
@@ -49,8 +48,11 @@
   			</div>
       </div>
 		</div>
-    <div class="row well well-leaderboard">
-			<div class="col-sm-12" id="DIV2" style="text-align: center;">
+    <div class="row panel panel-default">
+      <div class="panel-heading">
+        Level statistics
+      </div>
+			<div class="panel-body col-sm-12" id="DIV2" style="text-align: center;">
         <div class="row">
           <div class="col-sm-2"><div class="test-btn text-center btn-no-padding">Moonshot Maverick</div></div>
           <div class="col-sm-2"><button class="test-btn text-center btn-no-padding">Moonshot Mover</button></div>
@@ -59,7 +61,7 @@
           <div class="col-sm-2"><button class="test-btn text-center btn-no-padding">Moonshot Mentor</button></div>
         </div>
 				<div class="row"> <script src="/scripts/PieChart.js">
-				</script> </div>
+				</script> 
 			</div>
 		</div>
 	</div>
