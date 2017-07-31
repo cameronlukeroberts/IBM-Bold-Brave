@@ -2,7 +2,7 @@
   "lvls" :
     [
       {
-        "lvl_id": 0, "name": "lvl0", "modules" :
+        "lvl_id": 0, "name": "lvl0", "points_needed": 0, "modules" :
           [
             {
               "mod_id": 0, "name": "mod0", "point": 10, "activities" :
@@ -92,7 +92,7 @@
     "users":
       [
         {
-          "name": "Big", "surname": "Lenny", "points": 100, "completed":
+          "username": "biglenny", "name": "Big Lenny", "points": 100, "completed":
             [
               {
                 "lvl_id": 0, "mod_id": 0, "act_id": 0
@@ -115,7 +115,7 @@
             ]
         },
         {
-          "name": "Big", "surname": "Jimmy", "points": 80, "completed":
+          "username": "bigjimmy", "name": "Big Jimmy", "points": 80, "completed":
             [
               {
                 "lvl_id": 0, "mod_id": 0, "act_id": 0
