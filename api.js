@@ -23,6 +23,19 @@ function get_user(usr){
   });
 }
 
+function get_levels(){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_levels');
+    db.find({selector:{_id:{"$gt":0}}}, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      resolve(result.docs);
+    });
+  });
+}
+
 module.exports={
-  get_user
+  get_user,
+  get_levels
 }

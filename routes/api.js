@@ -4,9 +4,20 @@ var router = express.Router();
 
 var api=require('../api');
 
-/* GET user. */
+// user
 router.get('/user/:usr', function(req, res, next) {
-  var j=api.get_user(req.params.usr).then(function(resp){
+  api.get_user(req.params.usr).then(function(resp){
+    console.log(resp);
+    res.json(resp);
+  }).catch(function(err){
+    console.log("AAAAA");
+    res.send(err);
+  });
+});
+
+// levels
+router.get('/levels', function(req, res, next){
+  api.get_levels().then(function(resp){
     console.log(resp);
     res.json(resp);
   }).catch(function(err){
