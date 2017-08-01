@@ -19,7 +19,8 @@ var isAuthenticatedLogin = function (req, res, next) {
 }
 /* GET home page. */
 router.get('/', isAuthenticated, function(req, res, next) {
-  res.render('index', { title: 'Dashboard' });
+  console.log(req.user);
+  res.render('index', { title: 'Dashboard', user: req.user });
 });
 
 /* GET login page. */
@@ -29,34 +30,34 @@ router.get('/login', isAuthenticatedLogin, function(req, res, next) {
 
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {
-  res.render('profile', { title: 'Profile' });
+  res.render('profile', { title: 'Profile', user: req.user });
 });
 
 /* GET help page. */
 router.get('/help', function(req, res, next) {
-  res.render('help', { title: 'Help' });
+  res.render('help', { title: 'Help', user: req.user });
 });
 
 /* GET test page. */
 router.get('/test', function(req, res, next) {
-  res.render('test', { title: 'Brave&Bold Test' });
+  res.render('test', { title: 'Brave&Bold Test', user: req.user });
 });
 
 /* GET test_start page. */
 router.get('/test_start', function(req, res, next) {
-  res.render('test_start', { title: 'Brave&Bold Test' });
+  res.render('test_start', { title: 'Brave&Bold Test', user: req.user });
 });
 
 
 /* GET test_end page. */
 router.get('/test_end', function(req, res, next) {
-  res.render('test_end', { title: 'Brave&Bold Test' });
+  res.render('test_end', { title: 'Brave&Bold Test', user: req.user });
 });
 
 
 /* GET activity page. */
 router.get('/activity/:lev/:mod', function(req, res, next) {
-  res.render('activity', { title: 'Activities', level:req.params.lev, module:req.params.mod});
+  res.render('activity', { title: 'Activities', level:req.params.lev, module:req.params.mod, user: req.user });
 });
 
 /* authentication */
