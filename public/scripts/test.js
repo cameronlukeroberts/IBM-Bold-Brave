@@ -30,6 +30,7 @@ function initTest()
   result.sort(function(a,b){a.category==b.category?0:(a.category<b.category?-1:1)});
   questionMat = Array(number_question);
   var l=0, ind=[2,2,3,3];
+  randShuffle(ind, 0, 4);
   for(var r=1;r<result.length;++r)
     if(result[l].category!=result[r].category){
       randShuffle(result, l, r);

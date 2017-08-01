@@ -13,6 +13,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="/scripts/LineChart.js"></script>
     <script src="/scripts/profile.js"></script>
+    <script src="/scripts/test_end.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/profile.css">
   </head>
@@ -30,7 +31,7 @@
             <div class="col-xs-2">
             </div>
             <div class="col-xs-8">
-              <p>PROVA PROVA PROVA AHABFJANC JBNC JSBC NUJS CMNDXC NJNAC MANXJCK NSMAX JNS CJNSJCN IJSABN CM BDA C</p>
+              <p id="score-section"></p>
               <div class="panel-body graph-container">
                 <svg id="svg1"></svg>
         			</div>
@@ -42,7 +43,11 @@
         </div>
         <div class="col-xs-1"></div>
       </div>
-
+    </div>
     <%- include('footer') %>
   </body>
 </html>
+
+<script>
+  initTestEnd();
+</script>
