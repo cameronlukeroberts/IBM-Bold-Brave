@@ -13,6 +13,9 @@ function areYouSure(lv,mod,act,ans=-1){
     newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
   }
   else{
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/api/addactivity/"+usr+"/"+lv+"/"+mod+"/"+act, true);
+    xhttp.send();
     newHtml +="<input type='checkbox' disabled='disabled' onclick='areYouSure("+lv+","+mod+","+act+")' checked>";
     newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
   }
@@ -37,7 +40,7 @@ function initActivities(lv, mod)
         newHtml += "<span style='float: right'><i>"+activityCube[lv][mod][i].points+"Pt.</i></span></div>";
         newHtml += "<div class='panel-body box-collapsed collapsable'>"+activityCube[lv][mod][i].descr;
         newHtml += "<div id='completedCheck"+i+"'> <input type='checkbox' onclick='areYouSure("+lv+","+mod+","+i+")' ";
-        if(activityCube[lv][mod][i].completed) newHtml += "checked";
+        if(activityCube[lv][mod][i].completed) newHtml += "disabled='disabled' checked";
         newHtml += ">";
         newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
         newHtml += "</div> </div>";
