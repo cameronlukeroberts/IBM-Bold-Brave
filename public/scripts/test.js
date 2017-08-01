@@ -1,4 +1,4 @@
-var questionMat, currentQuestion;
+var questionMat, currentQuestion, questionMade;
 var number_question = 10;
 
 function randShuffle(data, l, r) //random shuffle di data [l, r)
@@ -41,6 +41,7 @@ function initTest()
     for(var j=0;j<ind[i];j++)
       questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive, category:result[5*i+j].category};
   currentQuestion=0;
+  questionMade=0;
   changeTest();
 }
 
@@ -65,6 +66,10 @@ function nextQuestion(){
 function setAnswer(nAnswer){
   questionMat[currentQuestion].points=nAnswer;
   changeTest();
+  if(questionMade==currentQuestion){
+    questionMade++;
+    nextQuestion();
+  }
 }
 
 function changeTest()
