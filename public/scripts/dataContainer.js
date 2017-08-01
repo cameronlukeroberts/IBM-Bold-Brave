@@ -8,11 +8,9 @@ var activityCube;
 
 var bravometerData;
 
-var usr;
-
 function init()
 {
-  usr="biglenny";
+
   var result;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
