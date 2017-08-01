@@ -58,9 +58,21 @@ router.get('/leaderboard', function(req, res, next){
   });
 });
 
-// Add activity
+// Add score
 router.get('/addscore/:user/:score', function(req, res, next){
   api.add_score(req.params.user, parseInt(req.params.score, 10)).then(function(resp){
+    res.send('Score added successfully');
+  }).catch(function(err){
+    res.send(err);
+  });
+});
+
+//Add activity
+router.get('/addactivity/:user/:lev/:mod/:act', function(req, res, next){
+  api.add_activity(req.params.user,
+                    parseInt(req.params.lev, 10),
+                    parseInt(req.params.mod, 10),
+                    parseInt(req.params.act, 10)).then(function(resp){
     res.send('Score added successfully');
   }).catch(function(err){
     res.send(err);

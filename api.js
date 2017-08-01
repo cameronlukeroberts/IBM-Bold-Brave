@@ -128,6 +128,33 @@ function add_score(user, score){
   });
 }
 
+// Add activity
+function add_activity(user, lev, mod, act){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          "username": user
+        }
+      }, function(er, result) {
+        if (er) {
+          reject(er);
+        }
+        result=result.docs[0];
+        result.completed.push({
+          lvl_id: lev,
+          mod_id: mod,
+          act_id: act
+        });
+        db.insert(result, function(err, body){
+          if(!err){
+            console.log("UPDATE OK");
+          }
+        })
+    });
+  });
+}
+
 // Get password
 function get_password(user){
 
@@ -140,5 +167,6 @@ module.exports={
   get_btq,
   get_activity,
   get_leaderboard,
+  add_activity,
   add_score
 }
