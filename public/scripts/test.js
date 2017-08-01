@@ -28,6 +28,7 @@ function initTest()
   xhttp.open("GET", "/api/btq", false);
   xhttp.send();
   result.sort(function(a,b){return a.category==b.category?0:(a.category<b.category?-1:1)});
+  console.log(result);
   questionMat = Array(number_question);
   var l=0, ind=[2,2,3,3];
   randShuffle(ind, 0, 4);
@@ -41,6 +42,7 @@ function initTest()
     for(var j=0;j<ind[i];j++)
       questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive, category:result[5*i+j].category};
   currentQuestion=0;
+  console.log(questionMat);
   changeTest();
 }
 
@@ -86,6 +88,6 @@ function totalScore(){
   var score=0;
   for(var i=0;i<number_question;i++)
     score+=(questionMat[i].positive || questionMat[0].points==0?questionMat[i].points:6-questionMat[i].points);
-    
+
   document.location.href="/test_end";
 }
