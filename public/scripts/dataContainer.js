@@ -4,12 +4,15 @@ var userName;
 var level, num_levels;
 var modulesMat;
 var profileImg;
+var activityCube;
 
 var bravometerData;
 
+var usr;
+
 function init()
 {
-  var usr="biglenny";
+  usr="biglenny";
   var result;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -70,6 +73,21 @@ function init()
 
     levelsArr[i].perComp = Math.floor(done / tot * 100);
   }
+
+  activityCube = new Array(num_levels);
+  for(var i=0; i<num_levels; i++)
+  {
+    activityCube[i] = new Array(modulesMat[i].length);
+    for(var j=0; j<modulesMat[i].length; j++)
+    {
+      activityCube[i][j] = new Array(resultLvl[i].modules[j].activities.length);
+      for(var k=0; k<activityCube[i][j].length; k++)
+        activityCube[i][j][k] = {name: resultLvl[i].modules[j].activities[k].name, descr: resultLvl[i].modules[j].activities[k].desc, points: resultLvl[i].modules[j].activities[k].points, completed: false};
+    }
+  }
+
+  for(var i=0; i<result.completed.length; i++)
+    activityCube[result.completed[i].lvl_id][result.completed[i].mod_id][result.completed[i].act_id].completed = true;
 
   bravometerData = new Array(result.res_bravetest.length);
   for(var i=0; i<bravometerData.length; i++)

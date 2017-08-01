@@ -27,21 +27,22 @@ function initTest()
   };
   xhttp.open("GET", "/api/btq", false);
   xhttp.send();
-  result.sort(function(a,b){a.category==b.category?0:(a.category<b.category?-1:1)});
+  result.sort(function(a,b){return a.category==b.category?0:(a.category<b.category?-1:1)});
+  console.log(result);
   questionMat = Array(number_question);
   var l=0, ind=[2,2,3,3];
+  randShuffle(ind, 0, 4);
   for(var r=1;r<result.length;++r)
     if(result[l].category!=result[r].category){
       randShuffle(result, l, r);
       l=r;
     }
   randShuffle(result, l, result.length);
-  console.log(result);
   for(var i=0,t=0;i<ind.length;i++)
     for(var j=0;j<ind[i];j++)
-      questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive};
-  console.log(questionMat);
+      questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive, category:result[5*i+j].category};
   currentQuestion=0;
+  console.log(questionMat);
   changeTest();
 }
 
@@ -70,17 +71,30 @@ function setAnswer(nAnswer){
 
 function changeTest()
 {
-  //alert(questionMat);
   document.getElementById("questionDescription").innerHTML = questionMat[currentQuestion].question;
   for(var i=1;i<=5;i++)
     document.getElementById("activityOption"+i).style.backgroundColor="#FFFFFF";
-  if(questionMat[currentQuestion].points>0)
+  document.getElementById("prevQuestionBtn").style.opacity=(currentQuestion==0?"0.4":"1");
+  if(questionMat[currentQuestion].points>0){
+    document.getElementById("nextQuestionBtn").style.opacity="1.0";
     document.getElementById("activityOption"+questionMat[currentQuestion].points).style.backgroundColor="#F3F3F6";
+  }
+  else
+    document.getElementById("nextQuestionBtn").style.opacity="0.4"
+  document.getElementById("category-container").innerHTML = questionMat[currentQuestion].category;
 }
 
 function totalScore(){
   var score=0;
   for(var i=0;i<number_question;i++)
+<<<<<<< HEAD
+    score+=(questionMat[i].positive ? questionMat[i].points : 6-questionMat[i].points);
+
+  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, false);
+  xhttp.send();
+=======
     score+=(questionMat[i].positive || questionMat[0].points==0?questionMat[i].points:6-questionMat[i].points);
-  alert(score);
+>>>>>>> e1bf423e9b2e6a5b3eabfb4bd2e9d44f98f33392
+
+  document.location.href="/test_end";
 }

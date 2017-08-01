@@ -16,15 +16,7 @@ router.get('/login', function(req, res, next) {
 
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {
-  api.get_user(req.params.usr).then(function(resp){
-    console.log(resp);
-    console.log("-----------");
-    var name=resp[0].name;
-    console.log(name);
-    res.render('profile', { title: 'Profile' });
-  }).catch(function(err){
-    res.send(err);
-  });
+  res.render('profile', { title: 'Profile' });
 });
 
 /* GET help page. */

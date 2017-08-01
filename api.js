@@ -67,7 +67,6 @@ function get_activity(level, mod){
         reject(er);
       }
       var lev=result.docs[0].modules;
-      console.log(lev);
       for(var i=0;i<lev.length;i++)
         if(lev[i].mod_id==mod) {resolve(lev[i].activities); break;}
     });
@@ -96,11 +95,42 @@ function get_leaderboard(){
   });
 }
 
+function add_score(user, score){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          "username": user
+        }
+      }, function(er, result) {
+        if (er) {
+          reject(er);
+        }
+        result=result.docs[0];
+        var now=new Date();
+        var day=now.getDate();
+        var month=now.getMonth();
+        var year=now.getFullYear();
+        var string=(day<10?'0':'')+day+'-'+(month<10?'0':'')+month+'-'+(year%100);
+        result.res_bravetest.push({
+          date: string,
+          score: score
+        });
+        db.insert(result, function(err, body){
+          if(!err){
+            console.log("UPDATE OK");
+          }
+        })
+    });
+  });
+}
+
 module.exports={
   get_user,
   get_levels,
   get_faq,
   get_btq,
   get_activity,
-  get_leaderboard
+  get_leaderboard,
+  add_score
 }
