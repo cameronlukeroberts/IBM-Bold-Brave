@@ -88,9 +88,15 @@ function totalScore(){
   var score=0;
   for(var i=0;i<number_question;i++)
     score+=(questionMat[i].positive ? questionMat[i].points : 6-questionMat[i].points);
+  var max_score = 5 * number_question;
+  score = Math.floor(score / max_score * 100);
 
-  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, false);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 1) {
+      document.location.href="/test_end";
+    }
+  };
+  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, true);
   xhttp.send();
-
-  document.location.href="/test_end";
 }
