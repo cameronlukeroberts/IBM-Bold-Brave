@@ -28,7 +28,7 @@ function areYouSure(lv,mod,act,ans=-1){
 
 function initActivities(lv, mod)
 {
-  if(lv > level)
+  if(lv > level || mod >= modulesMat[lv].length)
   {
     var msg = "<div class='activity-locked-message'>Error! You haven't unlocked this module yet!</div>";
     document.getElementById("activity-main-container").innerHTML = msg;
