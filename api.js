@@ -121,7 +121,7 @@ function add_score(user, score){
         });
         db.insert(result, function(err, body){
           if(!err){
-            console.log("UPDATE OK");
+            resolve("UPDATE OK");
           }
         })
     });
@@ -148,7 +148,30 @@ function add_activity(user, lev, mod, act){
         });
         db.insert(result, function(err, body){
           if(!err){
-            console.log("UPDATE OK");
+            resolve("UPDATE OK");
+          }
+        })
+    });
+  });
+}
+
+// Set user points
+function set_points(user, score){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          "username": user
+        }
+      }, function(er, result) {
+        if (er) {
+          reject(er);
+        }
+        result=result.docs[0];
+        result.points=score;
+        db.insert(result, function(err, body){
+          if(!err){
+            resolve("UPDATE OK");
           }
         })
     });
@@ -168,5 +191,6 @@ module.exports={
   get_activity,
   get_leaderboard,
   add_activity,
-  add_score
+  add_score,
+  set_points
 }

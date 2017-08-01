@@ -24,7 +24,6 @@ function init()
   xhttp.send();
 
   result = result[0];
-  console.log(result);
 
   userName = result.name;
   profileImg = result.img;
