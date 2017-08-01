@@ -1,4 +1,4 @@
-var questionMat, currentQuestion;
+var questionMat, currentQuestion, questionMade;
 var number_question = 10;
 
 function randShuffle(data, l, r) //random shuffle di data [l, r)
@@ -28,7 +28,6 @@ function initTest()
   xhttp.open("GET", "/api/btq", false);
   xhttp.send();
   result.sort(function(a,b){return a.category==b.category?0:(a.category<b.category?-1:1)});
-  console.log(result);
   questionMat = Array(number_question);
   var l=0, ind=[2,2,3,3];
   randShuffle(ind, 0, 4);
@@ -42,7 +41,7 @@ function initTest()
     for(var j=0;j<ind[i];j++)
       questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive, category:result[5*i+j].category};
   currentQuestion=0;
-  console.log(questionMat);
+  questionMade=0;
   changeTest();
 }
 
@@ -67,6 +66,10 @@ function nextQuestion(){
 function setAnswer(nAnswer){
   questionMat[currentQuestion].points=nAnswer;
   changeTest();
+  if(questionMade==currentQuestion){
+    questionMade++;
+    nextQuestion();
+  }
 }
 
 function changeTest()
@@ -87,14 +90,16 @@ function changeTest()
 function totalScore(){
   var score=0;
   for(var i=0;i<number_question;i++)
-<<<<<<< HEAD
     score+=(questionMat[i].positive ? questionMat[i].points : 6-questionMat[i].points);
+  var max_score = 5 * number_question;
+  score = Math.floor(score / max_score * 100);
 
-  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, false);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 1) {
+      document.location.href="/test_end";
+    }
+  };
+  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, true);
   xhttp.send();
-=======
-    score+=(questionMat[i].positive || questionMat[0].points==0?questionMat[i].points:6-questionMat[i].points);
->>>>>>> e1bf423e9b2e6a5b3eabfb4bd2e9d44f98f33392
-
-  document.location.href="/test_end";
 }
