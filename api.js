@@ -129,7 +129,7 @@ function add_score(user, score){
 }
 
 // Add activity
-function add_activity(user, lev, mod, act){
+function add_activity(user, lev, mod, act, score){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
     db.find({
@@ -146,6 +146,7 @@ function add_activity(user, lev, mod, act){
           mod_id: mod,
           act_id: act
         });
+        result.points=score;
         db.insert(result, function(err, body){
           if(!err){
             resolve("UPDATE OK");
