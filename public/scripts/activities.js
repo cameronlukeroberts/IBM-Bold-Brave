@@ -1,7 +1,7 @@
 function areYouSure(lv,mod,act,ans=-1){
   var newHtml="";
   if(ans==-1){
-    newHtml+="<div class='row' align='center'>Are you sure, Bro?</div>";
+    newHtml+="<div class='row' align='center'>Are you sure?</div>";
     newHtml+="<div class='row'><div class='col-sm-1'></div>";
     newHtml+="<div class='col-sm-4'><button type='button' onclick='areYouSure("+lv+","+mod+","+act+",1)' class='test-btn text-center btn-no-padding' id='activityOption1'>Yes</button></div>";
     newHtml+="<div class='col-sm-2'></div>";
