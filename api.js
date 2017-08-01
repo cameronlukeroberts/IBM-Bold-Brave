@@ -17,7 +17,7 @@ var bcrypt = require('bcrypt');
 function get_user(usr){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
-    db.find({selector:{username:usr}}, function(er, result) {
+    db.find({selector:{}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -29,7 +29,7 @@ function get_user(usr){
 function get_levels(){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_levels');
-    db.find({selector:{_id:{"$gt":0}}}, function(er, result) {
+    db.find({selector:{}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -41,7 +41,7 @@ function get_levels(){
 function get_faq(){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_faq');
-    db.find({selector:{_id:{"$gt":0}}}, function(er, result) {
+    db.find({selector:{}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -53,7 +53,7 @@ function get_faq(){
 function get_btq(){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_questions');
-    db.find({selector:{_id:{"$gt":0}}}, function(er, result) {
+    db.find({selector:{}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -65,7 +65,7 @@ function get_btq(){
 function get_activity(level, mod){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_levels');
-    db.find({selector:{lvl_id:{"$eq":0}}}, function(er, result) {
+    db.find({selector:{lvl_id:{"$eq":level}}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -80,19 +80,20 @@ function get_leaderboard(){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
     db.find({
-        "selector":{
-          "_id":{"$gt":0}
-        },
-        "fields":["points", "name", "img"]
+        "selector" : {},
+        "fields":["points", "_id", "name", "img"]
       }, function(er, result) {
       if (er) {
         reject(er);
       }
+
       result=result.docs;
       result.sort(function(a, b){
         return b.points-a.points;
       });
+
       result.slice(0, 10);
+
       resolve(result);
     });
   });

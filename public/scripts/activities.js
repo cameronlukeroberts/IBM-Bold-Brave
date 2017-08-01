@@ -1,7 +1,7 @@
 function areYouSure(lv,mod,act,ans=-1){
   var newHtml="";
   if(ans==-1){
-    newHtml+="<div class='row' align='center'>Are you sure, Bro?</div>";
+    newHtml+="<div class='row' align='center'>Are you sure?</div>";
     newHtml+="<div class='row'><div class='col-sm-1'></div>";
     newHtml+="<div class='col-sm-4'><button type='button' onclick='areYouSure("+lv+","+mod+","+act+",1)' class='test-btn text-center btn-no-padding' id='activityOption1'>Yes</button></div>";
     newHtml+="<div class='col-sm-2'></div>";
@@ -28,7 +28,7 @@ function areYouSure(lv,mod,act,ans=-1){
 
 function initActivities(lv, mod)
 {
-  if(lv > level)
+  if(lv > level || mod >= modulesMat[lv].length)
   {
     var msg = "<div class='activity-locked-message'>Error! You haven't unlocked this module yet!</div>";
     document.getElementById("activity-main-container").innerHTML = msg;
@@ -52,9 +52,9 @@ function initActivities(lv, mod)
       document.getElementById("activitiesContainer").innerHTML = newHtml;
 
       document.getElementById("activities-module-title").innerHTML = modulesMat[lv][mod].name;
-      document.getElementById("activities-module-description").innerHTML = "descrizione "+lv+" "+mod;
+      document.getElementById("activities-module-description").innerHTML = "We give ourselves permission to step outside our comfort zones. We focus on delivering ideas that ignite our business and enrich ourselves as people. We champion thinking differently. We succeed by daring to do the things we were once afraid to do. We celebrate succeeding and failing in equal measure. We learn from every situation. We share our ideas and resources. Together we inspire others to become Bold and Brave.";
 
-      document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I";
+      document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/qraTzkg-uF0";
   }
 }
 
