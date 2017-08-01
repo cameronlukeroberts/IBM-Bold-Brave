@@ -70,12 +70,12 @@ function setAnswer(nAnswer){
 
 function changeTest()
 {
-  //alert(questionMat);
   document.getElementById("questionDescription").innerHTML = questionMat[currentQuestion].question;
   for(var i=1;i<=5;i++)
     document.getElementById("activityOption"+i).style.backgroundColor="#FFFFFF";
+  document.getElementById("prevQuestionBtn").style.opacity=(currentQuestion==0?"0.4":"1");
   if(questionMat[currentQuestion].points>0){
-    document.getElementById("nextQuestionBtn").style.opacity="1.0"
+    document.getElementById("nextQuestionBtn").style.opacity="1.0";
     document.getElementById("activityOption"+questionMat[currentQuestion].points).style.backgroundColor="#F3F3F6";
   }
   else
