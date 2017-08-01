@@ -126,16 +126,15 @@ function makeLeaderboard()
   for(var i=0; i<result.length; i++) //DA PRENDERE DAL DB
   {
     newHtml += '<li class="list-group-item leaderboard-entry">';
-    newHtml += '<li class="list-group-item leaderboard-entry">';
     newHtml += '<a href="#profile" class="">';
     newHtml += '<div class="leaderboard-image profile-image-container rounded-container img-circle">'
     newHtml += '<img class="" src="'+result[i].img+'" class="rounded" />'
     newHtml += '</div>';
     newHtml += '<div class="leaderboard-position">'+(i+1)+'</div><div class="leaderboard-inline-name">'+result[i].name+'</div>';
-    newHtml += '<div class="leaderboard-inline-points>'+result[i].points+'</div>';
+    newHtml += '<div class="leaderboard-inline-points">'+result[i].points+' Pt.</div>';
     newHtml += '</a>';
     newHtml += '</li>';
   }
-  console.log(newHtml);
+
   document.getElementById("leaderboard").innerHTML = newHtml;
 }
