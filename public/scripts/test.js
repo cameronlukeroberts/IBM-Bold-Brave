@@ -85,7 +85,10 @@ function changeTest()
 function totalScore(){
   var score=0;
   for(var i=0;i<number_question;i++)
-    score+=(questionMat[i].positive || questionMat[0].points==0?questionMat[i].points:6-questionMat[i].points);
-    
+    score+=(questionMat[i].positive ? questionMat[i].points : 6-questionMat[i].points);
+
+  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, false);
+  xhttp.send();
+
   document.location.href="/test_end";
 }

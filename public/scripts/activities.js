@@ -7,30 +7,16 @@ function initActivities(lv, mod)
   }
   else
   {
-      var result;
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          result = JSON.parse(this.responseText);
-        }
-      };
-      xhttp.open("GET", "/api/levels/"+lv+"/"+mod, false);
-      xhttp.send();
-
       var newHtml = "";
-      var activities = result;
-      console.log(result);
 
-      for(var i=0; i<activities.length; i++)
-       activities[i] = {name: result[i].name, descr: result[i].desc, points: result[i].points, completed: 0};
-      for(var i=0; i<activities.length; i++)
+      for(var i=0; i<activityCube[lv][mod].length; i++)
       {
         newHtml += "<div class='panel panel-default collapse-container'>";
-        newHtml += "<div class='panel-heading collapse-trigger'>"+activities[i].name;
-        newHtml += "<span style='float: right'><i>"+activities[i].points+"Pt.</i></span></div>";
-        newHtml += "<div class='panel-body box-collapsed collapsable'>"+activities[i].descr;
+        newHtml += "<div class='panel-heading collapse-trigger'>"+activityCube[lv][mod][i].name;
+        newHtml += "<span style='float: right'><i>"+activityCube[lv][mod][i].points+"Pt.</i></span></div>";
+        newHtml += "<div class='panel-body box-collapsed collapsable'>"+activityCube[lv][mod][i].descr;
         newHtml += "<div> <input type='checkbox'";
-        if(activities[i].completed) newHtml += "checked";
+        if(activityCube[lv][mod][i].completed) newHtml += "checked";
         newHtml += ">";
         newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
         newHtml += "</div> </div>";
