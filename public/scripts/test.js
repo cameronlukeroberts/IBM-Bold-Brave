@@ -27,7 +27,7 @@ function initTest()
   };
   xhttp.open("GET", "/api/btq", false);
   xhttp.send();
-  result.sort(function(a,b){a.category==b.category?0:(a.category<b.category?-1:1)});
+  result.sort(function(a,b){return a.category==b.category?0:(a.category<b.category?-1:1)});
   questionMat = Array(number_question);
   var l=0, ind=[2,2,3,3];
   for(var r=1;r<result.length;++r)
@@ -78,7 +78,7 @@ function changeTest()
   }
   else
     document.getElementById("nextQuestionBtn").style.opacity="0.4"
-  document.getElementById("category-container").innerHTML = "Category: "+questionMat[currentQuestion].category;
+  document.getElementById("category-container").innerHTML = questionMat[currentQuestion].category;
 }
 
 function totalScore(){
