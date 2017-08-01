@@ -13,14 +13,11 @@ function areYouSure(lv,mod,act,ans=-1){
     newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
   }
   else{
+    userPoints += activityCube[lv][mod][act].points;
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/api/addactivity/"+usr+"/"+lv+"/"+mod+"/"+act, true);
+    xhttp.open("GET", "/api/addactivity/"+usr+"/"+lv+"/"+mod+"/"+act+"/"+userPoints, true);
     xhttp.send();
 
-    userPoints += activityCube[lv][mod][act].points;
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.open("GET", "/api/setpoints/"+usr+"/"+userPoints, true);
-    xhttp2.send();
     document.getElementById("navbar-points").innerHTML = userPoints+" Pt.";
 
     newHtml +="<input type='checkbox' disabled='disabled' onclick='areYouSure("+lv+","+mod+","+act+")' checked>";
