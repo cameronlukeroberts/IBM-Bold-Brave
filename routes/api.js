@@ -7,10 +7,8 @@ var api=require('../api');
 // user
 router.get('/user/:usr', function(req, res, next) {
   api.get_user(req.params.usr).then(function(resp){
-    console.log(resp);
     res.json(resp);
   }).catch(function(err){
-    console.log("AAAAA");
     res.send(err);
   });
 });
@@ -18,10 +16,8 @@ router.get('/user/:usr', function(req, res, next) {
 // levels
 router.get('/levels', function(req, res, next){
   api.get_levels().then(function(resp){
-    console.log(resp);
     res.json(resp);
   }).catch(function(err){
-    console.log("AAAAA");
     res.send(err);
   });
 });
@@ -29,10 +25,8 @@ router.get('/levels', function(req, res, next){
 // FAQ
 router.get('/faq', function(req, res, next){
   api.get_faq().then(function(resp){
-    console.log(resp);
     res.json(resp);
   }).catch(function(err){
-    console.log("AAAAA");
     res.send(err);
   });
 });
@@ -40,10 +34,8 @@ router.get('/faq', function(req, res, next){
 //bravetst questions
 router.get('/btq', function(req, res, next){
   api.get_btq().then(function(resp){
-    console.log(resp);
     res.json(resp);
   }).catch(function(err){
-    console.log("AAAAA");
     res.send(err);
   });
 });
@@ -51,10 +43,8 @@ router.get('/btq', function(req, res, next){
 // Activities in modules
 router.get('/levels/:lev/:mod', function(req, res, next){
   api.get_activity(req.params.lev, req.params.mod).then(function(resp){
-    console.log(resp);
     res.json(resp);
   }).catch(function(err){
-    console.log("AAAAA");
     res.send(err);
   });
 });
@@ -62,12 +52,13 @@ router.get('/levels/:lev/:mod', function(req, res, next){
 // Leaderboard
 router.get('/leaderboard', function(req, res, next){
   api.get_leaderboard().then(function(resp){
-    console.log(resp);
     res.json(resp);
   }).catch(function(err){
-    console.log("AAAAA");
     res.send(err);
   });
 });
+
+// Add activity
+router.post()
 
 module.exports = router;

@@ -67,7 +67,6 @@ function get_activity(level, mod){
         reject(er);
       }
       var lev=result.docs[0].modules;
-      console.log(lev);
       for(var i=0;i<lev.length;i++)
         if(lev[i].mod_id==mod) {resolve(lev[i].activities); break;}
     });
