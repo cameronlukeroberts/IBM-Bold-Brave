@@ -52,9 +52,9 @@ function initActivities(lv, mod)
       document.getElementById("activitiesContainer").innerHTML = newHtml;
 
       document.getElementById("activities-module-title").innerHTML = modulesMat[lv][mod].name;
-      document.getElementById("activities-module-description").innerHTML = "descrizione "+lv+" "+mod;
+      document.getElementById("activities-module-description").innerHTML = "We give ourselves permission to step outside our comfort zones. We focus on delivering ideas that ignite our business and enrich ourselves as people. We champion thinking differently. We succeed by daring to do the things we were once afraid to do. We celebrate succeeding and failing in equal measure. We learn from every situation. We share our ideas and resources. Together we inspire others to become Bold and Brave.";
 
-      document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/_Xcmh1LQB9I";
+      document.getElementById("activities-module-video").src = "http://www.youtube.com/embed/qraTzkg-uF0";
   }
 }
 
