@@ -11,6 +11,9 @@ var host = config.db.host;
 //Create the cloudant object
 var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
+// Bcrypt instance
+var bcrypt = require('bcrypt');
+
 function get_user(usr){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
@@ -109,7 +112,7 @@ function add_score(user, score){
         result=result.docs[0];
         var now=new Date();
         var day=now.getDate();
-        var month=now.getMonth();
+        var month=now.getMonth()+1;
         var year=now.getFullYear();
         var string=(day<10?'0':'')+day+'-'+(month<10?'0':'')+month+'-'+(year%100);
         result.res_bravetest.push({
@@ -125,6 +128,38 @@ function add_score(user, score){
   });
 }
 
+// Add activity
+function add_activity(user, lev, mod, act){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          "username": user
+        }
+      }, function(er, result) {
+        if (er) {
+          reject(er);
+        }
+        result=result.docs[0];
+        result.completed.push({
+          lvl_id: lev,
+          mod_id: mod,
+          act_id: act
+        });
+        db.insert(result, function(err, body){
+          if(!err){
+            console.log("UPDATE OK");
+          }
+        })
+    });
+  });
+}
+
+// Get password
+function get_password(user){
+
+}
+
 module.exports={
   get_user,
   get_levels,
@@ -132,5 +167,6 @@ module.exports={
   get_btq,
   get_activity,
   get_leaderboard,
+  add_activity,
   add_score
 }
