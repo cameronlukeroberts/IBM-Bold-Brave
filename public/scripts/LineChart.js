@@ -4,7 +4,7 @@ function makeGraph(w, h){
     width = +w - margin.left - margin.right,
     height = +h - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  var parseTime = d3.timeParse("%d-%b-%y");
+  var parseTime = d3.timeParse("%d-%m-%y");
   var x = d3.scaleTime()
     .rangeRound([0, width]);
   var y = d3.scaleLinear()

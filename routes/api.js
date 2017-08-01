@@ -59,6 +59,12 @@ router.get('/leaderboard', function(req, res, next){
 });
 
 // Add activity
-router.post()
+router.get('/addscore/:user/:score', function(req, res, next){
+  api.add_score(req.params.user, req.params.score).then(function(resp){
+    res.send('Score added successfully');
+  }).catch(function(err){
+    res.send(err);
+  });
+});
 
 module.exports = router;
