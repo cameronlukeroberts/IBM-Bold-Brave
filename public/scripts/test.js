@@ -36,11 +36,9 @@ function initTest()
       l=r;
     }
   randShuffle(result, l, result.length);
-  console.log(result);
   for(var i=0,t=0;i<ind.length;i++)
     for(var j=0;j<ind[i];j++)
-      questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive};
-  console.log(questionMat);
+      questionMat[t++]={question:result[5*i+j].question,points:0,positive:result[5*i+j].positive, category:result[5*i+j].category};
   currentQuestion=0;
   changeTest();
 }
@@ -80,6 +78,7 @@ function changeTest()
   }
   else
     document.getElementById("nextQuestionBtn").style.opacity="0.4"
+  document.getElementById("category-container").innerHTML = "Category: "+questionMat[currentQuestion].category;
 }
 
 function totalScore(){
