@@ -16,6 +16,13 @@ function areYouSure(lv,mod,act,ans=-1){
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "/api/addactivity/"+usr+"/"+lv+"/"+mod+"/"+act, true);
     xhttp.send();
+
+    userPoints += activityCube[lv][mod][act].points;
+    var xhttp2 = new XMLHttpRequest();
+    xhttp2.open("GET", "/api/setpoints/"+usr+"/"+userPoints, true);
+    xhttp2.send();
+    document.getElementById("navbar-points").innerHTML = userPoints+" Pt.";
+
     newHtml +="<input type='checkbox' disabled='disabled' onclick='areYouSure("+lv+","+mod+","+act+")' checked>";
     newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
   }
