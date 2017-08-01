@@ -30,6 +30,7 @@ function initTest()
   result.sort(function(a,b){return a.category==b.category?0:(a.category<b.category?-1:1)});
   questionMat = Array(number_question);
   var l=0, ind=[2,2,3,3];
+  randShuffle(ind, 0, 4);
   for(var r=1;r<result.length;++r)
     if(result[l].category!=result[r].category){
       randShuffle(result, l, r);
@@ -85,5 +86,6 @@ function totalScore(){
   var score=0;
   for(var i=0;i<number_question;i++)
     score+=(questionMat[i].positive || questionMat[0].points==0?questionMat[i].points:6-questionMat[i].points);
+    
   document.location.href="/test_end";
 }
