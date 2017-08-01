@@ -23,11 +23,6 @@ router.get('/', isAuthenticated, function(req, res, next) {
   res.render('index', { title: 'Dashboard', user: req.user });
 });
 
-/* GET login page. */
-router.get('/login', isAuthenticatedLogin, function(req, res, next) {
-  res.render('login', { title: 'Login' });
-});
-
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {
   res.render('profile', { title: 'Profile', user: req.user });
@@ -60,20 +55,38 @@ router.get('/activity/:lev/:mod', function(req, res, next) {
   res.render('activity', { title: 'Activities', level:req.params.lev, module:req.params.mod, user: req.user });
 });
 
+/* GET login page. */
+router.get('/login', isAuthenticatedLogin, function(req, res, next) {
+  res.render('login', { title: 'Login' });
+});
+
 /* authentication */
-
-
 router.post('/login', passport.authenticate('login', {
     successRedirect: '/',
     failureRedirect: '/login'
     }
 ));
 
-
-
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/login');
+});
+
+router.get('/register', isAuthenticatedLogin, function(req, res, next){
+  res.render('register', {title: 'Register'});
+});
+
+router.post('/register', function(req, res, next){
+  api.register_user(
+    req.body.username,
+    req.body.name,
+    req.body.password,
+    req.body.password_confirm,
+    req.body.img).then(function(res){
+      res.redirect('/login');
+    }).catch(function(err){
+      res.send('err');
+    });
 });
 
 router.get('/ping', function(req, res){

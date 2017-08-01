@@ -180,8 +180,26 @@ function set_points(user, score){
 }
 
 // Get password
-function get_password(user){
-
+function register_user(user, name, pwd, pwd_confirm, img){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          "username": user
+        }
+      }, function(er, result) {
+        if (er) {
+          reject(er);
+        }
+        result=result.docs[0];
+        result.points=score;
+        //db.insert(result, function(err, body){
+          if(!err){
+            resolve("UPDATE OK");
+          }
+        })
+    });
+  });
 }
 
 module.exports={
