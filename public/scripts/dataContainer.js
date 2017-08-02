@@ -10,10 +10,6 @@ var bravometerData;
 
 function init()
 {
-<<<<<<< HEAD
-console.log(usr);
-=======
->>>>>>> 680447b42138c07dbfc298babb97305eb29e6aa3
   var result;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
