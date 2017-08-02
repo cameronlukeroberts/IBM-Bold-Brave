@@ -91,5 +91,8 @@ router.get('/setpoints/:user/:score', function(req, res, next){
   });
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5076652f79e32f4046cd24c8da8c2583243b0f20
 module.exports = router;
