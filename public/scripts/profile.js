@@ -43,3 +43,10 @@ $(document).ready(function(){
     makeGraph(w, h);
   });
 });
+
+
+function openUpload(){
+  console.log("ok");
+  $('#imageLoad').trigger('click');
+  //$('#imageLoad').css('visibility','visible');
+}
