@@ -153,7 +153,7 @@ function add_activity(user, lev, mod, act, score){
           mod_id: mod,
           act_id: act
         });
-        result.points=score;
+        result.points+=score;
         db.insert(result, function(err, body){
           if(!err){
             resolve("UPDATE OK");

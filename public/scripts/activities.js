@@ -15,7 +15,7 @@ function areYouSure(lv,mod,act,ans=-1){
   else{
     userPoints += activityCube[lv][mod][act].points;
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/api/addactivity/"+usr+"/"+lv+"/"+mod+"/"+act+"/"+userPoints, true);
+    xhttp.open("GET", "/api/addactivity/"+usr+"/"+lv+"/"+mod+"/"+act+"/"+activityCube[lv][mod][act].points, true);
     xhttp.send();
 
     document.getElementById("navbar-points").innerHTML = userPoints+" Pt.";
