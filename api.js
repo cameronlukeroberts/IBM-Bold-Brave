@@ -149,17 +149,25 @@ function add_activity(user, lev, mod, act, score){
           reject(er);
         }
         result=result.docs[0];
-        result.completed.push({
-          lvl_id: lev,
-          mod_id: mod,
-          act_id: act
-        });
-        result.points+=score;
-        db.insert(result, function(err, body){
-          if(!err){
-            resolve("UPDATE OK");
-          }
-        });
+        var good = true;
+        for(var i=0; i<result.completed.length; i++)
+          if(result.completed[i].lvl_id == lev && result.completed[i].mod_id == mod && result.completed[i].act_id == act)
+            good = false;
+
+        if(good)
+        {
+          result.completed.push({
+            lvl_id: lev,
+            mod_id: mod,
+            act_id: act
+          });
+          result.points+=score;
+          db.insert(result, function(err, body){
+            if(!err){
+              resolve("UPDATE OK");
+            }
+          });
+        }
     });
   });
 }
