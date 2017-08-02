@@ -91,16 +91,4 @@ router.get('/setpoints/:user/:score', function(req, res, next){
   });
 });
 
-
-<<<<<<< HEAD
-=======
-
-
-router.get('/gottahashallthestuff/:u', function(req, res, next){
-  api.hash_passwords(req.params.u);
-});
-
-
-
->>>>>>> c832a40d57e4073e68896887380b6c7178b8a8ab
 module.exports = router;
