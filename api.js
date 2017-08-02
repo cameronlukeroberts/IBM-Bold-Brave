@@ -12,7 +12,7 @@ var host = config.db.host;
 var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
 // Bcrypt instance
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 
 function get_user(usr){
   return new Promise(function(resolve, reject){
@@ -84,17 +84,19 @@ function get_leaderboard(){
         "fields":["points", "_id", "name", "img"]
       }, function(er, result) {
       if (er) {
+        console.log(er);
         reject(er);
       }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.points-a.points;
+        });
 
-      result=result.docs;
-      result.sort(function(a, b){
-        return b.points-a.points;
-      });
+        result.slice(0, 10);
 
-      result.slice(0, 10);
-
-      resolve(result);
+        resolve(result);
+      }
     });
   });
 }
@@ -203,13 +205,10 @@ function register_user(user, name, pwd, pwd_confirm, img){
       "username": user,
       "password": pwd
     };
-    console.log(usr_obj);
-    console.log(cred_obj);
+
     var db_usr = cloudant.db.use('bb_users');
     var db_cred = cloudant.db.use('bb_credentials');
 
-    console.log(usr_obj);
-    console.log(cred_obj);
     db_usr.insert(usr_obj, function(err, body){
       if(err){
         reject(err);
