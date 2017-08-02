@@ -54,19 +54,15 @@ function prevQuestion(){
 
 function nextQuestion(){
   if(questionMat[currentQuestion].points>0){
-    if(currentQuestion<number_question-1){
-      currentQuestion++;
-      changeTest();
-    }
-    else
-      totalScore();
+    currentQuestion++;
+    changeTest();
   }
 }
 
 function setAnswer(nAnswer){
   questionMat[currentQuestion].points=nAnswer;
   changeTest();
-  if(questionMade==currentQuestion){
+  if(questionMade==currentQuestion && questionMade!=number_question-1){
     questionMade++;
     nextQuestion();
   }
@@ -74,6 +70,12 @@ function setAnswer(nAnswer){
 
 function changeTest()
 {
+  if(currentQuestion<number_question-1)
+    document.getElementById("nextQuestionBtnCol").innerHTML = "<div onclick='nextQuestion()' class='centralize arrow-right' id='nextQuestionBtn'></div>";
+  else if(currentQuestion==number_question-1)
+    document.getElementById("nextQuestionBtnCol").innerHTML = "<div onclick='nextQuestion()' class='centralize test-ending-btn' id='nextQuestionBtn'></div>";
+  else
+    totalScore();
   document.getElementById("questionDescription").innerHTML = questionMat[currentQuestion].question;
   for(var i=1;i<=5;i++)
     document.getElementById("activityOption"+i).style.backgroundColor="#FFFFFF";
@@ -82,8 +84,10 @@ function changeTest()
     document.getElementById("nextQuestionBtn").style.opacity="1.0";
     document.getElementById("activityOption"+questionMat[currentQuestion].points).style.backgroundColor="#F3F3F6";
   }
-  else
-    document.getElementById("nextQuestionBtn").style.opacity="0.4"
+  else{
+    document.getElementById("nextQuestionBtn").setAttribute("onclick","");
+    document.getElementById("nextQuestionBtn").style.opacity="0.4";
+  }
   document.getElementById("category-container").innerHTML = questionMat[currentQuestion].category;
 }
 
