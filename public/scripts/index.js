@@ -2,6 +2,18 @@ window.onload = function() {
   setTimeout(myMoveRocket, 1000);
 }
 
+var clickCountOnRocket=0,timerClickCountOnRocket=Date.now();
+function rr(){
+  /*console.log(timerClickCountOnRocket);
+  if(Date.now()-timerClickCountOnRocket.getTime()<1000){
+    clickCountOnRocket++;
+    if(clickCountOnRocket>2)
+      alert("Avaiava la Santina");
+  }
+  else
+    clickCountOnRocket=1;*/
+}
+
 function myMoveRocket() {
   var elem = document.getElementById("rocket");
   var per = 80;
@@ -122,7 +134,6 @@ function makeLeaderboard()
   xhttp.open("GET", "/api/leaderboard", false);
   xhttp.send();
 
-  console.log(result);
   var newHtml="";
   for(var i=0; i<result.length; i++)
   {
