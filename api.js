@@ -84,17 +84,19 @@ function get_leaderboard(){
         "fields":["points", "_id", "name", "img"]
       }, function(er, result) {
       if (er) {
+        console.log(er);
         reject(er);
       }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.points-a.points;
+        });
 
-      result=result.docs;
-      result.sort(function(a, b){
-        return b.points-a.points;
-      });
+        result.slice(0, 10);
 
-      result.slice(0, 10);
-
-      resolve(result);
+        resolve(result);
+      }
     });
   });
 }
