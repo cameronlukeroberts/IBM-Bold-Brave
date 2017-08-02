@@ -441,6 +441,17 @@ h2{
   /*transform: translate(-50%, -50%);*/
 }
 
+.container-fullend{
+  width: 80%;
+  margin: 0;
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  margin-left: -40%;
+  margin-top: 0px;
+  /*transform: translate(-50%, -50%);*/
+}
+
 .centralize{
   margin: 0;
   position: absolute;
