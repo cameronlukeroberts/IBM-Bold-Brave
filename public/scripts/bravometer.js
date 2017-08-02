@@ -1,4 +1,4 @@
-var percentageBravometer = bravometerData.length==0?0:[bravometerData.length-1].score;
+var percentageBravometer = bravometerData.length==0?0:bravometerData[bravometerData.length-1].score;
 
 var g=new JustGage({
   id: "bravometer",
