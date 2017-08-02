@@ -10,7 +10,7 @@ var bravometerData;
 
 function init()
 {
-
+console.log(usr);
   var result;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

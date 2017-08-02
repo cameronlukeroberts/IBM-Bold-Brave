@@ -17,7 +17,7 @@ var bcrypt = require('bcrypt');
 function get_user(usr){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
-    db.find({selector:{}}, function(er, result) {
+    db.find({selector:{"username":usr}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -124,7 +124,7 @@ function add_score(user, score){
           if(!err){
             resolve("UPDATE OK");
           }
-        })
+        });
     });
   });
 }
@@ -152,7 +152,7 @@ function add_activity(user, lev, mod, act, score){
           if(!err){
             resolve("UPDATE OK");
           }
-        })
+        });
     });
   });
 }
@@ -175,7 +175,7 @@ function set_points(user, score){
           if(!err){
             resolve("UPDATE OK");
           }
-        })
+        });
     });
   });
 }
@@ -183,23 +183,42 @@ function set_points(user, score){
 // Get password
 function register_user(user, name, pwd, pwd_confirm, img){
   return new Promise(function(resolve, reject){
-    var db = cloudant.db.use('bb_users');
-    db.find({
-        "selector":{
-          "username": user
-        }
-      }, function(er, result) {
-        if (er) {
-          reject(er);
-        }
-        result=result.docs[0];
-        result.points=score;
-        //db.insert(result, function(err, body){
-          if(!err){
-            resolve("UPDATE OK");
-          }
-        })
+    console.log(pwd+" "+pwd_confirm);
+    if(pwd!=pwd_confirm)
+      reject('Passwords don\'t match');
+
+    var usr_obj={
+      "username": user,
+      "name": name,
+      "img": img,
+      "points": 0,
+      "completed": [],
+      "res_bravetest": []
+    };
+    var cred_obj={
+      "username": user,
+      "password": pwd
+    };
+    console.log(usr_obj);
+    console.log(cred_obj);
+    var db_usr = cloudant.db.use('bb_users');
+    var db_cred = cloudant.db.use('bb_credentials');
+
+    console.log(usr_obj);
+    console.log(cred_obj);
+    db_usr.insert(usr_obj, function(err, body){
+      if(err){
+        reject(err);
+      }
     });
+
+    db_cred.insert(cred_obj, function(err, body){
+      if(err){
+        reject(err);
+      }
+    });
+
+    resolve("UPDATE OK");
   });
 }
 
@@ -212,5 +231,6 @@ module.exports={
   get_leaderboard,
   add_activity,
   add_score,
-  set_points
+  set_points,
+  register_user
 }

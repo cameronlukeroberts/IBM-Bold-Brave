@@ -77,15 +77,16 @@ router.get('/register', isAuthenticatedLogin, function(req, res, next){
 });
 
 router.post('/register', function(req, res, next){
+  console.log("Registering");
   api.register_user(
     req.body.username,
     req.body.name,
     req.body.password,
     req.body.password_confirm,
-    req.body.img).then(function(res){
+    req.body.img).then(function(resp){
       res.redirect('/login');
     }).catch(function(err){
-      res.send('err');
+      res.send(err);
     });
 });
 
