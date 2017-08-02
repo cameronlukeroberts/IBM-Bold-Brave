@@ -102,6 +102,38 @@ function get_leaderboard(){
   });
 }
 
+function get_position(user){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector" : {},
+        "fields":["points", "_id", "username", "name", "img"]
+      }, function(er, result) {
+      if (er) {
+        console.log(er);
+        reject(er);
+      }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.points-a.points;
+        });
+
+        for(var i=0;i<result.length;i++)
+          if(result[i].username==user){
+            if(result.length<11)
+              result.push(result[i]);
+            else
+              result[10]=result[i];
+            result=[i];
+            break;
+          }
+        resolve(result);
+      }
+    });
+  });
+}
+
 function add_score(user, score){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
