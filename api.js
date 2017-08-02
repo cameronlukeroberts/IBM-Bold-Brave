@@ -102,6 +102,35 @@ function get_leaderboard(){
   });
 }
 
+function get_position(user){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector" : {},
+        "fields":["points", "_id", "username", "name", "img"]
+      }, function(er, result) {
+      if (er) {
+        console.log(er);
+        reject(er);
+      }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.points-a.points;
+        });
+        var pos;
+        for(var i=0;i<result.length;i++)
+          if(result[i].username==user){
+            pos=i;
+            break;
+          }
+
+        resolve(pos);
+      }
+    });
+  });
+}
+
 function add_score(user, score){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
@@ -294,6 +323,7 @@ module.exports={
   get_btq,
   get_activity,
   get_leaderboard,
+  get_position,
   add_activity,
   add_score,
   set_points,

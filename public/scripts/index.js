@@ -122,8 +122,9 @@ function makeLeaderboard()
   xhttp.open("GET", "/api/leaderboard", false);
   xhttp.send();
 
+  console.log(result);
   var newHtml="";
-  for(var i=0; i<result.length; i++) //DA PRENDERE DAL DB
+  for(var i=0; i<result.length; i++)
   {
     newHtml += '<li class="list-group-item leaderboard-entry">';
     newHtml += '<a href="#profile" class="">';
