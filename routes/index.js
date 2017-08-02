@@ -6,7 +6,6 @@ var api = require('../api');
 var passport = require('passport');
 
 var isAuthenticated = function (req, res, next) {
-  console.log(req.user);
   if (req.isAuthenticated())
     return next();
   res.redirect('/login');
@@ -24,34 +23,34 @@ router.get('/', isAuthenticated, function(req, res, next) {
 });
 
 /* GET profile page. */
-router.get('/profile', function(req, res, next) {
+router.get('/profile', isAuthenticated, function(req, res, next) {
   res.render('profile', { title: 'Profile', user: req.user });
 });
 
 /* GET help page. */
-router.get('/help', function(req, res, next) {
+router.get('/help', isAuthenticated, function(req, res, next) {
   res.render('help', { title: 'Help', user: req.user });
 });
 
 /* GET test page. */
-router.get('/test', function(req, res, next) {
+router.get('/test', isAuthenticated, function(req, res, next) {
   res.render('test', { title: 'Brave&Bold Test', user: req.user });
 });
 
 /* GET test_start page. */
-router.get('/test_start', function(req, res, next) {
+router.get('/test_start', isAuthenticated, function(req, res, next) {
   res.render('test_start', { title: 'Brave&Bold Test', user: req.user });
 });
 
 
 /* GET test_end page. */
-router.get('/test_end', function(req, res, next) {
+router.get('/test_end', isAuthenticated, function(req, res, next) {
   res.render('test_end', { title: 'Brave&Bold Test', user: req.user });
 });
 
 
 /* GET activity page. */
-router.get('/activity/:lev/:mod', function(req, res, next) {
+router.get('/activity/:lev/:mod', isAuthenticated, function(req, res, next) {
   res.render('activity', { title: 'Activities', level:req.params.lev, module:req.params.mod, user: req.user });
 });
 

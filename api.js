@@ -181,6 +181,7 @@ function set_points(user, score){
 }
 
 // Get password
+/*
 function register_user(user, name, pwd, pwd_confirm, img){
   return new Promise(function(resolve, reject){
     console.log(pwd+" "+pwd_confirm);
@@ -221,6 +222,7 @@ function register_user(user, name, pwd, pwd_confirm, img){
     resolve("UPDATE OK");
   });
 }
+*/
 
 module.exports={
   get_user,
