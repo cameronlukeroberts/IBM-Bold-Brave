@@ -1,8 +1,17 @@
 function initProfile()
 {
+  var result;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result = JSON.parse(this.responseText);
+    }
+  };
+  xhttp.open("GET", "/api/position/"+usr, false);
+  xhttp.send();
   document.getElementById("profileInfo").innerHTML = userName;
   document.getElementById("profilePoints").innerHTML = "Points: "+userPoints;
-  document.getElementById("profilePosition").innerHTML = "Position: "+userPoints/2;
+  document.getElementById("profilePosition").innerHTML = "Position: "+(result+1);
 
   document.getElementById("profilePic").src = profileImg;
 

@@ -60,6 +60,15 @@ router.get('/leaderboard', function(req, res, next){
   });
 });
 
+// Position
+router.get('/position/:user', function(req, res, next){
+  api.get_position(req.params.user).then(function(resp){
+    res.json(resp);
+  }).catch(function(err){
+    res.send(err);
+  });
+});
+
 // Add score
 router.get('/addscore/:user/:score', function(req, res, next){
   api.add_score(req.params.user, parseInt(req.params.score, 10)).then(function(resp){
