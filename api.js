@@ -118,17 +118,14 @@ function get_position(user){
         result.sort(function(a, b){
           return b.points-a.points;
         });
-
+        var pos;
         for(var i=0;i<result.length;i++)
           if(result[i].username==user){
-            if(result.length<11)
-              result.push(result[i]);
-            else
-              result[10]=result[i];
-            result=[i];
+            pos=i;
             break;
           }
-        resolve(result);
+
+        resolve(pos);
       }
     });
   });
@@ -326,6 +323,7 @@ module.exports={
   get_btq,
   get_activity,
   get_leaderboard,
+  get_position,
   add_activity,
   add_score,
   set_points,

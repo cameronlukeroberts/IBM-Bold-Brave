@@ -9,11 +9,9 @@ function initProfile()
   };
   xhttp.open("GET", "/api/position/"+usr, false);
   xhttp.send();
-  result=result[0];
-
   document.getElementById("profileInfo").innerHTML = userName;
   document.getElementById("profilePoints").innerHTML = "Points: "+userPoints;
-  document.getElementById("profilePosition").innerHTML = "Position: "+result;
+  document.getElementById("profilePosition").innerHTML = "Position: "+(result+1);
 
   document.getElementById("profilePic").src = profileImg;
 
