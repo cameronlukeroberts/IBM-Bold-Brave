@@ -12,7 +12,7 @@ var host = config.db.host;
 var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
 // Bcrypt instance
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
 function get_user(usr){
@@ -97,6 +97,35 @@ function get_leaderboard(){
         result.slice(0, 10);
 
         resolve(result);
+      }
+    });
+  });
+}
+
+function get_position(user){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector" : {},
+        "fields":["points", "_id", "username", "name", "img"]
+      }, function(er, result) {
+      if (er) {
+        console.log(er);
+        reject(er);
+      }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.points-a.points;
+        });
+        var pos;
+        for(var i=0;i<result.length;i++)
+          if(result[i].username==user){
+            pos=i;
+            break;
+          }
+
+        resolve(pos);
       }
     });
   });
@@ -294,6 +323,7 @@ module.exports={
   get_btq,
   get_activity,
   get_leaderboard,
+  get_position,
   add_activity,
   add_score,
   set_points,
