@@ -19,6 +19,7 @@
     "passport-local": "~1.0.0",
     "serve-favicon": "~2.4.2",
     "multer": "^1.2.0",
-    "body-parser": "^1.15.2"
+    "body-parser": "^1.15.2",
+    "bcrypt": "~1.0.2"
   }
 }

@@ -13,11 +13,12 @@ var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
 // Bcrypt instance
 var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 function get_user(usr){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
-    db.find({selector:{}}, function(er, result) {
+    db.find({selector:{"username":usr}}, function(er, result) {
       if (er) {
         reject(er);
       }
@@ -84,17 +85,19 @@ function get_leaderboard(){
         "fields":["points", "_id", "name", "img"]
       }, function(er, result) {
       if (er) {
+        console.log(er);
         reject(er);
       }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.points-a.points;
+        });
 
-      result=result.docs;
-      result.sort(function(a, b){
-        return b.points-a.points;
-      });
+        result.slice(0, 10);
 
-      result.slice(0, 10);
-
-      resolve(result);
+        resolve(result);
+      }
     });
   });
 }
@@ -116,6 +119,10 @@ function add_score(user, score){
         var month=now.getMonth()+1;
         var year=now.getFullYear();
         var string=(day<10?'0':'')+day+'-'+(month<10?'0':'')+month+'-'+(year%100);
+
+        while(result.res_bravetest.length > 0 && result.res_bravetest[result.res_bravetest.length-1].date == string)
+          result.res_bravetest.pop();
+
         result.res_bravetest.push({
           date: string,
           score: score
@@ -124,7 +131,7 @@ function add_score(user, score){
           if(!err){
             resolve("UPDATE OK");
           }
-        })
+        });
     });
   });
 }
@@ -147,12 +154,12 @@ function add_activity(user, lev, mod, act, score){
           mod_id: mod,
           act_id: act
         });
-        result.points=score;
+        result.points+=score;
         db.insert(result, function(err, body){
           if(!err){
             resolve("UPDATE OK");
           }
-        })
+        });
     });
   });
 }
@@ -175,35 +182,81 @@ function set_points(user, score){
           if(!err){
             resolve("UPDATE OK");
           }
-        })
+        });
     });
   });
 }
 
 // Get password
-/*
 function register_user(user, name, pwd, pwd_confirm, img){
   return new Promise(function(resolve, reject){
-    var db = cloudant.db.use('bb_users');
-    db.find({
-        "selector":{
-          "username": user
-        }
-      }, function(er, result) {
-        if (er) {
-          reject(er);
-        }
-        result=result.docs[0];
-        result.points=score;
-        //db.insert(result, function(err, body){
-          if(!err){
-            resolve("UPDATE OK");
-          }
-        })
+    console.log(pwd+" "+pwd_confirm);
+    if(pwd!=pwd_confirm)
+      reject('Passwords don\'t match');
+
+    pwd=bcrypt.hashSync(pwd, saltRounds);
+
+    var usr_obj={
+      "username": user,
+      "name": name,
+      "img": img,
+      "points": 0,
+      "completed": [],
+      "res_bravetest": []
+    };
+    var cred_obj={
+      "username": user,
+      "password": pwd
+    };
+
+    var db_usr = cloudant.db.use('bb_users');
+    var db_cred = cloudant.db.use('bb_credentials');
+
+    db_usr.insert(usr_obj, function(err, body){
+      if(err){
+        reject(err);
+      }
+    });
+
+    db_cred.insert(cred_obj, function(err, body){
+      if(err){
+        reject(err);
+      }
+    });
+
+    resolve("UPDATE OK");
+  });
+}
+
+// Check password
+function check_password(user, pwd){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_credentials');
+    db.find({selector:{username: user}}, function(er, result) {
+      if (er)
+        reject(false);
+      if (!result.docs[0])
+        reject(false);
+      resolve(bcrypt.compareSync(pwd, result.docs[0].password));
     });
   });
 }
-*/
+
+// Hash password
+function hash_passwords(username){
+  var db=cloudant.db.use('bb_credentials');
+  db.find({selector:{username:username}}, function(er, res){
+    var result=res.docs[0];
+    var plain=result.password;
+    bcrypt.hash(plain, saltRounds).then(function(hash) {
+      result.password=hash;
+      console.log(result.username+" HASHED");
+      db.insert(result, function(err, body){
+        console.log(result.username+" UPDATED");
+      });
+    });
+  });
+}
 
 module.exports={
   get_user,
@@ -214,5 +267,8 @@ module.exports={
   get_leaderboard,
   add_activity,
   add_score,
-  set_points
+  set_points,
+  register_user,
+  check_password,
+  hash_passwords
 }

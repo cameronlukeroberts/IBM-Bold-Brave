@@ -470,6 +470,16 @@ h2{
   cursor: pointer;
 }
 
+.test-ending-btn{
+  background-image: url("/imgs/test_end_btn.png");
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 55px;
+  cursor: pointer;
+}
+
 .btn-no-padding{
   padding-left: 0;
   padding-right: 0;
