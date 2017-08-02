@@ -12,7 +12,7 @@ var host = config.db.host;
 var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
 // Bcrypt instance
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 
 function get_user(usr){
   return new Promise(function(resolve, reject){
