@@ -258,6 +258,27 @@ function hash_passwords(username){
   });
 }
 
+function upload_image(req, ext){
+  var db = cloudant.db.use('bb_users');
+  db.find({
+      "selector":{
+        "username": req.user
+      }
+    }, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      result=result.docs[0];
+      result.img='/profiles/'+req.user+ext;
+      db.insert(result, function(err, body){
+        if(err){
+          return false;
+        }
+      })
+  });
+  return true;
+}
+
 module.exports={
   get_user,
   get_levels,
@@ -270,5 +291,6 @@ module.exports={
   set_points,
   register_user,
   check_password,
-  hash_passwords
+  hash_passwords,
+  upload_image
 }

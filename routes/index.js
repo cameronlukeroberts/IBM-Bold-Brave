@@ -7,22 +7,11 @@ var passport = require('passport');
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
-/*
-var config = require('./config');
 
-var Cloudant = require('cloudant');
 
-//Set up variables with database config information
-var user = config.db.username;
-var password = config.db.password;
-var host = config.db.host;
-
-//Create the cloudant object
-var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
-*/
 var Storage = multer.diskStorage({
     destination: function(req, file, callback) {
-        callback(null, "./uploads");
+        callback(null, "./public/profiles");
     },
     filename: function(req, file, callback) {
         //callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
@@ -30,26 +19,10 @@ var Storage = multer.diskStorage({
         //var size = require('fs').stat(file.path).size;
 
         if(ext == '.png' || ext == '.jpg' || ext== '.jpeg'){
-          /*
-          var db = cloudant.db.use('bb_users');
-          db.find({
-              "selector":{
-                "username": req.user
-              }
-            }, function(er, result) {
-              if (er) {
-                reject(er);
-              }
-              result=result.docs[0];
-              result.img='/img/'+req.user+ext;
-              db.insert(result, function(err, body){
-                if(err){
-                  callback("db", false);
-                }
-              })
-          });
-          */
-          callback(null, ""+req.user+ext);
+          if(api.upload_image(req, ext))
+            callback(null, ""+req.user+ext);
+          else
+            callback("db", false);
         }else
           callback("ext", false);
 
@@ -165,9 +138,9 @@ router.post("/uploadImage", function(req, res) {
         return res.redirect('/profile/success');
     });
 });
-
-router.get('/img/:img', isAuthenticatedLogin, function(req, res, next){
+/*
+router.get('/imgs/:img', isAuthenticatedLogin, function(req, res, next){
   res.sendFile('./uploads/'+req.params.img);
 });
-
+*/
 module.exports = router;
