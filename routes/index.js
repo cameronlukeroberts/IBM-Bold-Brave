@@ -62,6 +62,11 @@ router.get('/profile', isAuthenticated, function(req, res, next) {
   res.render('profile', { title: 'Profile', user: req.user, message: "undefined" });
 });
 
+
+router.get('/rocketrizzo', function(req, res, next) {
+  res.render('rocketrizzo', { title: 'Rocket', user: req.user });
+});
+
 /* GET help page. */
 router.get('/help', isAuthenticated, function(req, res, next) {
   res.render('help', { title: 'Help', user: req.user });
