@@ -181,17 +181,25 @@ function add_activity(user, lev, mod, act, score){
           reject(er);
         }
         result=result.docs[0];
-        result.completed.push({
-          lvl_id: lev,
-          mod_id: mod,
-          act_id: act
-        });
-        result.points+=score;
-        db.insert(result, function(err, body){
-          if(!err){
-            resolve("UPDATE OK");
-          }
-        });
+        var good = true;
+        for(var i=0; i<result.completed.length; i++)
+          if(result.completed[i].lvl_id == lev && result.completed[i].mod_id == mod && result.completed[i].act_id == act)
+            good = false;
+
+        if(good)
+        {
+          result.completed.push({
+            lvl_id: lev,
+            mod_id: mod,
+            act_id: act
+          });
+          result.points+=score;
+          db.insert(result, function(err, body){
+            if(!err){
+              resolve("UPDATE OK");
+            }
+          });
+        }
     });
   });
 }
@@ -290,6 +298,27 @@ function hash_passwords(username){
   });
 }
 
+function upload_image(req, ext){
+  var db = cloudant.db.use('bb_users');
+  db.find({
+      "selector":{
+        "username": req.user
+      }
+    }, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      result=result.docs[0];
+      result.img='/profiles/'+req.user+ext;
+      db.insert(result, function(err, body){
+        if(err){
+          return false;
+        }
+      })
+  });
+  return true;
+}
+
 module.exports={
   get_user,
   get_levels,
@@ -302,5 +331,6 @@ module.exports={
   set_points,
   register_user,
   check_password,
-  hash_passwords
+  hash_passwords,
+  upload_image
 }
