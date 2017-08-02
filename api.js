@@ -181,6 +181,7 @@ function set_points(user, score){
 }
 
 // Get password
+/*
 function register_user(user, name, pwd, pwd_confirm, img){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
@@ -202,6 +203,7 @@ function register_user(user, name, pwd, pwd_confirm, img){
     });
   });
 }
+*/
 
 module.exports={
   get_user,
