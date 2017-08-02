@@ -12,7 +12,7 @@ var host = config.db.host;
 var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
 // Bcrypt instance
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
 function get_user(usr){

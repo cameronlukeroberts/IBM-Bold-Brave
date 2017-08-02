@@ -39,8 +39,12 @@ function initActivities(lv, mod)
 
       for(var i=0; i<activityCube[lv][mod].length; i++)
       {
-        newHtml += "<div class='panel panel-default collapse-container'>";
-        newHtml += "<div class='panel-heading collapse-trigger'>"+activityCube[lv][mod][i].name;
+        newHtml += "<div class='panel panel-default ";
+        if(activityCube[lv][mod][i].completed) newHtml += "panel-completed";
+        newHtml += " collapse-container'>";
+        newHtml += "<div class='panel-heading ";
+        if(activityCube[lv][mod][i].completed) newHtml += "panel-heading-completed";
+        newHtml += " collapse-trigger'>"+activityCube[lv][mod][i].name;
         newHtml += "<span style='float: right'><i>"+activityCube[lv][mod][i].points+"Pt.</i></span></div>";
         newHtml += "<div class='panel-body box-collapsed collapsable'>"+activityCube[lv][mod][i].descr;
         newHtml += "<div id='completedCheck"+i+"'> <input type='checkbox'  id='bott"+i+"'onclick='areYouSure("+lv+","+mod+","+i+")' ";

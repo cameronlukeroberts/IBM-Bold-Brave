@@ -4,6 +4,10 @@ function makeGraph(w, h){
     width = +w - margin.left - margin.right,
     height = +h - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .ticks(4)
+      .orient("right");
   var parseTime = d3.timeParse("%d-%m-%y");
   var x = d3.scaleTime()
     .rangeRound([0, width]);
@@ -23,6 +27,7 @@ function makeGraph(w, h){
   function draw(data) {
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain(d3.extent(data, function(d) { return d.score; }));
+    y.domain([0,100]);
     g.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
