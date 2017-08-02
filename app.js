@@ -16,7 +16,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var expressSession = require('express-session');
 
 var app = express();
-
+var api_funcs = require('./api');
 
 //Include the config file for DB information
 var config = require('./config');
@@ -74,21 +74,18 @@ passport.use('login', new LocalStrategy({
     console.log(username);
     console.log(password);
 
-    var db = cloudant.db.use('bb_credentials');
-    db.find({selector:{username: username}}, function(er, result) {
-      if (er)
-        return done(er);
-      if (!result.docs[0])
-        return done(null, false);
-      console.log("ok");
-      if(result.docs[0].password == password)
-        return done(null, username);
+    var ret;
+    api_funcs.check_password(username, password).then(function(res){
+      if(res)
+        ret=done(null, username);
       else
-        return done(null, false);
+        ret=done(null, false);
+    }).catch(function(err){
+      ret=done(null, false);
     });
-
-  }
-));
+    return ret;
+  })
+);
 
 
 /*

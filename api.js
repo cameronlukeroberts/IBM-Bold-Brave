@@ -12,7 +12,8 @@ var host = config.db.host;
 var cloudant = Cloudant("https://" + user + ":" + password + "@" + host);
 
 // Bcrypt instance
-//var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 function get_user(usr){
   return new Promise(function(resolve, reject){
@@ -189,6 +190,8 @@ function register_user(user, name, pwd, pwd_confirm, img){
     if(pwd!=pwd_confirm)
       reject('Passwords don\'t match');
 
+    pwd=bcrypt.hashSync(pwd, saltRounds);
+
     var usr_obj={
       "username": user,
       "name": name,
@@ -221,6 +224,36 @@ function register_user(user, name, pwd, pwd_confirm, img){
   });
 }
 
+// Check password
+function check_password(user, pwd){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_credentials');
+    db.find({selector:{username: user}}, function(er, result) {
+      if (er)
+        reject(false);
+      if (!result.docs[0])
+        reject(false);
+      resolve(bcrypt.compareSync(pwd, result.docs[0].password));
+    });
+  });
+}
+
+// Hash password
+function hash_passwords(username){
+  var db=cloudant.db.use('bb_credentials');
+  db.find({selector:{username:username}}, function(er, res){
+    var result=res.docs[0];
+    var plain=result.password;
+    bcrypt.hash(plain, saltRounds).then(function(hash) {
+      result.password=hash;
+      console.log(result.username+" HASHED");
+      db.insert(result, function(err, body){
+        console.log(result.username+" UPDATED");
+      });
+    });
+  });
+}
+
 module.exports={
   get_user,
   get_levels,
@@ -231,5 +264,7 @@ module.exports={
   add_activity,
   add_score,
   set_points,
-  register_user
+  register_user,
+  check_password,
+  hash_passwords
 }
