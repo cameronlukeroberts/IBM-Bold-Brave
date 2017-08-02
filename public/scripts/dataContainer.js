@@ -10,7 +10,6 @@ var bravometerData;
 
 function init()
 {
-
   var result;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -25,68 +24,76 @@ function init()
 
   userName = result.name;
   profileImg = result.img;
-
-  var resultLvl;
-  var xhttpLvl = new XMLHttpRequest();
-  xhttpLvl.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      resultLvl = JSON.parse(this.responseText);
-    }
-  };
-  xhttpLvl.open("GET", "/api/levels", false);
-  xhttpLvl.send();
-
-  levelsArr = new Array(resultLvl.length);
-  for(var i=0; i<levelsArr.length; i++) //prendere dati db
-   levelsArr[i] = {name:resultLvl[i].name, points:resultLvl[i].points_needed, perComp:0};
-
-  num_levels = levelsArr.length;
-
-  modulesMat = new Array(num_levels);
-  for(var i=0; i<num_levels; i++)
-    modulesMat[i] = new Array(resultLvl[i].modules.length);
-
   userPoints=result.points;
-  for(var i=0; i<num_levels; i++) //prendere dati dbresultLvl[i].modules[j].
-    for(var j=0; j<modulesMat[i].length; j++)
-    {
-      modulesMat[i][j] = {name:resultLvl[i].modules[j].name, points:resultLvl[i].modules[j].point, points_done:0};
-    }
 
-  for(var i=0; i<result.completed.length; i++)
-    modulesMat[result.completed[i].lvl_id][result.completed[i].mod_id].points_done += resultLvl[result.completed[i].lvl_id].modules[result.completed[i].mod_id].activities[result.completed[i].act_id].points;
+  var actualPage = document.title;
 
-  for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
-  level--;
-
-  for(var i=0; i<num_levels; i++) //compute levels' percentages
+  if(actualPage == "Dashboard" || actualPage == "Profile" || actualPage == "Activities")
   {
-    var tot = 0, done = 0;
-    for(var j=0; j<modulesMat[i].length; j++)
-    {
-      tot += modulesMat[i][j].points;
-      done += modulesMat[i][j].points_done;
-    }
+      var resultLvl;
+      var xhttpLvl = new XMLHttpRequest();
+      xhttpLvl.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          resultLvl = JSON.parse(this.responseText);
+        }
+      };
+      xhttpLvl.open("GET", "/api/levels", false);
+      xhttpLvl.send();
 
-    levelsArr[i].perComp = Math.floor(done / tot * 100);
+      levelsArr = new Array(resultLvl.length);
+      for(var i=0; i<levelsArr.length; i++) //prendere dati db
+       levelsArr[i] = {name:resultLvl[i].name, points:resultLvl[i].points_needed, perComp:0};
+
+      num_levels = levelsArr.length;
+
+      modulesMat = new Array(num_levels);
+      for(var i=0; i<num_levels; i++)
+        modulesMat[i] = new Array(resultLvl[i].modules.length);
+
+      for(var i=0; i<num_levels; i++) //prendere dati dbresultLvl[i].modules[j].
+        for(var j=0; j<modulesMat[i].length; j++)
+        {
+          modulesMat[i][j] = {name:resultLvl[i].modules[j].name, points:resultLvl[i].modules[j].point, points_done:0};
+        }
+
+      for(var i=0; i<result.completed.length; i++)
+        modulesMat[result.completed[i].lvl_id][result.completed[i].mod_id].points_done += resultLvl[result.completed[i].lvl_id].modules[result.completed[i].mod_id].activities[result.completed[i].act_id].points;
+
+      for(level=0; level<num_levels && levelsArr[level].points <= userPoints; level++);
+      level--;
+
+      for(var i=0; i<num_levels; i++) //compute levels' percentages
+      {
+        var tot = 0, done = 0;
+        for(var j=0; j<modulesMat[i].length; j++)
+        {
+          tot += modulesMat[i][j].points;
+          done += modulesMat[i][j].points_done;
+        }
+
+        levelsArr[i].perComp = Math.floor(done / tot * 100);
+      }
+
+      activityCube = new Array(num_levels);
+      for(var i=0; i<num_levels; i++)
+      {
+        activityCube[i] = new Array(modulesMat[i].length);
+        for(var j=0; j<modulesMat[i].length; j++)
+        {
+          activityCube[i][j] = new Array(resultLvl[i].modules[j].activities.length);
+          for(var k=0; k<activityCube[i][j].length; k++)
+            activityCube[i][j][k] = {name: resultLvl[i].modules[j].activities[k].name, descr: resultLvl[i].modules[j].activities[k].desc, points: resultLvl[i].modules[j].activities[k].points, completed: false};
+        }
+      }
+
+      for(var i=0; i<result.completed.length; i++)
+        activityCube[result.completed[i].lvl_id][result.completed[i].mod_id][result.completed[i].act_id].completed = true;
   }
 
-  activityCube = new Array(num_levels);
-  for(var i=0; i<num_levels; i++)
+  if(actualPage != "Help" && actualPage != "Activities")
   {
-    activityCube[i] = new Array(modulesMat[i].length);
-    for(var j=0; j<modulesMat[i].length; j++)
-    {
-      activityCube[i][j] = new Array(resultLvl[i].modules[j].activities.length);
-      for(var k=0; k<activityCube[i][j].length; k++)
-        activityCube[i][j][k] = {name: resultLvl[i].modules[j].activities[k].name, descr: resultLvl[i].modules[j].activities[k].desc, points: resultLvl[i].modules[j].activities[k].points, completed: false};
-    }
+    bravometerData = new Array(result.res_bravetest.length);
+    for(var i=0; i<bravometerData.length; i++)
+     bravometerData[i] = {date: result.res_bravetest[i].date, score: result.res_bravetest[i].score};
   }
-
-  for(var i=0; i<result.completed.length; i++)
-    activityCube[result.completed[i].lvl_id][result.completed[i].mod_id][result.completed[i].act_id].completed = true;
-
-  bravometerData = new Array(result.res_bravetest.length);
-  for(var i=0; i<bravometerData.length; i++)
-   bravometerData[i] = {date: result.res_bravetest[i].date, score: result.res_bravetest[i].score};
 }
