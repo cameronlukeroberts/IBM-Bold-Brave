@@ -19,9 +19,30 @@
   </head>
   <body>
     <!-- Fixed navbar -->
-    <%- include('navbar', {title: title}) %>
+    <%- include('navbar', {title: title}); %>
     <!-- End of navbar -->
-
+    <%
+      if(message == "success"){
+        %>
+        <center>
+          <div class="alert alert-success alert-dismissable" style="width: 60%;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Your image was uploaded with successfully
+          </div>
+        </center>
+        <%
+      }
+      if(message == "ext"){
+        %>
+        <center>
+          <div class="alert alert-danger alert-dismissable" style="width: 60%;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> You can upload only file with exstension .png, .jpg, .jpeg
+          </div>
+        </center>
+        <%
+      }
+    %>
     <div class="container">
 		<div class="row">
       <!-- PROFILE -->
@@ -29,7 +50,12 @@
 				<div class="card hovercard">
 					<div class="cardheader"></div>
 					<div class="profile-image-container big-profile rounded-container">
-						<img class="rounded" id="profilePic" alt="">
+            <img class="rounded" id="profilePic" alt=""/>
+            <form action="/uploadImage" method="POST" enctype="multipart/form-data">
+              <div class="buttonImage" onclick="openUpload()">
+              </div>
+              <input class="hiddenButton" id="imageLoad" name="image" type="file" onchange="this.form.submit()"></input>
+            </form>
 					</div>
 					<div class="info">
 						<div class="title" id="profileInfo"></div>

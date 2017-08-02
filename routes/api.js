@@ -4,6 +4,8 @@ var router = express.Router();
 
 var api=require('../api');
 
+
+
 // user
 router.get('/user/:usr', function(req, res, next) {
   api.get_user(req.params.usr).then(function(resp){
@@ -88,5 +90,6 @@ router.get('/setpoints/:user/:score', function(req, res, next){
     res.send(err);
   });
 });
+
 
 module.exports = router;
