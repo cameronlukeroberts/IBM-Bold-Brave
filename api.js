@@ -201,13 +201,10 @@ function register_user(user, name, pwd, pwd_confirm, img){
       "username": user,
       "password": pwd
     };
-    console.log(usr_obj);
-    console.log(cred_obj);
+
     var db_usr = cloudant.db.use('bb_users');
     var db_cred = cloudant.db.use('bb_credentials');
 
-    console.log(usr_obj);
-    console.log(cred_obj);
     db_usr.insert(usr_obj, function(err, body){
       if(err){
         reject(err);
