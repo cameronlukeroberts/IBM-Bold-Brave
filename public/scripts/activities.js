@@ -9,8 +9,8 @@ function areYouSure(lv,mod,act,ans=-1){
     newHtml+="<div class='col-sm-1'></div></div>";
   }
   else if(ans==0){
-    newHtml +="<input type='checkbox' onclick='areYouSure("+lv+","+mod+","+act+")'>";
-    newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
+    newHtml +="<input type='checkbox' id='bott"+lv+","+mod+","+act+"' onclick='areYouSure("+lv+","+mod+","+act+")'>";
+    newHtml += "<label for='bott"+lv+","+mod+","+act+"'><span></span>Activity completed</label> </div>";
   }
   else{
     userPoints += activityCube[lv][mod][act].points;
@@ -20,8 +20,8 @@ function areYouSure(lv,mod,act,ans=-1){
 
     document.getElementById("navbar-points").innerHTML = userPoints+" Pt.";
 
-    newHtml +="<input type='checkbox' disabled='disabled' onclick='areYouSure("+lv+","+mod+","+act+")' checked>";
-    newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
+    newHtml +="<input type='checkbox' id='bott"+lv+","+mod+","+act+"' disabled='disabled' onclick='areYouSure("+lv+","+mod+","+act+")' checked>";
+    newHtml += "<label for='bott"+lv+","+mod+","+act+"'><span></span>Activity completed</label> </div>";
   }
   document.getElementById('completedCheck'+act).innerHTML = newHtml;
 }
@@ -43,10 +43,10 @@ function initActivities(lv, mod)
         newHtml += "<div class='panel-heading collapse-trigger'>"+activityCube[lv][mod][i].name;
         newHtml += "<span style='float: right'><i>"+activityCube[lv][mod][i].points+"Pt.</i></span></div>";
         newHtml += "<div class='panel-body box-collapsed collapsable'>"+activityCube[lv][mod][i].descr;
-        newHtml += "<div id='completedCheck"+i+"'> <input type='checkbox' onclick='areYouSure("+lv+","+mod+","+i+")' ";
+        newHtml += "<div id='completedCheck"+i+"'> <input type='checkbox'  id='bott"+i+"'onclick='areYouSure("+lv+","+mod+","+i+")' ";
         if(activityCube[lv][mod][i].completed) newHtml += "disabled='disabled' checked";
         newHtml += ">";
-        newHtml += "<label for='subscribeNews'>Activity completed</label> </div>";
+        newHtml += "<label for='bott"+i+"'><span></span>Activity completed</label> </div>";
         newHtml += "</div> </div>";
       }
       document.getElementById("activitiesContainer").innerHTML = newHtml;

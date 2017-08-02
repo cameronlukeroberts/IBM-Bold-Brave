@@ -119,6 +119,10 @@ function add_score(user, score){
         var month=now.getMonth()+1;
         var year=now.getFullYear();
         var string=(day<10?'0':'')+day+'-'+(month<10?'0':'')+month+'-'+(year%100);
+
+        while(result.res_bravetest.length > 0 && result.res_bravetest[result.res_bravetest.length-1].date == string)
+          result.res_bravetest.pop();
+
         result.res_bravetest.push({
           date: string,
           score: score

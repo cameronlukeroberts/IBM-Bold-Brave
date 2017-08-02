@@ -92,8 +92,16 @@ function init()
 
   if(actualPage != "Help" && actualPage != "Activities")
   {
-    bravometerData = new Array(result.res_bravetest.length);
-    for(var i=0; i<bravometerData.length; i++)
-     bravometerData[i] = {date: result.res_bravetest[i].date, score: result.res_bravetest[i].score};
+    bravometerData = new Array(result.res_bravetest.length+1);
+    bravometerData[0] = {date: "01-01-00", score: 0};
+    for(var i=1; i<bravometerData.length; i++)
+     bravometerData[i] = {date: result.res_bravetest[i-1].date, score: result.res_bravetest[i-1].score};
+
+    if(bravometerData.length > 1)
+    {
+      var dt = bravometerData[1].date.split("-");
+      var yd = new Date(Date.parse(dt[1]+" "+dt[0]+" "+dt[2]) - 24 * 60 * 60 * 1000);
+      bravometerData[0].date = yd.getDate()+"-"+(yd.getMonth()+1)+"-"+(yd.getFullYear()-2000);
+    }
   }
 }
