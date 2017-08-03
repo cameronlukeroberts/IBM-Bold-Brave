@@ -17,7 +17,7 @@ var Storage = multer.diskStorage({
         //callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
         var ext = require('path').extname(file.originalname);
         //var size = require('fs').stat(file.path).size;
-
+        var ext = ext.toLowercase();
         if(ext == '.png' || ext == '.jpg' || ext== '.jpeg'){
           if(api.upload_image(req, ext))
             callback(null, ""+req.user+ext);
@@ -63,7 +63,7 @@ router.get('/profile', isAuthenticated, function(req, res, next) {
 });
 
 
-router.get('/rocketrizzo', function(req, res, next) {
+router.get('/rocketrizzo', isAuthenticated, function(req, res, next) {
   res.render('rocketrizzo', { title: 'Rocket', user: req.user });
 });
 

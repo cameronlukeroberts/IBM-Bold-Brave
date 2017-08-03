@@ -9,22 +9,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/scripts/rocketrizzo.js"></script>
-    <link rel="stylesheet" href="/stylesheets/rocketrizzo.css">
 
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/rocketrizzo.css">
+    <script src="/scripts/rocketrizzo.js"></script>
+
   </head>
   <body>
-    <!-- Fixed navbar    <%- include('navbar', {title: title}) %>
+    <!-- Fixed navbar -->
+        <%- include('navbar', {title: title}) %>
     <!-- End of navbar -->
-    <!--
-    <div class="text-center">
-      <h3 id='rocketpoints'>points: 0</h3>
-      <h3 id='rocketrecordpoints'>record: 0</h3>
-    </div>
-    -->
+
     <div class="wrapper">
-      <div class="container">
+      <div class="container container-c">
         <div class="canvas-container">
           <canvas id="myCanvas" width="1024" height="640"></canvas>
         </div>
@@ -47,7 +44,17 @@
           </div>
           <div class="modal-body">
             <h3 class="text-center">Your Score is <span id="score"></span></h3>
-
+            <div>
+              <div class="panel panel-default">
+                <div class="panel-heading text-center noselect">
+                  <h2>Leaderboard</h2>
+                </div>
+                <div class="panel-body leaderboard-container">
+                  <ul class="leaderboard list-group" id="leaderboard">
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button onclick="document.location = '/rocketrizzo'" type="button" class="btn btn-default" data-dismiss="modal">Restart</button>
@@ -57,6 +64,8 @@
 
       </div>
   </div>
-
+  <script>
+    makeLeaderboard();
+  </script>
   </body>
 </html>

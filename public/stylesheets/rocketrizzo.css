@@ -23,7 +23,7 @@
    height: 100%;
    position: absolute;
 }
-.container {
+.container-c {
    display: table-cell;
    vertical-align: middle;
 }

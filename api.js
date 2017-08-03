@@ -102,6 +102,31 @@ function get_leaderboard(){
   });
 }
 
+function get_leaderboard_rocket(){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector" : {},
+        "fields":["score", "username", "_id", "name", "img"]
+      }, function(er, result) {
+      if (er) {
+        console.log(er);
+        reject(er);
+      }
+      else{
+        result=result.docs;
+        result.sort(function(a, b){
+          return b.score-a.score;
+        });
+
+        result.slice(0, 10);
+
+        resolve(result);
+      }
+    });
+  });
+}
+
 function get_position(user){
   return new Promise(function(resolve, reject){
     var db = cloudant.db.use('bb_users');
@@ -236,6 +261,7 @@ function register_user(user, name, pwd, pwd_confirm){
     var usr_obj={
       "username": user,
       "name": name,
+      "score" : 0,
       "img": "/imgs/profile_default.png",
       "points": 0,
       "completed": [],
@@ -316,6 +342,43 @@ function upload_image(req, ext){
   return true;
 }
 
+//record
+function get_record(user){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({selector:{username: ""+user}}, function(er, result) {
+      if (er) {
+        reject(er);
+      }
+      resolve(result.docs);
+    });
+  });
+}
+
+function add_record(user, score){
+  return new Promise(function(resolve, reject){
+    var db = cloudant.db.use('bb_users');
+    db.find({
+        "selector":{
+          username: ""+user
+        }
+      }, function(er, result) {
+        if (er) {
+          reject(er);
+        }
+        result=result.docs[0];
+
+        result.score = score;
+        console.log(result.score);
+        db.insert(result, function(err, body){
+          if(!err){
+            resolve("UPDATE OK");
+          }
+        });
+    });
+  });
+}
+
 module.exports={
   get_user,
   get_levels,
@@ -323,6 +386,7 @@ module.exports={
   get_btq,
   get_activity,
   get_leaderboard,
+  get_leaderboard_rocket,
   get_position,
   add_activity,
   add_score,
@@ -330,5 +394,7 @@ module.exports={
   register_user,
   check_password,
   hash_passwords,
-  upload_image
+  upload_image,
+  get_record,
+  add_record
 }

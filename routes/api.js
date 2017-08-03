@@ -60,6 +60,15 @@ router.get('/leaderboard', function(req, res, next){
   });
 });
 
+// Leaderboard
+router.get('/leaderboard_rocket', function(req, res, next){
+  api.get_leaderboard_rocket().then(function(resp){
+    res.json(resp);
+  }).catch(function(err){
+    res.send(err);
+  });
+});
+
 // Position
 router.get('/position/:user', function(req, res, next){
   api.get_position(req.params.user).then(function(resp){
@@ -100,5 +109,22 @@ router.get('/setpoints/:user/:score', function(req, res, next){
   });
 });
 
+//record
+router.get('/record', function(req, res, next){
+  api.get_record(req.user).then(function(resp){
+    res.json(resp);
+  }).catch(function(err){
+    res.send(err);
+  });
+});
+
+// Add record
+router.get('/addrecord/:score', function(req, res, next){
+  api.add_record(req.user, parseInt(req.params.score, 10)).then(function(resp){
+    res.send('Score added successfully');
+  }).catch(function(err){
+    res.send(err);
+  });
+});
 
 module.exports = router;
