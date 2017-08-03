@@ -272,7 +272,7 @@ function check_password(user, pwd){
     db.find({selector:{username: user}}, function(er, result) {
       if (er)
         reject(false);
-      if (!result.docs[0])
+      if (!result.docs)
         reject(false);
       resolve(bcrypt.compareSync(pwd, result.docs[0].password));
     });
