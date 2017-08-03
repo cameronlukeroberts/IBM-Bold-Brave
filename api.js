@@ -94,7 +94,7 @@ function get_leaderboard(){
           return b.points-a.points;
         });
 
-        result.slice(0, 10);
+        result=result.slice(0, 10);
 
         resolve(result);
       }
@@ -119,7 +119,7 @@ function get_leaderboard_rocket(){
           return b.score-a.score;
         });
 
-        result.slice(0, 10);
+        result=result.slice(0, 10);
 
         resolve(result);
       }
