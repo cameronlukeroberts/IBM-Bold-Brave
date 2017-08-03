@@ -15,7 +15,7 @@
     <script src="/scripts/rocketrizzo.js"></script>
 
   </head>
-  <body>
+  <body class="noselect">
     <!-- Fixed navbar -->
         <%- include('navbar', {title: title}) %>
     <!-- End of navbar -->
@@ -39,7 +39,7 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" onclick="document.location = '/rocketrizzo'" class="close" data-dismiss="modal">&times;</button>
             <h2 class="modal-title text-center">Game Over</h2>
           </div>
           <div class="modal-body">

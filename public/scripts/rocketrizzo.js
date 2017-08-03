@@ -282,6 +282,25 @@ function mousePosUp(event) {
 document.addEventListener("mousedown", mousePosDown);
 document.addEventListener("mouseup", mousePosUp);
 
+function startHandler (e) {
+    //window.console.log('Start:', e.originalEvent.touches[0].pageX);
+    if(e.originalEvent.touches[0].pageX <= $(window).width()/2)
+      keyDown({keyCode: 37});
+    else
+      keyDown({keyCode: 39});
+}
+
+function endHandler (e) {
+    //window.console.log('End:', e.originalEvent.changedTouches[0].pageX);
+    if(e.originalEvent.touches[0].pageX <= $(window).width()/2)
+      keyUp({keyCode: 37});
+    else
+      keyUp({keyCode: 39});
+}
+
+$(document).on('touchstart', '#myCanvas', startHandler);
+$(document).on('touchend', '#myCanvas', endHandler);
+
 function rand(l, r){ //[l,r)
   var len = 10;
   while(len < r - l + 1) len *= 10;
