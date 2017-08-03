@@ -104,6 +104,6 @@ function totalScore(){
       document.location.href="/test_end";
     }
   };
-  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, true);
+  xhttp.open("GET", "/api/addscore/"+usr+"/"+score, false);
   xhttp.send();
 }
