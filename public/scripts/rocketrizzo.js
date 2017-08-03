@@ -145,7 +145,7 @@ function loopGame(){
     }
     if(collision(polig[0].x, polig[0].y, polig[polig.length-1].x, polig[polig.length-1].y, asteroids[i])){
       document.getElementById('score').innerHTML = points;
-      
+
       if(points>record)
         changePosition(points);
 
@@ -222,7 +222,7 @@ function collision(x1, y1, x2, y2, asteroid){
   var k=cy+cx/m;
 
   var t=(k-q)/(m+1/m);
-  if(t>=x1 && t<=x2 && (d<=da || d<=db))
+  if(t>=x1 && t<=x2 || r>da || r>db)
     return true;
 
   return false;
