@@ -246,25 +246,41 @@ function collision(x1, y1, x2, y2, asteroid){
 }
 
 function keyDown(e){
-  if(e.keyCode == 'a' || e.keyCode == 37){
+  if(e.keyCode == 'a' || e.keyCode == 'A' || e.keyCode == 37){
     velocity= -speed;
   }
-  if(e.keyCode == 'd' || e.keyCode == 39){
+  if(e.keyCode == 'd' || e.keyCode == 'D' || e.keyCode == 39){
     velocity= speed;
   }
 }
 
 function keyUp(e){
   //console.log(e.keyCode);
-  if(e.keyCode == 'a' || e.keyCode == 37){
+  if(e.keyCode == 'a' || e.keyCode == 'A' || e.keyCode == 37){
     if(velocity < 0)
       velocity = 0;
   }
-  if(e.keyCode == 'd' || e.keyCode == 39){
+  if(e.keyCode == 'd' || e.keyCode == 'D' || e.keyCode == 39){
     if(velocity > 0)
       velocity = 0;
   }
 }
+
+function mousePosDown(event) {
+  if(event.clientX <= $(window).width()/2)
+    keyDown({keyCode: 37});
+  else
+    keyDown({keyCode: 39});
+}
+function mousePosUp(event) {
+  if(event.clientX <= $(window).width()/2)
+    keyUp({keyCode: 37});
+  else
+    keyUp({keyCode: 39});
+}
+
+document.addEventListener("mousedown", mousePosDown);
+document.addEventListener("mouseup", mousePosUp);
 
 function rand(l, r){ //[l,r)
   var len = 10;
