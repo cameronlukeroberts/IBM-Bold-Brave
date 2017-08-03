@@ -66,6 +66,7 @@ window.onload = function(){
   asteroidImg.src = '/imgs/asteroid.png';
   speed = cwidth/200;
   speedA = speed;
+  temp_sup = 500;
   velocity = 0;
   last = new Date().getTime();
   asteroids = new Array();
@@ -105,7 +106,9 @@ function loopGame(){
     //alert(ast.speed);
     //console.log(ast);
     asteroids.push(ast);
-    next_asteroid = Math.random()*1000/2+500;
+    next_asteroid = Math.random()*1000/2+temp_sup;
+    temp_sup-=2;
+    speedA+=cwidth/10000;
     //console.log("asteroideeee");
   }
   var q = new Array();
@@ -119,10 +122,7 @@ function loopGame(){
   }
 
   points += q.length;
-  if(q.length){
-    if(points%2==0)
-      speedA+=cwidth/5000;
-  }
+
   while(q.length>0){
     asteroids.splice(q[q.length-1], 1);
     q.pop();
