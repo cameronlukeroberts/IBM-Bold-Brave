@@ -4,14 +4,14 @@ window.onload = function() {
 
 var clickCountOnRocket=0,timerClickCountOnRocket=Date.now();
 function rr(){
-  /*console.log(timerClickCountOnRocket);
-  if(Date.now()-timerClickCountOnRocket.getTime()<1000){
+  if(Date.now()-timerClickCountOnRocket<1000){
     clickCountOnRocket++;
     if(clickCountOnRocket>2)
-      alert("Avaiava la Santina");
+      document.location.href="/rocketrizzo";
   }
   else
-    clickCountOnRocket=1;*/
+    clickCountOnRocket=1;
+  timerClickCountOnRocket=Date.now();
 }
 
 function myMoveRocket() {

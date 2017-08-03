@@ -7,7 +7,7 @@ function initPieChart()
 
     var data = new Array(1);
      //%fatta, %da fare
-
+    
     // Define the margin, radius, and color scale. The color scale will be
     // assigned by index, but if you define your data using objects, you could pass
     // in a named field from the data object instead, such as `d.name`. Colors
@@ -45,10 +45,12 @@ function initPieChart()
       // d3.layout.pie to compute the angles for each arc. These start and end angles
       // are passed to d3.svg.arc to draw arcs! Note that the arc radius is specified
       // on the arc, not the layout.
+
+
       var colo=-1;
       var coun1=-1;
       svg.selectAll("path")
-        .data(d3.layout.pie())
+        .data(d3.layout.pie().sort(null))
         .enter().append("path")
         .attr("d", d3.svg.arc()
           .innerRadius(r / 2)
