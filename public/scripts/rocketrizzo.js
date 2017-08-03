@@ -8,6 +8,7 @@ document.onkeyup = keyUp;
 var canvas, context;
 var cwidth, cheight;
 var speed, velocity;
+var speedA;
 var rocketImg, rocket;
 var asteroidImg;
 var asteroids, next_asteroid;
@@ -64,6 +65,7 @@ window.onload = function(){
   asteroidImg = new Image();
   asteroidImg.src = '/imgs/asteroid.png';
   speed = cwidth/200;
+  speedA = speed;
   velocity = 0;
   last = new Date().getTime();
   asteroids = new Array();
@@ -76,6 +78,8 @@ function loopGame(){
   var delta = (new Date().getTime() - last)/(1000/fps);
   next_asteroid -= (new Date().getTime() - last);
   last = new Date().getTime();
+
+
 
   for(var i=0;i<polig.length;i++)
     polig[i].x-=rocket.x;
@@ -90,7 +94,7 @@ function loopGame(){
     polig[i].x+=rocket.x;
 
   if(next_asteroid<0){
-    var ast = {x: rand(0, cwidth), y: 0, speed: rand(speed/2, 2*speed), w: rand(cwidth/10, cwidth/4), h: 0, cx: 0, cy: 0, r: 0};
+    var ast = {x: rand(0, cwidth), y: 0, speed: rand(speedA/2, 2*speedA), w: rand(cwidth/10, cwidth/4), h: 0, cx: 0, cy: 0, r: 0};
     ast.h = ast.w;
     ast.y = -ast.h;
     if(ast.x+ast.w > cwidth)
@@ -98,6 +102,7 @@ function loopGame(){
     ast.r = ast.w/100*47;
     ast.cx = ast.x + ast.w/2;
     ast.cy = ast.y + ast.h/2;
+    //alert(ast.speed);
     //console.log(ast);
     asteroids.push(ast);
     next_asteroid = Math.random()*1000/2+500;
@@ -105,15 +110,19 @@ function loopGame(){
   }
   var q = new Array();
   for(var i=0;i<asteroids.length;i++){
-    asteroids[i].y+=speed;
+    asteroids[i].y+=asteroids[i].speed;
     if(asteroids[i].y>cheight){
       q.push(i);
     }else{
-      asteroids[i].cy+=speed;
+      asteroids[i].cy+=asteroids[i].speed;;
     }
   }
 
   points += q.length;
+  if(q.length){
+    if(points%2==0)
+      speedA+=cwidth/5000;
+  }
   while(q.length>0){
     asteroids.splice(q[q.length-1], 1);
     q.pop();
@@ -289,11 +298,9 @@ function makeLeaderboard()
   }
 
   document.getElementById("leaderboard").innerHTML = newHtml;
-  console.log(leaderboard);
 }
 
 function changePosition(p){
-  console.log(leaderboard);
   for(var i=0;i<leaderboard.length;i++)
     if(leaderboard[i].username == usr)
       leaderboard[i].score = p;
