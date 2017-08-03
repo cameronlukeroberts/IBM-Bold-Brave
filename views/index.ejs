@@ -24,9 +24,9 @@
       <div class="col-sm-4">
         <div class="panel panel-default">
           <div class="panel-heading text-center noselect"><h2>Levels</h2></div>
-          <div class="row panel-body equal">
+          <div class="row panel-body">
             <!-- rocket -->
-            <div class="col-xs-5 rocket-container">
+            <div class="col-xs-5 rocket-container" id="rocket-container">
               <center>
                 <div class="moon"></div>
                 <div class="earth"></div>
@@ -39,7 +39,6 @@
           </div>
         </div>
       </div>
-
       <!-- Moduli -->
       <div class="col-sm-4">
           <div class="panel panel-default">
@@ -114,4 +113,5 @@
   changeMiddleColumn(level);
   initProgressBar();
   makeLeaderboard();
+  fixHeightRocket();
 </script>

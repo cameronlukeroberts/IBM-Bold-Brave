@@ -1,4 +1,6 @@
 window.onload = function() {
+  //alert(document.getElementById('levelColumn').getBoundingClientRect().height);
+
   setTimeout(myMoveRocket, 1000);
 }
 
@@ -15,6 +17,8 @@ function rr(){
 }
 
 function myMoveRocket() {
+  //alert(document.getElementById('levelColumn').style.height);
+
   var elem = document.getElementById("rocket");
   var per = 80;
 
@@ -72,6 +76,9 @@ function makeLevelColumn()
     }
 
     document.getElementById("levelColumn").innerHTML = newHtml;
+
+    document.getElementById('rocket-container').style.height = document.getElementById('levelColumn').getBoundingClientRect().height+"px";
+
 }
 
 function initProgressBar()
@@ -149,4 +156,11 @@ function makeLeaderboard()
   }
 
   document.getElementById("leaderboard").innerHTML = newHtml;
+}
+
+function fixHeightRocket(){
+  //alert(document.getElementById("levelColumn").style.height);
+  //console.log(document.getElementById('levelColumn').style.height);
+  //document.getElementById('rocket-container').style.height = document.getElementById('levelColumn').style.height;
+
 }
