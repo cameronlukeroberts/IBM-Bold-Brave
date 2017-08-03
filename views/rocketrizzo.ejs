@@ -11,8 +11,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/scripts/rocketrizzo.js"></script>
     <link rel="stylesheet" href="/stylesheets/rocketrizzo.css">
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body>
+    <!-- Fixed navbar    <%- include('navbar', {title: title}) %>
+    <!-- End of navbar -->
+    <!--
+    <div class="text-center">
+      <h3 id='rocketpoints'>points: 0</h3>
+      <h3 id='rocketrecordpoints'>record: 0</h3>
+    </div>
+    -->
     <div class="wrapper">
       <div class="container">
         <div class="canvas-container">
@@ -20,6 +30,33 @@
         </div>
       </div>
     </div>
+
+
+    <!-- Trigger the modal with a button -->
+    <button id="trigg" type="button" class="hiddenButton btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2 class="modal-title text-center">Game Over</h2>
+          </div>
+          <div class="modal-body">
+            <h3 class="text-center">Your Score is <span id="score"></span></h3>
+
+          </div>
+          <div class="modal-footer">
+            <button onclick="document.location = '/rocketrizzo'" type="button" class="btn btn-default" data-dismiss="modal">Restart</button>
+            <button onclick="document.location = '/'" type="button" class="btn btn-default" data-dismiss="modal">Home</button>
+          </div>
+        </div>
+
+      </div>
+  </div>
 
   </body>
 </html>
