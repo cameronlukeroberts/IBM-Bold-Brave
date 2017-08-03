@@ -141,6 +141,7 @@ function loopGame(){
           xhttp.send();
         }
         clearInterval(id);
+        return;
       }
     }
     if(collision(polig[0].x, polig[0].y, polig[polig.length-1].x, polig[polig.length-1].y, asteroids[i])){
@@ -163,6 +164,7 @@ function loopGame(){
         xhttp.send();
       }
       clearInterval(id);
+      return;
     }
   }
 
