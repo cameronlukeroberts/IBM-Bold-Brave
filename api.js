@@ -225,18 +225,18 @@ function set_points(user, score){
 }
 
 // Get password
-function register_user(user, name, pwd, pwd_confirm, img){
+function register_user(user, name, pwd, pwd_confirm){
   return new Promise(function(resolve, reject){
     console.log(pwd+" "+pwd_confirm);
     if(pwd!=pwd_confirm)
       reject('Passwords don\'t match');
 
-    pwd=bcrypt.hashSync(pwd, saltRounds);
+    pwd=bcrypt.hashSync(pwd, bcrypt.genSaltSync(saltRounds));
 
     var usr_obj={
       "username": user,
       "name": name,
-      "img": img,
+      "img": "/imgs/profile_default.png",
       "points": 0,
       "completed": [],
       "res_bravetest": []

@@ -121,7 +121,8 @@ router.post('/register', function(req, res, next){
     req.body.username,
     req.body.name,
     req.body.password,
-    req.body.password_confirm).then(function(resp){
+    req.body.password_confirm,
+    req.body.img).then(function(resp){
       res.redirect('/login');
     }).catch(function(err){
       res.send(err);
