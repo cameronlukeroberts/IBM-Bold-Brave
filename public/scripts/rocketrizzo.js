@@ -1,6 +1,8 @@
 var fps = 60;
 var last;
 
+var points;
+var label_points;
 document.onkeydown = keyDown;
 document.onkeyup = keyUp;
 var canvas, context;
@@ -9,13 +11,18 @@ var speed, velocity;
 var rocketImg, rocket;
 var asteroidImg;
 var asteroids, next_asteroid;
+var id;
 window.onload = function(){
+  points = 0;
+  label_points = document.getElementById('rocketpoints');
   canvas = document.getElementById('myCanvas');
   cwidth = canvas.width, cheight = canvas.height;
   //alert(cwidth+" "+cheight);
   context = canvas.getContext('2d');
+  context.font = "30px Comic Sans MS";
+  context.fillStyle = "#f9f50e";
   rocketImg = new Image();
-  rocket = {x: cwidth/2-cwidth/20, y: cheight-cheight/6-20, w: cwidth/10, h: cheight/6}
+  rocket = {x: cwidth/2-cwidth/20, y: cheight-cheight/6-20, w: cwidth/8.4, h: cheight/6}
   rocketImg.onload = function() {
     context.drawImage(this, rocket.x, rocket.y, rocket.w, rocket.h);
   };
@@ -27,7 +34,7 @@ window.onload = function(){
   last = new Date().getTime();
   asteroids = new Array();
   next_asteroid = Math.random()*1000/2+500;
-  setInterval(loopGame, 1 / fps * 1000);
+  id = setInterval(loopGame, 1 / fps * 1000);
 }
 
 function loopGame(){
@@ -60,11 +67,19 @@ function loopGame(){
     }
   }
 
+  points += q.length;
   while(q.length>0){
     asteroids.splice(q[q.length-1], 1);
     q.pop();
   }
 
+  for(var i=0; i<asteroids.length; i++){
+    if(collision(rocket, asteroids[i])){
+      document.getElementById('score').innerHTML = points;
+      $('#trigg').trigger('click');
+      clearInterval(id);
+    }
+  }
 
   //redraw
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -72,6 +87,16 @@ function loopGame(){
   for(var i=0;i<asteroids.length;i++)
     context.drawImage(asteroidImg, asteroids[i].x, asteroids[i].y, asteroids[i].w, asteroids[i].h);
 
+  context.fillText("Points: "+points , 30 , 50);
+  context.fillText("Record: 1000", 30, 90);
+
+  //label_points.innerHTML = 'points: '+points;
+}
+
+function collision(rocket, asteroid){
+  if(rocket.x >= asteroid.x && rocket.x <= asteroid.x + asteroid.w && asteroid.y + asteroid.h >= rocket.y) return true;
+  if(rocket.x + rocket.w >= asteroid.x && rocket.x + rocket.w <= asteroid.x + asteroid.w && asteroid.y + asteroid.h >= rocket.y) return true;
+  return false;
 }
 
 function keyDown(e){
