@@ -275,6 +275,12 @@ function register_user(user, name, pwd, pwd_confirm){
     var db_usr = cloudant.db.use('bb_users');
     var db_cred = cloudant.db.use('bb_credentials');
 
+    db_usr.find({selector:{username:user}}, function(er, result){
+      if(er) reject(er);
+      if(result.docs.length>0)
+        reject("Username already taken");
+    });
+
     db_usr.insert(usr_obj, function(err, body){
       if(err){
         reject(err);
@@ -298,9 +304,11 @@ function check_password(user, pwd){
     db.find({selector:{username: user}}, function(er, result) {
       if (er)
         reject(false);
-      if (!result.docs)
+      console.log(result.docs);
+      if (!result.docs || result.docs.length==0)
         reject(false);
-      resolve(bcrypt.compareSync(pwd, result.docs[0].password));
+      else
+        resolve(bcrypt.compareSync(pwd, result.docs[0].password));
     });
   });
 }
